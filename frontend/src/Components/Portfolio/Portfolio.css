@@ -1,0 +1,426 @@
+.portfolioStyling{
+
+width:100%;
+display:flex;
+flex-direction: column;
+}
+
+.circleContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.optionCircles{
+    height:50px;
+    width:50px;
+    margin-left:0.5rem;
+    margin-right:0.5rem;
+    border-radius:100%;
+    background-color: rgb(0,183,241);
+    border: 3px white solid;
+   
+    text-decoration:none;
+    text-decoration-line: none;
+    font-size:1rem;
+    font-weight: 800;
+
+    transition: transform .5s;
+    transform: scale(1);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65%
+}
+
+    .optionCircles:hover{
+        transition: transform .5s;
+        transform: scale(.75)
+
+    }
+
+.hoverPageLine{
+    font-family: 'Oleo Script', cursive;
+    color:rgb(0,183,241);
+    text-align: center;
+    height:2.5rem;
+    width: 100%;
+    font-size: 1.5rem;
+    padding-top:.75rem;
+    margin-bottom:.75rem;
+}
+
+/* =================================================================== Pic and Video Portfolio */
+
+.picPortfolio{
+    width: 400px;
+    box-shadow: 2px 2px 3px rgb(0,0,0, 0.65);
+}
+
+
+.vidPortfolio{
+    width: 400px;
+    box-shadow: 2px 2px 3px rgb(0,0,0, 0.65);
+}
+
+.profileFont{
+    font-family: sans-serif;
+    font-size:1rem;
+}
+
+.profileHeader{
+    /* padding-top:2.5rem; */
+    font-family: sans-serif;
+    font-size:1.25rem;
+    font-style: italic;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    padding-bottom:1rem;
+}
+
+.profileProjectName{
+    font-family: sans-serif;
+    font-size:2.5rem;
+    font-weight: bolder;
+    color:rgb(35,64,143);
+    text-align: center;
+    padding-bottom:0.5rem;
+}
+
+.profileParagraphFont{
+    font-family: sans-serif;
+    font-size:1rem;
+    color:black;
+    text-align: center;
+    padding-bottom:1rem;
+}
+
+.devStyle{
+    height:60px;
+    width:auto;
+    margin-top:2rem;
+    margin-left:0.75rem;
+    margin-right:0.75rem;
+}
+
+
+/* =================================================================== Pic and Video Portfolio */
+
+.profileRowBackground{
+    background-color:lightgray;
+    padding:3rem;
+    border-radius:25px;
+}
+
+.grayColumnContent{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vidContentColumns{
+    width:50%;
+}
+
+.nonVidTextColumn{
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    width:50%
+}
+
+.nonVidPicColumn{
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    width:50%
+}
+
+.parameters{
+    right:0;
+    left:0;
+    margin-left:2.75rem;
+    margin-right:2.75rem;
+}
+
+.buttonAlign{
+    text-align:center;
+}
+
+.pizzaCatButtonAlign{
+    margin-top:2rem;
+    width:100%;
+    text-align:center;
+}
+
+.demoReadButtons{
+    background-color:rgb(35,64,143);
+    color:white;
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding:.25rem;
+    padding-left:.5rem;
+    padding-right:.5rem;
+    border-radius: 25px;
+    margin-left:0.5rem;
+    margin-right: 0.5rem;
+    transition: transform .5s;
+    transform: scale(1);
+}
+
+.demoReadButtons:hover{
+    transition: transform .5s;
+    transform: scale(.75)
+
+}
+
+.demoReadButtons:focus{
+    outline:0;
+  }
+
+/* ================================================= Responsiveness*/
+
+@media screen and (max-width: 1259px){
+    .picPortfolio{
+        width:350px;
+    }
+
+    .vidPortfolio{
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 1145px){
+    .v2{
+        display:none;
+    }
+}
+
+@media screen and (max-width: 1144px){
+    .picPortfolio{
+        width:300px;
+    }
+
+    .v1{
+        display: none;
+    }
+
+    .v2{
+        display:block;
+    }
+
+    .buttonsSmallerBlock{
+        width:100%
+    }
+
+    .profileParagraphFont{
+        font-size: .9rem;
+    }
+
+    .vidContentColumns{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .vidPortfolio{
+        width: 450px;
+        margin-bottom:1.5rem;
+    }
+}
+
+@media screen and (min-width:1020px){
+    .p2{
+        display: none;
+    }
+}
+
+@media screen and (max-width:1019px){
+    .p2{
+        display: block;
+    }
+    .p1{
+        display:none;
+    }
+
+    .v1{
+        display: block;
+    }
+
+    .v2{
+        display:none;
+    }
+
+    .picPortfolio{
+        width:200px;
+    }
+
+    .nonVidTextColumn{
+        width:60%
+    }
+    
+    .nonVidPicColumn{
+        width:40%
+    }
+}
+
+@media screen and (max-width:919px){
+
+    .nonVidTextColumn{
+        width:50%
+    }
+    
+    .nonVidPicColumn{
+        width:50%
+    }
+}
+
+@media screen and (max-width:809px){
+
+    .v1{
+        display: none;
+    }
+
+    .v2{
+        display:block;
+    }
+
+    .picPortfolio{
+        width:150px;
+    }
+
+    .profileHeader{
+        font-size:1rem;
+    }
+
+    .profileProjectName{
+        font-size:2rem;
+    }
+
+    .vidPortfolio{
+        width: 100%;
+        object-fit:contain;
+        margin-bottom:1.5rem;
+    }
+}
+
+@media screen and (max-width:729px){
+
+    .v1{
+        display: block;
+    }
+
+    .v2{
+        display:none
+    }
+
+    .p2{
+        display: none;
+    }
+    .p1{
+        display:block;
+    }
+
+
+    .nonVidTextColumn{
+        width:100%;
+
+       
+    }
+    
+    .nonVidPicColumn{
+        width:100%;
+       
+    }
+
+
+    .picPortfolio{
+        width:100%;
+        object-fit:contain;
+        margin-bottom:1.5rem;
+    }
+
+    .profileRowBackground{
+        padding:2rem;
+    }
+
+}
+
+@media screen and (max-width:552px){
+
+    .profileRowBackground{
+        background-color:white;
+        padding:0px;
+        border-radius:0px;
+        width:100%;
+    }
+
+    .parameters{
+        margin-right:.5rem;
+        margin-left:.5rem;
+    }
+
+    .profileHeader{
+       color:rgb(0,183,241);
+    }
+    .hoverPageLine{
+        font-size:1.25rem;
+    }
+}
+
+@media screen and (max-width:445px){
+
+  .demoReadButtons{
+      margin-bottom: 1rem;
+
+  }
+
+  .devStyle{
+      height: 50px;
+  }
+
+  .optionCircles{
+      height:45px;
+      width:45px;
+      margin-bottom:2rem;
+  }
+
+  .h1{
+      display:none;
+  }
+
+    .profileProjectName{
+        font-size: 1.5rem;
+    } 
+
+    .profileParagraphFont{
+        font-size:.85rem;
+    }
+
+    .vidPortfolio{
+        max-width:none;
+        width:300px;
+    }
+}
+
+@media screen and (max-width:389px){
+  .p2{
+    display: block;
+    }
+    .p1{
+        display:none;
+    }
+
+    .profileParagraphFont{
+        font-size:.8rem;
+    }
+    .vidPortfolio{
+        width:225px;
+    }
+
+}

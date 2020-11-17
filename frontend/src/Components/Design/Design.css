@@ -1,0 +1,300 @@
+
+/* =============================== Headings */
+
+.artDirection{
+  font-family: 'GregsText';
+  font-size: 4rem;
+  text-align:center;
+  font-weight: bolder;
+  color: rgb(0,183,241);
+  margin-top:3rem;
+  margin-bottom:2rem;
+}
+
+
+
+/* ================================== carousel */
+
+.photoContent{
+  margin: 0 auto;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sliderContainer {
+  max-width: 600px;
+}
+
+.sliderContainer IMG{
+  max-width: inherit;
+}
+
+.picButtons{
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+  align-content:center;
+  align-items: center;
+  z-index: 2;
+  color:rgb(255,255,255,0.45);
+  font-size:3rem;
+  margin-right: -2.5rem;
+  transition: transform .5s;
+  transform: scale(1);
+  font-weight:bolder;
+  user-select: none;
+}
+
+
+.buttonRight{
+  margin-left: -2.25rem;
+}
+
+.buttonLeft{
+  margin-left: -2.25rem;
+}
+
+.picButtons:hover{
+  transition: transform .5s;
+  transform: scale(.75)
+}
+
+.picTextAlign{
+  text-align: center;
+  margin-top:1rem;
+  margin-bottom:4rem;
+  font-family: sans-serif;
+  font-size: 1 rem;
+  color: rgb(0,0,0,0.5)
+}
+
+
+/* ======================================================================================================== Mags */
+
+.magGrid{
+  display: grid;
+  margin: auto;
+  justify-content: center;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(2, 30rem);
+}
+
+
+.mags{
+  display:flex;
+  margin:0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: cover;
+  vertical-align: center;
+}
+
+
+
+.mags IMG{
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgDescription{
+  width:275px;
+  position:absolute;
+  color: white;
+  font-family: serif;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  text-shadow: 1.25px 1.25px 1px black;
+  visibility: hidden;
+}
+
+
+.imgDescription:hover{
+  cursor:pointer;
+}
+
+
+
+.mags:hover IMG{
+  filter: grayscale(75%) blur(0.75px) opacity(75%);
+}
+
+.mags:hover .imgDescription{
+  visibility: visible;
+}
+
+
+
+
+/* =================================================================== Redirect Buttons */
+
+.buttonAlign{
+  text-align:center;
+  margin-top: 2rem;
+}
+
+.demoReadButtons{
+  background-color:rgb(35,64,143);
+  color:white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  padding:.25rem;
+  padding-left:.5rem;
+  padding-right:.5rem;
+  border-radius: 25px;
+  margin-left:0.5rem;
+  margin-right: 0.5rem;
+  transition: transform .5s;
+  transform: scale(1);
+  margin-bottom: 1rem;
+}
+
+.demoReadButtons:focus{
+  outline:0;
+}
+
+.demoReadButtons:hover{
+  transition: transform .5s;
+  transform: scale(.75) 
+}
+
+/* ============================================ Film */
+
+.designFilmText{
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  color: rgb(100,100,100,0.65);
+  margin-bottom: 3rem;
+  
+}
+
+.videoAlign{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom:4rem;
+}
+
+/* ============================================ Responsiveness */
+
+
+@media screen and (max-width: 1149px){
+  .magGrid{
+    grid-template-columns: repeat(2, 25rem);
+  }
+}
+
+@media screen and (max-width: 1080px){
+  .designFilmText{
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 949px){
+  .magGrid{
+    grid-template-columns: repeat(2, 20rem);
+  }
+  .artDirection{
+    font-size:3.25rem;
+    /* margin:2rem; */
+  }
+  .imgDescription{
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-shadow: 1px 1px .9px black;
+  }
+
+}
+
+
+@media screen and (max-width: 750px){
+
+  .magGrid{
+    grid-template-columns: repeat(2, 17rem);
+  }
+
+  .artDirection{
+    font-size:2.5rem;
+  }
+
+  .sliderContainer{
+    max-width:400px;
+  }
+
+  .picButtons{
+    font-size: 2rem;
+  }  
+
+  .buttonRight{
+    margin-left: -2rem;
+  }
+  
+  .buttonLeft{
+    margin-right: -2rem;
+  }
+
+  .imgDescription{
+    width:250px;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .designFilmText{
+    font-size: 1.25rem;
+  }
+
+}
+
+@media screen and (max-width: 686px){
+  .magGrid{
+    grid-template-columns: repeat(auto-fill, 20rem);
+  }
+
+  .imgDescription{
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 449px){
+
+  .magGrid{
+    grid-template-columns: repeat(auto-fill, 14rem);
+  }
+
+  .artDirection{
+    font-size:2rem;
+    margin-bottom:1rem;
+  }
+
+
+
+  .sliderContainer{
+    max-width:250px;
+  }
+
+  .picButtons{
+    font-size: 2rem;
+  }  
+
+  .buttonRight{
+    margin-left: -2rem;
+  }
+  
+  .buttonLeft{
+    margin-right: -2rem;
+  }
+
+
+  .imgDescription{
+    width:175px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+}

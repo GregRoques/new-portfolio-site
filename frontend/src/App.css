@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+ /* =========================================================== Header Font */ 
+
+@font-face {
+  font-family: 'GregsHeader';
+  src: url('/fonts/Nautilus.otf');
+}
+
+

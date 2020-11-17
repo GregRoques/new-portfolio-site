@@ -1,0 +1,27 @@
+.layoutBody{
+    width:90%;
+    margin:0 auto;
+}
+
+.contentMargin{
+    margin-top: 2.25rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Props Children Fade-In */
+
+.fadeIn{
+    animation-name: fadeIn;
+    animation-duration:2s;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
