@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const instaRead = require('../util/insta');
+const myKey = require('../util/sendgripApi')
 const axios = require("axios");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 
-let mySendGripKey = "";
-
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: mySendGripKey,
+      api_key: myKey,
     },
   })
 ); // You will want to store this in a utils folder, much like I did with my InstaKey
@@ -25,7 +24,7 @@ const limitWarningsToFiveDays = () => {
   const dayOfTheWeekNumeral = new Date().getDay();
   if (dayOfTheWeekNumeral !== 6 && dayOfTheWeekNumeral !== 0) {
     fiveDayWarningCount++;
-  } // I don't usually check personal mail on weekends, so this won't send on Sat. or Sun.
+  } // I don't usually check personal mail on weekends, so this won't increment on Sat. or Sun.
 };
 
 const setSentTodayToTrue = () => {
@@ -51,16 +50,16 @@ const emailWarning = (message, err) => {
         setSentTodayToTrue();
       })
       .catch((err) => {
-        console.log(`Could not send error email: ${err}`);
+        console.log(`Could not send error email (emailWarning): ${err}`);
       });
   }
 };
 
-const abridgeCaption = ({ caption }) => {
+const abridgeCaption = (caption) => {
   const trimCaption = caption.trim();
   if (trimCaption.length < 76) return trimCaption;
   if (trimCaption.length > 75) {
-    let slicedCaption = trimCaption.slice(0, string.lastIndexOf(" ", 75));
+    const slicedCaption = trimCaption.slice(0, trimCaption.lastIndexOf(" ", 75));
     return slicedCaption[slicedCaption.length - 1] === 75
       ? slicedCaption
       : `${slicedCaption}...`;
@@ -97,7 +96,7 @@ const getInstaInfo = (instaToken) => {
         emailWarning(subject, err);
         limitWarningsToFiveDays();
       }
-      console.log(`Could not get media info: ${err}`);
+      console.log(`getInstaInfo–Could not get media info from Instagram: ${err}`);
       returnObject = {}; // we don't want the expired info to remain, so we clear this variable
     });
 };
@@ -133,16 +132,15 @@ const isTimeUp = (expirationDate, myToken) => {
   }
 };
 
-const getToken = () => {
+const getToken = () => { 
   axios.get(instaRead)
     .then(res=>{
-      const { longTermToken, lttDate, userName, sendGripapiKey } = res.data;
-      mySendGripKey = sendGripapiKey
+      const { longTermToken, lttDate, userName } = res.data;
       returnObject.userName = userName;
       isTimeUp(lttDate, longTermToken);
     })
     .catch((err) => {
-      console.log(`Could not get login info: ${err}`);
+      console.log(`getToken–Could Not Get login Info From Firebase: ${err}`);
     });
 };
 
