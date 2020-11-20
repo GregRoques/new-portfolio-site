@@ -6,4 +6,4 @@ The Instagram Widget is primarily included here in the event that I ever wish to
 
 ## Click image below to view video
 
-[![Instagram Widget demo video](./not_used_README_images/instaWidgetVideo.png)](https://youtu.be/DGaEiZo2dVw)
+[![Instagram Widget demo video](./not_used_README_images/instaWidgetVideo.png)](https://youtu.be/xc8mKnVQu6E)

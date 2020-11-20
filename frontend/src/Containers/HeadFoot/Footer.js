@@ -42,10 +42,13 @@ class Footer extends Component{
                             <GitHub/>
                             <Resume/>
                         </> :
-                        <Contact 
-                            isEmailToggled={this.toggleEmail}
-                            isShown={email}
-                        />
+                        <>
+                            <Contact 
+                                isEmailToggled={this.toggleEmail}
+                                isShown={email}
+                            />
+                            <LinkedIn/>
+                        </> 
                     }
                 </div>
             </div>
