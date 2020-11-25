@@ -19,7 +19,6 @@ class PhotoGallery extends Component{
                 currentImage: 0
                 })
             }
-            
         }, 800);
     }
 
@@ -35,18 +34,20 @@ class PhotoGallery extends Component{
     }
 
   render(){
+    const { title, images, reference } = this.props;
+    const { currentImage } = this.state;
     return(
       <div className= { css.centerText }>
         <div className= { css.box } onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
           <img 
-            src = { './images/photography/'+ this.props.images[this.props.album][this.state.currentImage]}
+            src = { `./images/photography/${reference[currentImage]}`}
             alt = { this.props.album }
-            onMouseEnter = {()=> this.maskOn(Object.values(this.props.images[this.props.album]))}
+            onMouseEnter = {()=> this.maskOn(images)}
             onMouseLeave ={()=> this.maskOff()}
-            onClick ={()=> this.props.selectAlbumHandler(this.props.album)}
+            onClick ={()=> this.props.selectAlbumHandler(reference)}
           />
         </div>
-        { this.props.album }
+        { title }
       </div>
     )
     }

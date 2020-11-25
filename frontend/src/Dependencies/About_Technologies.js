@@ -16,7 +16,7 @@ export const mySkills = {
         ]
     },
     backEnd: {  
-        name: "Back End",
+        name: "Server Side",
         tech: [
             'nodejs.png',
             'express.png',

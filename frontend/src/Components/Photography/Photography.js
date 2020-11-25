@@ -1,73 +1,90 @@
 import React, { Component } from 'react';
-import css from './Photography.module.css'
-import { connect } from "react-redux";
-import SetHeader from '../../../../Actions/SetHeader';
-import { SetPhotoArray } from '../../../../Actions/PhotoArray';
+import cssPhotography from './Photography.module.css'
 import PhotoGallery from './GalleryHandler';
+import axios from 'axios';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import InstaGallery from './InstaGallery/instaGallery'
 
-var photoArray ={}
 
-class Photography extends Component{
-
-    componentDidMount() {
-        this.props.Header("Photography");
-        window.scrollTo(0, 0);
+class Photography extends Component {
+    state = {
+      albums: [],
+      albumLength: 0,
+      loaded: false,
+      error: false,
     }
 
-      selectAlbum = extension => {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        this.getPhotos(0);
+    }
 
-        const urlExtension = extension.replace(/[" "]/g, "_")
-        this.props.history.push(`/photography/${urlExtension}`)
-        }
+    getPhotos = (start) => {
+      axios.post(`${api}/photography`, {
+          lengthStart: start,
+          album: "ALL"
+      })
+      .then(res => {
+          this.setState(prevState => ({
+              albums: [...prevState.albums, ...res.data.albums],
+              albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
+              loaded: true
+          }))
+      })        
+      .catch(err => {
+          this.setState({
+              error: true
+          })
+      })
+
+  }
+
+    selectAlbum = extension => {
+      return <Redirect push to={`/photography/${extension}`}/>
+      }
     
       render(){
-        if (window.location.pathname === "/photography/"){
-          this.props.history.push(`/photography`)
-        }
-        if(this.props.reduxPhoto === null){
-            const folderNames = require.context('../../../public/images/photography/').keys()
-            folderNames.forEach(folder=>{
-              let anImage = folder
-              let anAlbum = (folder.replace('./','')).split('/')[0]
-                
-              if (!Object.keys(photoArray).includes(anAlbum)){
-                photoArray[anAlbum] = [anImage]
-              } else {
-                photoArray[anAlbum].push(anImage)
-              }
-            })
-            this.props.setArray(photoArray)
-        } else {
-          photoArray = this.props.reduxPhoto
-        }
-       
-          return(
-              <div className = { css.fadeIn }>
-                {/* <h1 className = {css.albumTitleText}>Music + Travel</h1> */}
-                  <div className = { css.galleryContainer }>
-                      <div className = { css.gridContainer }>
-                            {Object.keys(photoArray).map((volume, i) => {
-                                return(
-                                  <PhotoGallery
-                                    key= { i }
-                                    album= { volume }
-                                    images= { photoArray }
-                                    selectAlbumHandler = {this.selectAlbum}
-                                  />
-                                )
-                            })}
-                      </div>
-                  </div>
+        const {images, albumLength, loaded, error } = this.state;
+          return error === false ? (
+            <div className={cssPhotography.fadeIn}>
+            <div className={cssPhotography.imageGalleryContainer}>
+                <InfiniteScroll
+                    dataLength={images.length}
+                    next={() => this.getPhotos(images.length)}
+                    hasMore={images.length !== albumLength}
+                    loader={
+                      <img
+                      className={cssPhotography.loader}
+                      src="/images/hearts-placeholder.gif"
+                      alt="loading"
+                      />
+                    }
+                >
+                <div className={cssPhotography.imageGrid} style={{ marginTop: "30px" }}>
+                    {loaded
+                    ? albums.map((album, i) => {
+                            return(
+                              <PhotoGallery
+                                key= { i }
+                                album= { album.title }
+                                reference = { album.reference }
+                                images= { album.images }
+                                selectAlbumHandler = {this.selectAlbum}
+                              />
+                            )
+                        }) : ""}
+                        </div>
+                    </InfiniteScroll>
+                </div>
+                <InstaGallery/>
               </div>
-          )
+          ) : (
+            <div>
+                <h2>I am error</h2>
+            </div>
+        )
         
       }
     }
 
-const mapDispatchToProps = dispatch =>{
-    return{
-         Header: page => dispatch(SetHeader(page))
-    }
- }
-
-export default (connect)(null, mapDispatchToProps)(Photography);
+export default Photography;
