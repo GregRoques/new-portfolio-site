@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { projectDetails, ProjectList, ProjectOnDisplay } from "./Port_Dependencies";
-import Legend from "../Legend/Legend";
+import Legend from "../../Legend/Legend";
 import "./Portfolio.css";
 
 // Redux

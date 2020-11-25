@@ -1,32 +1,19 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
+import { Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
 
 // HOC
 import Layout from "./Components/Layout/Layout";
 
-// Actions
-import { authCheckState } from './Actions/Auth'
 
 // Visitor Pages
-import Home from './Containers/Home/Home';
-import About from './Containers/About/About'
-    import Design from './Containers/About/SubPages/Design/Design' 
-    import Photography from './Containers/About/SubPages/Photography/Photography'
-    import Pictures from './Containers/Photography/Pictures'
-import Portfolio from './Containers/Portfolio/Portfolio'
-import Blog from './Containers/Blog/Blog'
+import Home from './Components/Home/Home';
+import Media from './Components/Media' 
+import Photography from './Components/Photography/Photography'
+import Pictures from './Components/Photography/Pictures'
+
 
 class App extends Component {
-
-  state={
-    entries:[]
-  }
-
-  componentDidMount(){
-    this.props.onTryAutoSignUp();
-  }
 
   NoPage = () =>{
     return(
@@ -39,23 +26,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* HOC */}
          <Layout >
            <Switch>
-               {/* Vistor Pages */}
                 <Route path="/" exact component={Home}/>
-                <Route exact path="/about" component={About}/>
-                <Route exact path="/software" component={Portfolio}/>
-                <Route exact path="/print" component={Design}/>
-              {/* Photography Routing */}
+                <Route exact path="/media" component={Media}/>
                 <Route exact path="/photography" component={Photography}/>
                 <Route exact path="/photography/:album" component={Pictures}/>
-              {/* Re-Route Non-Existant Pages */}
                 <Route exact path='/resume' component={() => { 
                     window.location.href = "https://www.gregroques.com/images/socialIcons/Resume.pdf"; 
                     return false;
                 }}/>
-                <Redirect path="/portfolio" push to={"/software"}/>
                 <Route component ={this.NoPage}/>
            </Switch>
         </Layout>
@@ -65,10 +45,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch =>{
-  return{
-    onTryAutoSignUp:() => dispatch(authCheckState())
-  }
-}
-
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default App;

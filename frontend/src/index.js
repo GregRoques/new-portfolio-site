@@ -4,10 +4,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import reducers from "./Reducers/RootReducer.js";
-
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
 import { trackingId } from './AxiosOrders'
@@ -21,16 +17,9 @@ history.listen(location => {
     ReactGA.pageview(location.pathname); 
   });
 
-
-const theStore = createStore(
-    reducers
-)
-
 ReactDOM.render(
-    <Provider store={theStore}>
         <Router history={history}>
             <App/>
-        </Router>
-    </Provider>, 
+        </Router>, 
     document.getElementById('root')
 );

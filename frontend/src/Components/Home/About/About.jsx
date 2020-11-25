@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
 import { mySkills, imageLink } from './About_Technologies'
-import Legend from "../Legend/Legend";
+import Legend from "../../Legend/Legend";
 import { connect } from "react-redux";
 import SetHeader from '../../Actions/SetHeader'
 
@@ -12,7 +12,6 @@ class About extends Component{
     }
     
     componentDidMount() {
-        this.props.Header("About");
         window.scrollTo(0, 0);
     }
     render(){

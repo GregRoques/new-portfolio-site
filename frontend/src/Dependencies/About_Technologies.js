@@ -21,23 +21,18 @@ export const mySkills = {
             'nodejs.png',
             'express.png',
             'mysql.png',
-            "graphql.png"
+            
         ]
     },
-    graphicDesign: {
-        name: "Graphic Design",
+    auxillary: {
+        name: "Auxillary",
         tech: [
             'illustrator.png',
             'indesign.png',
-            'photoshop.png'
-        ]
-    },
-    digitalMarketing: {
-        name: "Web Services",
-        tech: [
+            'photoshop.png',
+            'portfolioAws.png',
             'ggl2.png',
-            'facebook.png',
-            'portfolioAws.png'
+            "graphql.png"
         ]
-    },
+    }
 }
