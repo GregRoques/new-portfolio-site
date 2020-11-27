@@ -2,37 +2,41 @@ export const imageLink = '/images/technologies/';
 
 export const mySkills = {
     frontEnd: {  
-        name: "Front End",
+        name: "Languages",
         tech: [
             'html5.png',
             'css3.png',
             'sass.png',
-            'bootstrap.png',
             'javascript.png',
             'typescript.png',
-            'angularjs.png', 
-            'react.png',
-            'redux.png'
         ]
     },
     backEnd: {  
-        name: "Server Side",
+        name: "Frameworks",
         tech: [
+            'react.png',
+            'redux.png',
+            'bootstrap.png',
             'nodejs.png',
             'express.png',
-            'mysql.png',
-            
+            'angularjs.png', 
         ]
     },
     auxillary: {
-        name: "Auxillary",
+        name: "Databases/Aux",
+        tech: [
+            'mysql.png',
+            "graphql.png",
+            'portfolioAws.png',
+            'ggl2.png',
+        ]
+    },
+    auxillary: {
+        name: "Design",
         tech: [
             'illustrator.png',
             'indesign.png',
             'photoshop.png',
-            'portfolioAws.png',
-            'ggl2.png',
-            "graphql.png"
         ]
     }
 }
