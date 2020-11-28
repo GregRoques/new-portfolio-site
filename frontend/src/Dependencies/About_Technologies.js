@@ -9,30 +9,30 @@ export const mySkills = {
             'sass.png',
             'javascript.png',
             'typescript.png',
+            "graphql.png"
         ]
     },
     backEnd: {  
-        name: "Frameworks",
+        name: "Stack",
         tech: [
+            'mysql.png',
+            'express.png',
             'react.png',
             'redux.png',
             'bootstrap.png',
             'nodejs.png',
-            'express.png',
-            'angularjs.png', 
         ]
     },
     auxillary: {
-        name: "Databases/Aux",
+        name: "Auxillary",
         tech: [
-            'mysql.png',
-            "graphql.png",
+            'angularjs.png', 
             'portfolioAws.png',
             'ggl2.png',
         ]
     },
-    auxillary: {
-        name: "Design",
+    design: {
+        name: "Graphic Design",
         tech: [
             'illustrator.png',
             'indesign.png',
