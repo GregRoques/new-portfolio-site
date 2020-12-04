@@ -27,8 +27,8 @@ export const mySkills = {
         name: "Auxillary",
         tech: [
             'angularjs.png', 
-            'portfolioAws.png',
-            'ggl2.png',
+            'AWS_amazon_web_services.png',
+            'google_analytics.png',
         ]
     },
     design: {

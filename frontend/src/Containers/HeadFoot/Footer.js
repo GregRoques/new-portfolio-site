@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import "./HeadFoot.css";
-import ResumeModal from './ResumeModal';
-import { Footer, LinkedIn, GitHub, Resume } from './FooterLinks'
+import "./footer.css";
+import ContactModal from './ContactModal';
+import { Contact, LinkedIn, GitHub, Resume } from './FooterLinks'
 
 
 class Footer extends Component{
 
     state ={
-        email: false,
+        isContactOpen: false,
         isPhoto: false
     }
 
@@ -18,17 +18,20 @@ class Footer extends Component{
         })
     }
 
-    toggleEmail=()=>{
-        const doesShow = this.state.email
-        this.setState({email: !doesShow})
+    toggleEmail=(e)=>{
+        const {isContactOpen} = this.state;
+        if(e.target !== e.currentTarget && isContactOpen){
+            return
+        }
+        this.setState(prevState=>({isContactOpen: !prevState.isContactOpen}))
     }
     
     render(){
-        const { email, isPhoto } = this.state;
+        const { isContactOpen, isPhoto } = this.state;
         return(
             <div>
-                <ResumeModal
-                    isShown={email}
+                <ContactModal
+                    isShown={isContactOpen}
                     close= {this.toggleEmail}
                 /> 
                 <div className="footer">
@@ -36,7 +39,7 @@ class Footer extends Component{
                         <>
                             <Contact 
                                 isEmailToggled={this.toggleEmail}
-                                isShown={email}
+                                isShown={isContactOpen}
                             />
                             <LinkedIn/>
                             <GitHub/>
@@ -45,7 +48,7 @@ class Footer extends Component{
                         <>
                             <Contact 
                                 isEmailToggled={this.toggleEmail}
-                                isShown={email}
+                                isShown={isContactOpen}
                             />
                             <LinkedIn/>
                         </> 

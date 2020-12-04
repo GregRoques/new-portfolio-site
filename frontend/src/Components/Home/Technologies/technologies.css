@@ -1,0 +1,267 @@
+
+.techHeader{
+    font-family: sans-serif;
+    text-align:center;
+    font-style: oblique;
+    font-weight: bolder;
+    color: #4C61B2;
+    font-size: 3rem; 
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.aboutMeSkills{
+    font-family: sans-serif;
+    font-size: 2rem;
+    padding-top: 3%;
+    text-align: center;
+    font-style: oblique;
+    font-weight: bolder;
+    color: rgb(100,100,100,0.65);
+}
+
+.lightGray{
+    max-width:100%;
+    height:auto;
+    padding:10px;
+    text-align:center;
+    background-position: center;
+}
+
+.skillIcon{
+    height:60px;
+    width:auto;
+    margin:10px;
+
+}
+
+.aboutRows{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%
+  }
+  
+  .aboutContainers{
+    position:relative;
+    align-content: center;
+    align-items: center;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .aboutStack{
+    position:relative;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    align-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+
+/* ====================================== Responsiveness*/
+
+
+@media screen and (min-width: 1375px){
+  .bioGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    column-gap: 1rem;
+    padding-bottom: 1rem;
+    height: auto;
+    margin-bottom: 4rem;
+  }
+  
+  .aboutMeText{
+    font-size: 1.5rem;
+  }
+
+  .aboutMeSkills{
+    font-size: 2.5rem;
+  }
+
+  .skillIcon{
+    height:75px
+  }
+  .portrait{
+    width: 17.5vw;
+    height: 17.5vw;
+  }
+
+}
+
+@media screen and (max-width: 1374px){
+  .bioGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    column-gap: 1rem;
+    padding-bottom: 1rem;
+    height: 40vh;
+    margin-bottom: 4rem;
+  }
+  
+  .aboutMeText{
+    font-size: 1.25rem;
+  }
+
+  .aboutMeSkills{
+    font-size: 2.25rem;
+  }
+
+  .skillIcon{
+    height:60px
+  }
+
+  .portrait{
+    width: 17.5vw;
+    height: 17.5vw;
+  }
+
+}
+
+@media screen and (max-width: 1050px){
+
+  .aboutMeSkills{
+    font-size: 1.75rem;
+  }
+
+  .aboutMeHeader{
+    font-size: 2.75rem;
+    padding-bottom: 15px;
+  }
+
+  .skillIcon{
+    height:55px
+  }
+
+  .portrait{
+    width: 20vw;
+    height: 20vw;
+  }
+
+}
+
+@media screen and (max-width: 900px){
+
+  .bioGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    column-gap: 1rem;
+    padding-bottom: 1rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .aboutMeText{
+    font-size: 1rem;
+  }
+
+  .aboutMeSkills{
+    font-size: 2rem;
+  }
+
+  .skillIcon{
+    height:60px
+  }
+
+  
+
+}
+
+@media screen and (max-width: 800px){
+
+  .bioGrid{
+    grid-template-columns: 45% 55%;
+  }
+
+  .portrait{
+    width: 25vw;
+    height: 25vw;
+  }
+
+  .aboutMeHeader{
+    font-size: 2rem;
+  }
+
+  .aboutMeText{
+    padding-bottom: .5rem;
+  }
+
+  .skillIcon{
+    height:55px
+  }
+
+
+
+}
+
+@media screen and (max-width: 750px){
+
+  .bioGrid{
+    position:relative;
+    display: block;
+    text-align: center;
+  }
+
+  .portrait{
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .aboutMeSkills{
+    font-size: 1.5rem;
+  }
+
+  .skillIcon{
+    height:50px
+  }
+
+  .aboutContainers{
+    width: 100%
+  }
+
+  .aboutMeHeader{
+    font-size: 2.5rem;
+  }
+
+}
+
+
+
+@media screen and (max-width: 400px){
+
+
+  .aboutMeSkills{
+    font-size: 1.25rem;
+  }
+
+  .skillIcon{
+    height:45px
+  }
+
+  .aboutMeHeader{
+    font-size: 1.75rem;
+  }
+
+}
+
+@media screen and (max-width: 350px){
+  .aboutMeHeader{
+    font-size: 1.5rem;
+  }
+  .part2{
+    height: 200px;
+  }
+}

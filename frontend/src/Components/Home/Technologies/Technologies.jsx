@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import "./About.css";
+import "./technologies.css";
 import { mySkills, imageLink } from './About_Technologies'
 
-class About extends Component{
-    state={
-        isLoaded: false
-    }
+class Tech extends Component{
+
     
     render(){
-        return isLoaded ? (
-        <div className="fadeIn">
+        return(
+        <div>
+            <div className="techHeader">Skills</div>
             <div className="aboutRows">
                 { Object.keys(mySkills).map((skills, i) => {
                     const { name , tech } = mySkills[skills]
@@ -19,10 +18,9 @@ class About extends Component{
                             <div className="aboutMeSkills">{name}</div>
                             <div className="lightGray">
                                 {(tech).map((language, j) => {
-                                    const altText = language.replace(/\.[^/.]+$/, "")
-                                    Object.keys(mySkills).length === (i+1) && tech.length === (j+1) ? this.setState({isLoaded: true}) : "" 
+                                    const altText = language.replace(/\.[^/.]+$/, "").replaceAll("_", " ")
                                     return(
-                                        <img className='skillIcon' id={`Tech${j}`} src= {imageLink + language} alt={altText}/>
+                                        <img className='skillIcon' title={altText} id={`Tech${j}`} src= {imageLink + language} alt={altText}/>
                                     )
                                 })}
                             </div>
@@ -31,8 +29,8 @@ class About extends Component{
                 }
             </div>
         </div>
-        ) : "";
+        )
     }
 }
 
-export default About;
+export default Tech;
