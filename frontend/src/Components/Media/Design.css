@@ -2,11 +2,12 @@
 /* =============================== Headings */
 
 .artDirection{
-  font-family: 'GregsText';
+  font-family: sans-serif;
+  font-style: oblique;
   font-size: 4rem;
   text-align:center;
   font-weight: bolder;
-  color: rgb(0,183,241);
+  color: #4C61B2;;
   margin-top:3rem;
   margin-bottom:2rem;
 }
@@ -118,7 +119,6 @@
 }
 
 
-
 .mags:hover IMG{
   filter: grayscale(75%) blur(0.75px) opacity(75%);
 }
@@ -138,7 +138,7 @@
 }
 
 .demoReadButtons{
-  background-color:rgb(35,64,143);
+  background-color: #4D95B4;
   color:white;
   font-family: sans-serif;
   font-size: 1rem;
@@ -151,15 +151,10 @@
   transition: transform .5s;
   transform: scale(1);
   margin-bottom: 1rem;
-}
-
-.demoReadButtons:focus{
-  outline:0;
-}
-
-.demoReadButtons:hover{
-  transition: transform .5s;
-  transform: scale(.75) 
+  outline: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* ============================================ Film */

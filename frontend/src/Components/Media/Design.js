@@ -1,49 +1,53 @@
 import React, {Component} from "react";
-import Photography from './Photography'
+// import Photography from './Photography'
 import Magazines from './Magazines'
 import Articles from './Articles'
 import "./Design.css";
-import InstaGallery from '../Photography/instaGallery';
+// import InstaGallery from '../Photography/instaGallery';
 
-// Redux
-import { connect } from "react-redux";
-import SetHeader from '../../Actions/SetHeader'
 
 class Design extends Component{
     state={
-        loadingIndex: 0
+        testemonials:[]
     }
+    componentDidMount(){
 
-    componentDidMount() {
-        this.props.Header("Media Samples");
-        window.scrollTo(0, 0);
     }
-
-    isLoaded = () =>{
-        this.setState(prevState =>({
-            loadingIndex: prevState.loadingIndex++
-        }));
+    
+    Testmonial = ({recommendation}) =>{
+        const {name, title, workedWith, recommendation} = recommendation
+        return(
+            <div>
+                <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
+                <div className="cssDesign.testemonial">
+                    "{recommendation}"
+                </div>
+                <div className="cssDesign.recommender">
+                    –{name}, {title}; {workedWith}
+                </div>
+                <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
+            </div>
+        )
     }
 
     render(){
-        return this.state.loadingIndex === 2 ?(
-            <div className="fadeIn">
-                <Magazines
-                    isLoadedOne={this.isLoaded}
+        const {Testmonial} = this;
+        const {testemonials} = this.state;
+        return(
+            <div className="fadeIn" style={{margin: '0 0 10rem 0'}}>
+                {window.scrollTo(0, 0)}
+                <Magazines/>
+                <Testemonials
+                    recommendation={testemonials[0]}
                 />
-                <Photography/>
-                <Articles
-                    isLoadedTwo={this.isLoaded}
+                {/* <Photography/> */}
+                 <Testemonials
+                    recommendation={testemonials[1]}
                 />
+                <Articles/>
             </div>
-        ): null;
+        )
     }
 }
 
-const mapDispatchToProps = dispatch =>{
-    return{
-         Header: (page) => dispatch(SetHeader(page))
-    }
- }
-
-export default connect(null, mapDispatchToProps)(Design);
+export default Design;

@@ -11,9 +11,11 @@ const ResumeModal = ({ close, isShown }) => {
                 <div className="closeButton" onClick={e=>close(e)}>X</div>
                 <div className="modalContact">
                     <span className="contactTitle">Contact</span>
-                    <div className="contactFormat"> <LocationOn className="glyphs" /> Atlanta, GA</div>
-                    <div className="contactFormat"><a href="tel:504-220-3832"><Phone className="glyphs" />  504.220.3832</a></div>
-                    <div className="contactFormat"><a href="mailto:greg@gregroques.com"> <Email className="glyphs" />  Greg@GregRoques.com</a></div>
+                    <div>
+                        <div className="contactFormat"> <LocationOn className="glyphs" /> Atlanta, GA</div>
+                        <div className="contactFormat"><a href="tel:504-220-3832"><Phone className="glyphs" />  504.220.3832</a></div>
+                        <div className="contactFormat"><a href="mailto:greg@gregroques.com"> <Email className="glyphs" />  Greg@GregRoques.com</a></div>
+                    </div>
                 </div>
             </div>
         </div>

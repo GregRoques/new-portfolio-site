@@ -9,13 +9,13 @@ class Tech extends Component{
         return(
         <div>
             <div className="techHeader">Skills</div>
-            <div className="aboutRows">
+            <div className="techRows">
                 { Object.keys(mySkills).map((skills, i) => {
                     const { name , tech } = mySkills[skills]
                     console.log(name, tech)
                     return (
-                        <div className="aboutContainers"  id ={`skills${i}`}>
-                            <div className="aboutMeSkills">{name}</div>
+                        <div className="techContainers"  id ={`skills${i}`}>
+                            <div className="techSkills">{name}</div>
                             <div className="lightGray">
                                 {(tech).map((language, j) => {
                                     const altText = language.replace(/\.[^/.]+$/, "").replaceAll("_", " ")

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { articleList } from "./ArticleList"
+import { articleList } from "../../Dependencies/Design_ArticleList";
 import './Design.css'
 
 const IssueList = ({art}) => {
@@ -25,7 +25,6 @@ const Articles = ({isLoadedTwo}) => {
                 <div className='magGrid'>
                     {
                         (Object.keys(articleList)).map((num, i) => {
-                            if (Object.keys(articleList).length === (i+1)){isLoadedTwo()}
                             return(
                                 <IssueList
                                 key={i}
@@ -45,6 +44,6 @@ const Articles = ({isLoadedTwo}) => {
             </div>
         )
     }
-}
+
 
 export default Articles;

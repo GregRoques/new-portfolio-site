@@ -8,14 +8,6 @@ class Footer extends Component{
 
     state ={
         isContactOpen: false,
-        isPhoto: false
-    }
-
-    componentDidMount(){
-        const isPhoto = window.location.pathname.includes("/photography") ? true : false;
-        this.setState({
-            isPhoto: isPhoto
-        })
     }
 
     toggleEmail=(e)=>{
@@ -27,7 +19,7 @@ class Footer extends Component{
     }
     
     render(){
-        const { isContactOpen, isPhoto } = this.state;
+        const { isContactOpen } = this.state;
         return(
             <div>
                 <ContactModal
@@ -35,24 +27,13 @@ class Footer extends Component{
                     close= {this.toggleEmail}
                 /> 
                 <div className="footer">
-                    {!isPhoto ?
-                        <>
-                            <Contact 
-                                isEmailToggled={this.toggleEmail}
-                                isShown={isContactOpen}
-                            />
-                            <LinkedIn/>
-                            <GitHub/>
-                            <Resume/>
-                        </> :
-                        <>
-                            <Contact 
-                                isEmailToggled={this.toggleEmail}
-                                isShown={isContactOpen}
-                            />
-                            <LinkedIn/>
-                        </> 
-                    }
+                    <Contact 
+                        isEmailToggled={this.toggleEmail}
+                        isShown={isContactOpen}
+                    />
+                    <LinkedIn/>
+                    <GitHub/>
+                    <Resume/>
                 </div>
             </div>
         )

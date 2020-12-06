@@ -1,6 +1,6 @@
 import React from 'react'
 import './Design.css'
-import { magList } from '../../Dependencies/Design_Magazine;'
+import { magList } from '../../Dependencies/Design_Magazine';
 
 const IssueList = ({mag}) => {
     return(
@@ -14,13 +14,12 @@ const IssueList = ({mag}) => {
     )
 }
 
-const Magazines = ({isLoadedOne}) =>{
+const Magazines = () =>{
     return (
         <div>
-            <div className="artDirection">Art Direction</div>
+            <div className="artDirection">Design</div>
             <div className='magGrid'>
                 {(Object.keys(magList)).map((num,i) => {
-                    if(Object.keys(magList).length === (i+1)){isLoadedOne()}
                     return(
                         <IssueList
                         key={i}
