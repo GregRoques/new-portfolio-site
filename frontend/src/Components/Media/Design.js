@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from 'axios';
 import Photography from './Photography'
 import Magazines from './Magazines'
 import Articles from './Articles'
@@ -12,7 +13,13 @@ class Design extends Component{
     }
     
     componentDidMount(){
-
+        axios.get('http://localhost:2000/linkedIn').then(res=>{
+            const recommendations = res.data; 
+            console.log(recommendations)
+            this.setState({
+                testemonials: recommendations
+            })
+        })
     }
 
     TestmonialDisplay = ({testmonialIndex}) =>{

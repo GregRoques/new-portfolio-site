@@ -1,6 +1,7 @@
 import React from 'react';
 import Tech from "./Technologies/Technologies";
 import About from "./About/About";
+import Portfolio from './Portfolio/Portfolio';
 
 const Home = () =>{
     window.scrollTo(0, 0)
@@ -10,6 +11,7 @@ const Home = () =>{
             <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
             <Tech/>
             <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
+            <Portfolio/>
         </div>
         )
 }

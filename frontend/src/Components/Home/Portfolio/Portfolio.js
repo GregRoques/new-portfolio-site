@@ -1,5 +1,5 @@
 import React from "react";
-import "./Design.css";
+import "./portfolio.css";
 import Carousel from 'react-bootstrap/Carousel';
 import {portfolioSamples} from './Port_Dependencies'
 
@@ -44,12 +44,12 @@ const Portfolio = () =>{
                 </Carousel>
             </div>
             <div className="portfolioDisplayContainerSmall">
-                <div className="artDirection">Design</div>
-                <div className='magGrid'>
-                    {(Object.keys(magList)).map((num,i) => {
+                    {portfolioSamples.map((sample,i) => {
                         return(
-                            <div className="mags"> 
+                            <div > 
+                                <div className="mags">
                                 <img src={sample.image} alt={sample.name}/>
+                                </div>
                                 <div className="imgDescription">{sample.description}</div>
                                 <div className="designPhotoCaptionContainer">
                                                 {sample.description}<br/>
@@ -72,7 +72,6 @@ const Portfolio = () =>{
                             </div>
                         )
                     })}
-                </div>
             </div>
         </div>
     )
