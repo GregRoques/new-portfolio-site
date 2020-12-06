@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 // HOC
 import Layout from "./Containers/Layout/Layout";
 

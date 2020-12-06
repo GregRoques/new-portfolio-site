@@ -1,97 +1,81 @@
-import React, { Component } from "react";
-import { projectDetails, ProjectList, ProjectOnDisplay } from "./Port_Dependencies";
-import Legend from "../../Legend/Legend";
-import "./Portfolio.css";
+import React from "react";
+import "./Design.css";
+import Carousel from 'react-bootstrap/Carousel';
+import {portfolioSamples} from './Port_Dependencies'
 
-// Redux
-import { connect } from "react-redux";
-import SetHeader from '../../Actions/SetHeader'
-
-
-const ProjectOnDisplay = ({title}) =>{
-    const display = projectDetails[title]
-    const headerImageLink = 'images/portfolioImages/'
-    const languageImageLink = 'images/technologies/'
-    
+const Portfolio = () =>{
     return(
-        <div className='grayColumnContent'>
-            <div className= 'nonVidPicColumn'>
-                <img className="picPortfolio p1" src= { headerImageLink + display['image']+['1.png']} alt={display['name']}/>
-                <img className="picPortfolio p2" src= { headerImageLink + display['image'] + ['2.png']} alt={display['name']}/>
+        <div className="fadeIn">
+            <div className="artDirection">Portfolio</div>
+            <div className="portfolioDisplayContainerLarge">
+                <Carousel className="photographyContainer" indicators={false}>
+                    {portfolioSamples.map(sample=>{
+                        return(
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src={sample.image}
+                                alt={sample.name}
+                                />
+                                <Carousel.Caption>
+                                    <h3 className="designPhotoBandName">{sample.band}</h3>
+                                    <p className="designPhotoCaptionContainer">
+                                        {sample.description}<br/>
+                                    <a 
+                                        className="designPhotoHyperlink"
+                                        href={sample.demo}
+                                        target ="_blank"
+                                    >
+                                        Demo
+                                    </a>
+                                    <span style={{margin: "0px 8px", color: "white"}}>|</span>
+                                    <a 
+                                        className="designPhotoHyperlink"
+                                        href={sample.readMe}
+                                        target ="_blank"
+                                    >
+                                        GitHub
+                                    </a>
+                                    </p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        )
+                    })}
+                </Carousel>
             </div>
-            <div className='nonVidTextColumn'>
-                <div className="profileProjectName">{display['name']}</div>
-                <div className="profileHeader">{'//'} {display['type']}</div>
-                <div className='profileParagraphFont'>{display['description']}</div>
-
-                <div className='buttonAlign v1'>
-                    <span><a target="_blank" rel="noopener noreferrer" href={display['demo']}>
-                        <button className="demoReadButtons">
-                            { display['demo'].includes('youtube', -1) ? `${'Video'}` : `${'Live Demo'}` }
-                        </button>
-                    </a></span>
-                    <span><a target="_blank" rel="noopener noreferrer" href={display['readMe']}>
-                        <button className="demoReadButtons">Read Me</button>
-                    </a></span>
-                </div>
-            </div>
-            <div className="buttonsSmallerBlock">
-                <div className='buttonAlign v2'>
-                    <span><a target="_blank" rel="noopener noreferrer" href={display['demo']}>
-                        <button className="demoReadButtons">
-                            { display['demo'].includes('youtube', -1) ? `${'Video'}` : `${'Live Demo'}` }
-                        </button>
-                    </a></span>
-                    <span><a target="_blank" rel="noopener noreferrer" href={display['readMe']}>
-                        <button className="demoReadButtons">Read Me</button>
-                    </a></span>
-                </div>
-            </div>
-            {display['languages'].map((language, i) => {
-                const altText = language.replace(/\.[^/.]+$/, "")
-                return(
-                    <img className='devStyle' key={i} src= {languageImageLink + language} alt={altText}/>
-                    )
-                })}
-        </div>
-    )
-}
-
-class Portfolio extends Component{
-
-    componentDidMount() {
-        this.props.Header("Projects");
-        window.scrollTo(0, 0);
-    }
-
-    state = {
-        isLoaded: false
-    }
-
-    render(){
-        return isLoaded ?(
-            <div className="portfolioStyling fadeIn">
-                <div className='parameters'>
-                    {Object.keys(projectDetails).map((project, i) => {
-                        Object.keys(projectDeatails) === (i+1) ? this.setState({isLoaded: true}) : "";
-                        return (
-                            <div className="profileRowBackground">
-                                <ProjectOnDisplay key={i} title={project} /> 
+            <div className="portfolioDisplayContainerSmall">
+                <div className="artDirection">Design</div>
+                <div className='magGrid'>
+                    {(Object.keys(magList)).map((num,i) => {
+                        return(
+                            <div className="mags"> 
+                                <img src={sample.image} alt={sample.name}/>
+                                <div className="imgDescription">{sample.description}</div>
+                                <div className="designPhotoCaptionContainer">
+                                                {sample.description}<br/>
+                                    <a 
+                                        className="designPhotoHyperlink"
+                                        href={sample.demo}
+                                        target ="_blank"
+                                    >
+                                        Demo
+                                    </a>
+                                    <span style={{margin: "0px 8px", color: "white"}}>|</span>
+                                    <a 
+                                        className="designPhotoHyperlink"
+                                        href={sample.readMe}
+                                        target ="_blank"
+                                    >
+                                        GitHub
+                                    </a>
+                                </div>
                             </div>
                         )
                     })}
                 </div>
-                {/* <div>Class Projects YouTube Link Goes Here...maybe?</div> */}
-                <Legend/>
             </div>
-        ) : "";
-    }
+        </div>
+    )
 }
 
-const mapDispatchToProps = dispatch =>{
-   return{
-        Header: (page) => dispatch(SetHeader(page))
-   }
-}
-
-export default connect(null, mapDispatchToProps)(Portfolio);
+export default Portfolio;

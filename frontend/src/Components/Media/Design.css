@@ -12,64 +12,34 @@
   margin-bottom:2rem;
 }
 
+/* =============================== Headings */
 
-
-/* ================================== carousel */
-
-.photoContent{
-  margin: 0 auto;
+.designPhotoCenter{
   display:flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: center;;
 }
 
-.sliderContainer {
-  max-width: 600px;
+.photographyContainer{
+  width:750px;
+  height: 536px;
 }
 
-.sliderContainer IMG{
-  max-width: inherit;
+.designPhotoBandName{
+  -webkit-text-stroke: 1px black;
+  font-weight: bold;
 }
 
-.picButtons{
-  display: flex;
-  cursor: pointer;
-  flex-direction: row;
-  align-content:center;
-  align-items: center;
-  z-index: 2;
-  color:rgb(255,255,255,0.45);
-  font-size:3rem;
-  margin-right: -2.5rem;
-  transition: transform .5s;
-  transform: scale(1);
-  font-weight:bolder;
-  user-select: none;
+.designPhotoCaptionContainer{
+  width: 100%;
+  background-color: rgb(0,0,0,0.5);
+  padding: 5px 0;
+  margin: auto;
 }
 
+.designPhotoHyperlink, .designPhotoHyperlink:focus{
 
-.buttonRight{
-  margin-left: -2.25rem;
+  color: white !important;
 }
-
-.buttonLeft{
-  margin-left: -2.25rem;
-}
-
-.picButtons:hover{
-  transition: transform .5s;
-  transform: scale(.75)
-}
-
-.picTextAlign{
-  text-align: center;
-  margin-top:1rem;
-  margin-bottom:4rem;
-  font-family: sans-serif;
-  font-size: 1 rem;
-  color: rgb(0,0,0,0.5)
-}
-
 
 /* ======================================================================================================== Mags */
 
@@ -157,23 +127,6 @@
   cursor: pointer;
 }
 
-/* ============================================ Film */
-
-.designFilmText{
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 1.25rem;
-  color: rgb(100,100,100,0.65);
-  margin-bottom: 3rem;
-  
-}
-
-.videoAlign{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom:4rem;
-}
 
 /* ============================================ Responsiveness */
 
@@ -184,11 +137,6 @@
   }
 }
 
-@media screen and (max-width: 1080px){
-  .designFilmText{
-    font-size: 1.25rem;
-  }
-}
 
 @media screen and (max-width: 949px){
   .magGrid{
@@ -217,20 +165,9 @@
     font-size:2.5rem;
   }
 
-  .sliderContainer{
-    max-width:400px;
-  }
-
-  .picButtons{
-    font-size: 2rem;
-  }  
-
-  .buttonRight{
-    margin-left: -2rem;
-  }
-  
-  .buttonLeft{
-    margin-right: -2rem;
+  .photographyContainer{
+    width:600px;
+    height: 429px;
   }
 
   .imgDescription{
@@ -239,9 +176,6 @@
     font-weight: bold;
   }
 
-  .designFilmText{
-    font-size: 1.25rem;
-  }
 
 }
 
@@ -256,6 +190,13 @@
   }
 }
 
+@media screen and (max-width: 600px){
+  .photographyContainer{
+    width:400px;
+    height: 286px;
+  }
+}
+
 @media screen and (max-width: 449px){
 
   .magGrid{
@@ -267,29 +208,21 @@
     margin-bottom:1rem;
   }
 
-
-
-  .sliderContainer{
-    max-width:250px;
-  }
-
-  .picButtons{
-    font-size: 2rem;
-  }  
-
-  .buttonRight{
-    margin-left: -2rem;
-  }
-  
-  .buttonLeft{
-    margin-right: -2rem;
-  }
-
-
   .imgDescription{
     width:175px;
     font-size: 1rem;
     font-weight: bold;
 }
 
+}
+
+@media screen and (max-width: 400px){
+  .photographyContainer{
+    width:320px;
+    height: 229px;
+  }
+
+  .designPhotoBandName{
+    display: none;
+  }
 }

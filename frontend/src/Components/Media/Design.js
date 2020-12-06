@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-// import Photography from './Photography'
+import Photography from './Photography'
 import Magazines from './Magazines'
 import Articles from './Articles'
 import "./Design.css";
@@ -8,41 +8,41 @@ import "./Design.css";
 
 class Design extends Component{
     state={
-        testemonials:[]
+        testemonials: false
     }
+    
     componentDidMount(){
 
     }
-    
-    Testmonial = ({recommendation}) =>{
-        const {name, title, workedWith, recommendation} = recommendation
-        return(
+
+    TestmonialDisplay = ({testmonialIndex}) =>{
+        const {testemonials} = this.state;
+        return testemonials ? (
             <div>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
                 <div className="cssDesign.testemonial">
-                    "{recommendation}"
+                    "{testemonials[testmonialIndex].recommendation}"
                 </div>
                 <div className="cssDesign.recommender">
-                    –{name}, {title}; {workedWith}
+                    –{testemonials[testmonialIndex].name}, {testemonials[testmonialIndex].title}; (<i>{testemonials[testmonialIndex].workedWith}</i>)
                 </div>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
             </div>
-        )
+        ) : <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>;
     }
 
     render(){
-        const {Testmonial} = this;
-        const {testemonials} = this.state;
+        const {TestmonialDisplay} = this;
         return(
             <div className="fadeIn" style={{margin: '0 0 10rem 0'}}>
                 {window.scrollTo(0, 0)}
                 <Magazines/>
-                <Testemonials
-                    recommendation={testemonials[0]}
+                <TestmonialDisplay
+                    testmonialIndex={0}
                 />
-                {/* <Photography/> */}
-                 <Testemonials
-                    recommendation={testemonials[1]}
+                <Photography/>
+                 <TestmonialDisplay
+                    testmonialIndex={1}
                 />
                 <Articles/>
             </div>

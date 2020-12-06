@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import cssHeader from "./header.module.css";
+import "./header.css";
 // import Modal from "./Modal";
 
 const isiPad = navigator.userAgent.match(/iPad/i) !== null;
@@ -43,11 +43,11 @@ class Header extends Component {
                     close={ this.modalToggler}
                     isFadeOut = {this.state.isFadeOut}
                 /> */}
-                <div className={ cssHeader.headerPosition}>
-                    <div className={ cssHeader.headerContainer }>
-                        <Link to="/"><img alt="GregRoques.com" className={ cssHeader.B4Llogo } src="/Greg Roques_LOGO.png"/></Link>
-                            <div className= { cssHeader.headerContainerSmallText}>
-                                <img alt="hamburger" className={cssHeader.imageContain} src="/hamburger.png" onClick={() => this.modalToggler()}/>
+                <div className="headerPosition">
+                    <div className="headerContainer">
+                        <Link to="/"><img alt="GregRoques.com" className="B4Llogo" src="/Greg Roques_LOGO.png"/></Link>
+                            <div className="headerHamburgerContainer">
+                                <img alt="hamburger" className="headerHamburger" src="/hamburger.png" onClick={() => this.modalToggler()}/>
                             </div>
                     </div>
                 </div>
