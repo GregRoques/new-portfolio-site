@@ -1,0 +1,90 @@
+/* modal */
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition:  linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 999;
+}
+
+.modalPosition{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.modalContact {
+    background-color: white;
+    padding: 1.5rem .75rem 1rem .75rem;
+    width: 20rem;
+    line-height: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 2px 2px 3px rgb(0,0,0,0.5)
+}
+.closeButton {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:  white;
+    width: 1.5rem;
+    line-height:1.5rem;
+    height:1.5rem;
+    text-align: center;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color:rgb(50,50,50);
+    transition: 0.25s
+}
+.closeButton:hover {
+    /* color: rgb(35,64,143); */
+    background-color:transparent;
+}
+
+.glyphs{
+    color:rgb(0,183,241);
+    font-size:1rem;
+    position:relative;
+    top:2px;
+}
+
+.contactFormat{
+    color:   rgb(100,100,100,0.65);
+    font-size:1rem;
+    margin: 0px .5rem;
+    font-family: sans-serif;
+    display: inline-block;
+}
+
+.contactFormat a{
+    text-decoration: none; 
+    color: rgb(100,100,100,0.65);
+}
+.contactTitle{
+    font-size:2.5rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align:center;
+    font-style: oblique;
+    color: #4C61B2;
+}
+
+
+
+@media screen and (max-width: 399px){
+
+    .modal{
+        background-color:white;
+    }
+
+    .modalContact{
+        box-shadow: none;
+    }
+
+}

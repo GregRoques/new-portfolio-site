@@ -7,34 +7,30 @@ const isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 class Header extends Component {
     state = {
-        isResized: true,
         isOpen: false,
         isFadeOut: false,
     };
 
-    componentDidMount () {
-        window.addEventListener("resize", this.logoResize);
-        window.innerWidth < 620 || (window.innerWidth > 767 && window.innerWidth < 1025 && (window.innerHeight > window.innerWidth) && isiPad)
-            ? this.setState({ isResized: false })
-            : this.setState({ isResized: true });
-    };
-
-
-    modalToggler = (props) => {
-        if (!props) {
-            const inverse = this.state.isOpen;
-            this.setState({
-                isOpen: !inverse,
-                isFadeOut: false
-            });
-        } else {
+    modalToggler = (e) => {
+        
+        if(e && e.target !== e.currentTarget && isOpen){
+            return
+        }
+        if (!isFadeOut && isOpen) {
             this.setState({ isFadeOut: true });
             setTimeout(() => {
                 this.modalToggler();
             }, 1500);
+           
+        } else {
+            this.setState(prevState=({
+                isOpen: !prevState.isOpen,
+                isFadeOut: false
+            }));
+           
         }
     }
-
+   
     render () {
         return (
             <div>

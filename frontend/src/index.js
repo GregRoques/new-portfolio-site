@@ -7,7 +7,7 @@ import App from './App';
 
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
-import { trackingId } from './AxiosOrders'
+import { trackingId } from './Dependencies/BackendAPI'
 
 const history = createBrowserHistory();
 ReactGA.initialize(trackingId);

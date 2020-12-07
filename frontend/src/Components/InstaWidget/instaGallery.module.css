@@ -1,4 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps&display=swap');
+
+  @import url('https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps&display=swap');
+  
+  .instaNotVisibleCenter{
+      text-align: center;
+      margin-top: 2rem;
+  }
+  .instaNotVisibleCenter a img{
+      width: 225px;
+  }
+
+  .instagramParentHeader{
+    font-family: sans-serif;
+    text-align:center;
+    font-style: oblique;
+    font-weight: bolder;
+    color: #4C61B2;
+    font-size: 3rem; 
+    text-align: center;
+    margin: 3rem 0px 2rem 0px;
+    width: 100%;
+  }
+
+.flexFiveCenter{
+    display: flex;
+    justify-content: center;
+}
 
 .instaModuleSpacing{
     margin: 2rem 0px 2rem 0px;
@@ -63,8 +89,8 @@
 }
 
 .instaImage1{
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     background-color: black;
     border-radius: 1rem;
     box-shadow: .15rem .15rem .15rem rgba(0,0,0,0.45);
@@ -94,8 +120,8 @@
 
 .instaImage2, .instaImage3, .instaImage4, .instaImage5{
     position: relative;
-    width: 185px;
-    height: 185px;
+    width: 160px;
+    height: 160px;
     background-color: black;
     border-radius: 1rem;
     box-shadow: .15rem .15rem .15rem rgba(0,0,0,0.45);
@@ -234,14 +260,25 @@
 }
 
 @media screen and (max-width: 499px){
+
+    .instagramParentHeader{
+        font-size: 2rem;
+    }
+
     .container{
-        width: 50vw;
+        width: 60vw;
     }
 
     .instaImage1, .instaImage2, .instaImage3, .instaImage4, .instaImage5{
         width: 50vw;
         height: 50vw;
     }
+
+.hitemwiththatflexColumn1, .hitemwiththatflexRow, .hitemwiththatflexColumn2, .hitemwiththatflexColumn3{
+    display: flex;
+        justify-content: center;
+}
+
     .hitemwiththatflexColumn2{
         display: flex;
         flex-wrap: wrap;
@@ -269,8 +306,7 @@
     }
 
     .hitemwiththatflexColumn3 .instaImage4{
-        margin-bottom: 0px;
-        margin-top: 0px;
+        margin: 0
     }
 
     .hitemwiththatflexColumn3 .instaImage5{
@@ -398,14 +434,15 @@ img{
 }
 
 .closeButton{
-    padding: 5px;
-    font-size: 16px;
-    width:18px;
-    height: 18px;
+    color:white;
+    font-size: 20px;
+    /* width:20px;
+    height: 20px; */
     font-weight:bold;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 5px;
     text-align: center;
+    vertical-align: middle;
     margin-bottom: 8px;
     animation: close .75s forwards; 
     animation-delay: 1s;

@@ -1,0 +1,240 @@
+
+/* =============================== Headings */
+
+.artDirection{
+  font-family: sans-serif;
+  font-style: oblique;
+  font-size: 4rem;
+  text-align:center;
+  font-weight: bolder;
+  color: #4C61B2;;
+  margin-top:3rem;
+  margin-bottom:2rem;
+}
+
+/* =============================== Headings */
+
+.portfolioProjectDescriptions{
+ color: #9A9A9A;
+ font-size: 1rem;
+ margin: 0 1rem 3rem 1rem;
+}
+
+.portfolioCarouselCenter{
+  display:flex;
+  justify-content: center;;
+}
+
+.photographyContainer{
+  width:750px;
+  height: 536px;
+}
+
+.portfolioCarouselBandName{
+  -webkit-text-stroke: 1px black;
+  font-weight: bold;
+}
+
+.portfolioCarouselCaptionContainer{
+  width: 100%;
+  background-color: rgb(0,0,0,0.75);
+  padding: 5px 0;
+  margin: auto;
+}
+
+.portfolioCarouselHyperlink, .portfolioCarouselHyperlink:focus{
+  color: white !important;
+}
+
+/* ======================================================================================================== Mags */
+
+.mags{
+  display:flex;
+  width: 600px;
+  margin:0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: cover;
+  vertical-align: center;
+}
+
+
+
+.mags IMG{
+  width: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgDescription{
+  width:275px;
+  position:absolute;
+  color: white;
+  font-family: serif;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  text-shadow: 1.25px 1.25px 1px black;
+  visibility: hidden;
+}
+
+
+.imgDescription:hover{
+  cursor:pointer;
+}
+
+
+.mags:hover IMG{
+  filter: grayscale(75%) blur(0.75px) opacity(75%);
+}
+
+.mags:hover .imgDescription{
+  visibility: visible;
+}
+
+/* =============================================== small size */
+
+.portfolioSmall{
+  display:flex;
+  width: 600px;
+  margin: 1rem 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: cover;
+  vertical-align: center;
+}
+
+.portfolioSmallMarginBottom{
+  margin-bottom: 4rem;
+}
+
+.portfolioSmall IMG{
+  width: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.portfolioSmallCaptionContainer{
+  color:#9A9A9A;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.portfolioSmallimgDescription{
+  font-family: sans-serif;
+  color: #4C61B2;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+
+/* =================================================================== Redirect Buttons */
+
+.buttonAlign{
+  text-align:center;
+  margin-top: 2rem;
+}
+
+.demoReadButtons{
+  background-color: #4D95B4;
+  color:white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  padding:.25rem;
+  padding-left:.5rem;
+  padding-right:.5rem;
+  border-radius: 25px;
+  margin-left:0.5rem;
+  margin-right: 0.5rem;
+  transition: transform .5s;
+  transform: scale(1);
+  margin-bottom: 1rem;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* ============================================ Responsiveness */
+
+
+
+@media screen and (max-width: 949px){
+  .artDirection{
+    font-size:3.25rem;
+    /* margin:2rem; */
+  }
+  .imgDescription{
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-shadow: 1px 1px .9px black;
+  }
+
+}
+
+
+@media screen and (max-width: 750px){
+
+  .artDirection{
+    font-size:2.5rem;
+  }
+
+  .imgDescription{
+    width:250px;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 750px){
+  .portfolioDisplayContainerLarge{
+      display:block;
+      display:flex;
+      justify-content: center;
+  }
+
+  .portfolioDisplayContainerSmall{
+      display:none;
+  }
+}
+
+@media screen and (max-width: 749px){
+  .portfolioDisplayContainerSmall{
+      display:block;
+  }
+
+  .portfolioDisplayContainerLarge{
+      display:none;
+  }
+}
+
+@media screen and (max-width: 686px){
+
+  .imgDescription{
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+}
+
+
+@media screen and (max-width: 449px){
+
+  .artDirection{
+    font-size:2rem;
+    margin-bottom:1rem;
+  }
+
+  .imgDescription{
+    width:175px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+}

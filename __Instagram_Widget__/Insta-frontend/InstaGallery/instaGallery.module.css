@@ -169,6 +169,13 @@
     padding: 10px;
   }
 
+  .instaNotVisibleCenter{
+      text-align: center;
+      margin-top: 2rem;
+  }
+  .instaNotVisibleCenter a img{
+      width: 225px;
+  }
   
   /* ========================================== media screens */
 

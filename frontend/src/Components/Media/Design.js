@@ -1,20 +1,21 @@
 import React, {Component} from "react";
 import axios from 'axios';
 import ReactHtmlParser from "react-html-parser";
-import Photography from './Photography'
-import Magazines from './Magazines'
-import Articles from './Articles'
-import InstaWidget from '../InstaWidget/instaGallery'
-import "./Design.css";
+import Photography from './Photography';
+import Magazines from './Magazines';
+import Articles from './Articles';
+import {grAPI} from "../../Dependencies/BackendAPI";
+import InstaGallery from '../InstaWidget/instaGallery';
+import cssDesign from './design.module.css'
 
 
 class Design extends Component{
     state={
-        testemonials: false
+        testemonials: [false, false]
     }
     
     componentDidMount(){
-        axios.get('http://localhost:2000/linkedIn').then(res=>{
+        axios.get(`${grAPI}/linkedIn`).then(res=>{
             const recommendations = res.data; 
             console.log(recommendations)
             this.setState({
@@ -25,14 +26,18 @@ class Design extends Component{
 
     TestmonialDisplay = ({testmonialIndex}) =>{
         const {testemonials} = this.state;
-        return testemonials ? (
-            <div>
+        return testemonials[testmonialIndex] ? (
+            <div className={cssDesign.testemonialContainer}>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
-                <div className="cssDesign.testemonial">
+                <div className={cssDesign.testmonialDisclaimer}>via LinkedIn Recommendations</div>
+                <div className={cssDesign.testemonial}>
                     "{ ReactHtmlParser(testemonials[testmonialIndex].recommendation)}"
                 </div>
-                <div className="cssDesign.recommender">
-                    –{testemonials[testmonialIndex].name}, {testemonials[testmonialIndex].title} <br/> <i>{testemonials[testmonialIndex].workedWith}</i>
+                <div className={cssDesign.recommender1}>
+                    –{testemonials[testmonialIndex].name}, {testemonials[testmonialIndex].title} 
+                </div>
+                <div className={cssDesign.recommender2}>
+                    (<i>{testemonials[testmonialIndex].workedWith}</i>)
                 </div>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
             </div>
@@ -42,7 +47,7 @@ class Design extends Component{
     render(){
         const {TestmonialDisplay} = this;
         return(
-            <div className="fadeIn" style={{margin: '0 0 10rem 0'}}>
+            <div className={cssDesign.fadeIn} style={{margin: '0 0 10rem 0'}}>
                 {window.scrollTo(0, 0)}
                 <Magazines/>
                 <TestmonialDisplay
@@ -53,8 +58,7 @@ class Design extends Component{
                     testmonialIndex={1}
                 />
                 <Articles/>
-                <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
-                <InstaWidget/>
+                <InstaGallery/>
             </div>
         )
     }

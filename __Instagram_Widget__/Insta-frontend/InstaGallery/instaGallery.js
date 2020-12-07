@@ -184,7 +184,9 @@ class instaGallery extends Component {
                 
             </div>
 
-        ): <div></div>;
+        ): <div className={instaCss.instaNotVisibleCenter}>
+        <a href="https://www.instagram.com/qtrmileatatime/" target="_blank"><img src="/instagramNotVisible.jpg"/></a>
+    </div>;
     };
 }
 

@@ -1,15 +1,15 @@
 import React from 'react';
-import "./Layout.css";
-import Header from "../HeadFoot/Header";
-import Footer from "../HeadFoot/Footer";
+import cssHocLayout from "./layout.module.css";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import Aux from "./Aux";
 
 function Layout(props){
     return(
-        <div className="layoutBody">
+        <div className={cssHocLayout.layoutBody}>
         <Aux>
             <Header/>
-                <div className="contentMargin fadeIn">
+                <div className={`${cssHocLayout.contentMargin}`}>
                     {props.children}
                 </div>
             <Footer />

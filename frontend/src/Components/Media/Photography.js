@@ -1,15 +1,15 @@
 import React from "react";
-import "./Design.css";
+import cssDesign from './design.module.css'
 import Carousel from 'react-bootstrap/Carousel';
 import {musicPhotos} from '../../Dependencies/Design_MusicPhotos'
 
 const Photography = () =>{
 
         return(
-            <div className="fadeIn">
-                <div className="artDirection">Photography</div>
-                <div className="designPhotoCenter">
-                    <Carousel className="photographyContainer" indicators={false}>
+            <div>
+                <div className={cssDesign.artDirection}>Photography</div>
+                <div className={cssDesign.designPhotoCenter}>
+                    <Carousel className={cssDesign.photographyContainer} indicators={false}>
                         {musicPhotos.map(musician=>{
                             return(
                                 <Carousel.Item>
@@ -19,10 +19,10 @@ const Photography = () =>{
                                     alt={musician.band}
                                     />
                                     <Carousel.Caption>
-                                        <h3 className="designPhotoBandName">{musician.band}</h3>
-                                        <p className="designPhotoCaptionContainer">
+                                        <h3 className={cssDesign.designPhotoBandName}>{musician.band}</h3>
+                                        <p className={cssDesign.designPhotoCaptionContainer}>
                                         <a 
-                                            className="designPhotoHyperlink"
+                                            className={cssDesign.designPhotoHyperlink}
                                             href={musician.website}
                                             target ={musician.target}
                                         >

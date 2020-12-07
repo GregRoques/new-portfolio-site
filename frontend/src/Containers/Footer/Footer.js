@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./footer.css";
+import cssFooter from "./footer.module.css";
 import ContactModal from './ContactModal';
 import { Contact, LinkedIn, GitHub, Resume } from './FooterLinks'
 
@@ -26,7 +26,7 @@ class Footer extends Component{
                     isShown={isContactOpen}
                     close= {this.toggleEmail}
                 /> 
-                <div className="footer">
+                <div className={cssFooter.footer}>
                     <Contact 
                         isEmailToggled={this.toggleEmail}
                         isShown={isContactOpen}

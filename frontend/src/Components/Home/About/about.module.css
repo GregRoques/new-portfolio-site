@@ -38,6 +38,13 @@
 @media screen and (max-width: 748px){
   .portrait{
     float:none;
+    margin: 0 0 1rem 0;
+  }
+
+  .portraitCenterSmall{
+    display: flex;
+    justify-content: center;
+    
   }
 
   .aboutMeHeader, .aboutMeText{

@@ -1,14 +1,17 @@
 import React from "react";
-import "./portfolio.css";
+import cssPortfolio from "./portfolio.module.css";
 import Carousel from 'react-bootstrap/Carousel';
 import {portfolioSamples} from './Port_Dependencies'
 
 const Portfolio = () =>{
     return(
-        <div className="fadeIn">
-            <div className="artDirection">Portfolio</div>
-            <div className="portfolioDisplayContainerLarge">
-                <Carousel className="photographyContainer" indicators={false}>
+        <div className={cssPortfolio.fadeIn}>
+            <div className={cssPortfolio.artDirection}>Portfolio</div>
+            <div className={cssPortfolio.portfolioProjectDescriptions}>
+                Most of my professional work as a full-time software developer over the past year-and-a-half has been for a website exclusively accessible to employees and clients of my company – hence, I am unable to showcase this work on my personal webpage. However, here are two freelance projects, and one personal project, that I developed and deployed during 2020.
+            </div>
+            <div className={cssPortfolio.portfolioDisplayContainerLarge}>
+                <Carousel className={cssPortfolio.photographyContainer} indicators={false}>
                     {portfolioSamples.map(sample=>{
                         return(
                             <Carousel.Item>
@@ -18,43 +21,45 @@ const Portfolio = () =>{
                                 alt={sample.name}
                                 />
                                 <Carousel.Caption>
-                                    <h3 className="designPhotoBandName">{sample.band}</h3>
-                                    <p className="designPhotoCaptionContainer">
-                                        {sample.description}<br/>
-                                    <a 
-                                        className="designPhotoHyperlink"
-                                        href={sample.demo}
-                                        target ="_blank"
-                                    >
-                                        Demo
-                                    </a>
-                                    <span style={{margin: "0px 8px", color: "white"}}>|</span>
-                                    <a 
-                                        className="designPhotoHyperlink"
-                                        href={sample.readMe}
-                                        target ="_blank"
-                                    >
-                                        GitHub
-                                    </a>
-                                    </p>
+                                    <div className={cssPortfolio.portfolioCarouselCaptionContainer}>
+                                        <h2>{sample.name}</h2>
+                                        <p>
+                                            {sample.description}<br/>
+                                        <a 
+                                            className={cssPortfolio.portfolioCarouselHyperlink}
+                                            href={sample.demo}
+                                            target ="_blank"
+                                        >
+                                            Demo
+                                        </a>
+                                        <span style={{margin: "0px 8px", color: "white"}}>|</span>
+                                        <a 
+                                            className={cssPortfolio.portfolioCarouselHyperlink}
+                                            href={sample.readMe}
+                                            target ="_blank"
+                                        >
+                                            GitHub
+                                        </a>
+                                        </p>
+                                    </div>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         )
                     })}
                 </Carousel>
             </div>
-            <div className="portfolioDisplayContainerSmall">
+            <div className={cssPortfolio.portfolioDisplayContainerSmall}>
                     {portfolioSamples.map((sample,i) => {
                         return(
-                            <div > 
-                                <div className="mags">
-                                <img src={sample.image} alt={sample.name}/>
+                            <div className={cssPortfolio.portfolioSmallMarginBottom}> 
+                                <div className={cssPortfolio.portfolioSmall}>
+                                    <img src={sample.image} alt={sample.name}/>
                                 </div>
-                                <div className="imgDescription">{sample.description}</div>
-                                <div className="designPhotoCaptionContainer">
+                                <div className={cssPortfolio.portfolioSmallimgDescription}>{sample.name}</div>
+                                <div className={cssPortfolio.portfolioSmallCaptionContainer}>
                                                 {sample.description}<br/>
                                     <a 
-                                        className="designPhotoHyperlink"
+                                        className={cssPortfolio.portfolioSmallHyperlink}
                                         href={sample.demo}
                                         target ="_blank"
                                     >
@@ -62,13 +67,16 @@ const Portfolio = () =>{
                                     </a>
                                     <span style={{margin: "0px 8px", color: "white"}}>|</span>
                                     <a 
-                                        className="designPhotoHyperlink"
+                                        className={cssPortfolio.portfolioSmallHyperlink}
                                         href={sample.readMe}
                                         target ="_blank"
                                     >
                                         GitHub
                                     </a>
                                 </div>
+                                { i !== portfolioSamples.length -1 ?
+                                <hr style={{margin:'1rem 10%', width: '80%'}} />
+                                : null}
                             </div>
                         )
                     })}

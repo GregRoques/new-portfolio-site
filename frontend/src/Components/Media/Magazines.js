@@ -1,13 +1,13 @@
 import React from 'react'
-import './Design.css'
+import cssDesign from './design.module.css'
 import { magList } from '../../Dependencies/Design_Magazine';
 
 const IssueList = ({mag}) => {
     return(
         <div>
             <a rel="noopener noreferrer" target="_blank" href={magList[mag]['link']} >
-                <div className="mags"> <img src={magList[mag]['image']} alt={magList[mag]['issue']}/>
-                    <div className="imgDescription"><i>{magList[mag]['issue']}</i></div>
+                <div className={cssDesign.mags}> <img src={magList[mag]['image']} alt={magList[mag]['issue']}/>
+                    <div className={cssDesign.imgDescription}><i>{magList[mag]['issue']}</i></div>
                 </div>
             </a>
         </div>
@@ -17,8 +17,8 @@ const IssueList = ({mag}) => {
 const Magazines = () =>{
     return (
         <div>
-            <div className="artDirection">Design</div>
-            <div className='magGrid'>
+            <div className={cssDesign.artDirection}>Design</div>
+            <div className={cssDesign.magGrid}>
                 {(Object.keys(magList)).map((num,i) => {
                     return(
                         <IssueList

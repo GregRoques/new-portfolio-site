@@ -45,16 +45,7 @@
     font-size:30px;
     color: rgb(77,149,180);
     font-weight: bold;
-    animation: fadeIn .75s forwards;
     text-align: center;
     padding: 12.5px 0px 12.5px 0px;
 }
 
-@keyframes fadeIn{
-    0%{
-        opacity: 0
-    }
-    100%{
-        opacity: 1
-    }
-}
