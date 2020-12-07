@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import axios from 'axios';
+import ReactHtmlParser from "react-html-parser";
 import Photography from './Photography'
 import Magazines from './Magazines'
 import Articles from './Articles'
+import InstaWidget from '../InstaWidget/instaGallery'
 import "./Design.css";
-// import InstaGallery from '../Photography/instaGallery';
 
 
 class Design extends Component{
@@ -28,10 +29,10 @@ class Design extends Component{
             <div>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
                 <div className="cssDesign.testemonial">
-                    "{testemonials[testmonialIndex].recommendation}"
+                    "{ ReactHtmlParser(testemonials[testmonialIndex].recommendation)}"
                 </div>
                 <div className="cssDesign.recommender">
-                    –{testemonials[testmonialIndex].name}, {testemonials[testmonialIndex].title}; (<i>{testemonials[testmonialIndex].workedWith}</i>)
+                    –{testemonials[testmonialIndex].name}, {testemonials[testmonialIndex].title} <br/> <i>{testemonials[testmonialIndex].workedWith}</i>
                 </div>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
             </div>
@@ -52,6 +53,8 @@ class Design extends Component{
                     testmonialIndex={1}
                 />
                 <Articles/>
+                <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
+                <InstaWidget/>
             </div>
         )
     }
