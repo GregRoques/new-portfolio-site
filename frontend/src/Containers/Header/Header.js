@@ -41,9 +41,9 @@ class Header extends Component {
                 /> */}
                 <div className="headerPosition">
                     <div className="headerContainer">
-                        <Link to="/"><img alt="GregRoques.com" className="B4Llogo" src="/Greg Roques_LOGO.png"/></Link>
+                        <Link to="/"><img alt="GregRoques.com" className="B4Llogo" src="/images/Greg Roques_LOGO.png"/></Link>
                             <div className="headerHamburgerContainer">
-                                <img alt="hamburger" className="headerHamburger" src="/hamburger.png" onClick={() => this.modalToggler()}/>
+                                <img alt="hamburger" className="headerHamburger" src="/images/hamburger.png" onClick={() => this.modalToggler()}/>
                             </div>
                     </div>
                 </div>

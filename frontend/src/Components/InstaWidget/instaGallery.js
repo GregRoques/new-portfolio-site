@@ -190,7 +190,7 @@ class instaGallery extends Component {
             </div>
 
         ): <div className={cssInstagram.instaNotVisibleCenter}>
-            <a href="https://www.instagram.com/qtrmileatatime/" target="_blank"><img src="/instagramNotVisible.jpg"/></a>
+            <a href="https://www.instagram.com/qtrmileatatime/" target="_blank"><img src="/images/instagramNotVisible.jpg"/></a>
         </div>;
     };
 }
