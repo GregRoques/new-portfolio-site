@@ -2,7 +2,7 @@ node_modules
 /backend/node_modules
 /frontend/node_modules
 /frontend/public/images
-/frontend/src/Components/Dependencies
+/frontend/src/Dependencies/BackendAPI.js
 
 /backend/util
 
