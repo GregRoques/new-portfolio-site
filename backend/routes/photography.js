@@ -19,7 +19,7 @@ photoFolders.map((folder, folderIndex) => {
   myPhotoAlbums[objectTitle] = {
     title: folder,
     images: [],
-    albumLength: folderContents.length
+    albumLength: 0
   };
   folderContents.map((image) => {
     if (
@@ -29,6 +29,7 @@ photoFolders.map((folder, folderIndex) => {
       image.slice(0, 2) !== "._"
     ) {
       myPhotoAlbums[objectTitle].images.push(image);
+      myPhotoAlbums[objectTitle].albumLength++
     }
   });
 });
@@ -43,6 +44,7 @@ const photoHome = {
 } 
 router.post("/", (req, res, next) => {
   const { album, lengthStart } = req.body;
+  console.log(album)
   if (album === "ALL") {
     if (photoHome.albumsLength > 0) {
       let currResponseHome = {
@@ -55,20 +57,20 @@ router.post("/", (req, res, next) => {
       res.json(currResponseHome);
     }
   } else {
-   
-    if (myPhotoAlbums[album].albumLength > 0) {
-      console.log(myPhotoAlbums[album].albumLength)
-      let currResponseAlbum = {
-        images: myPhotoAlbums[album].images.slice(lengthStart, lengthStart + 25),
-      };
-      if (lengthStart === 0) {
-        currResponseAlbum.albumLength = myPhotoAlbums[album].albumLength;
-        currResponseAlbum.title = myPhotoAlbums[album].title;
+      if (myPhotoAlbums[album]) {
+        let currResponseAlbum = {
+          images: myPhotoAlbums[album].images.slice(lengthStart, lengthStart + 25),
+        };
+        if (lengthStart === 0) {
+          currResponseAlbum.albumLength = myPhotoAlbums[album].albumLength;
+          currResponseAlbum.title = myPhotoAlbums[album].title;
+        }
+        console.log(currResponseAlbum)
+        return res.json(currResponseAlbum);
+      } else{
+        res.json(error=true)
       }
-      //console.log(currResponseAlbum)
-      res.json(currResponseAlbum);
-    }
-  }
+  } 
 });
 
 module.exports = router;

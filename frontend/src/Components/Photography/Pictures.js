@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import {grAPI} from '../../Dependencies/BackendAPI'
+import InfiniteScroll from 'react-infinite-scroll-component';
 import cssPictures from './photography.module.css'
+import PicModal from './picturesModal';
 
 class Pictures extends Component{
 
@@ -13,6 +15,7 @@ class Pictures extends Component{
         albumLength: 0,
         albumTitle: "",
         loaded: false,
+        redirect: false
         
     }
 
@@ -28,22 +31,32 @@ class Pictures extends Component{
             album: album
         })
         .then(res => {
-            //console.log(res.data)
+            console.log(res.data)
+            if(res.data === true){
+                return this.isRedirected()
+            } else {
             const {albumLength, title, images} = res.data;
             this.setState(prevState => ({
-                images: [...prevState.albums, ...images],
+                images: [...prevState.images, ...images],
                 albumTitle: !prevState.albumTitle ? title : prevState.albumTitle,
                 albumLength: prevState.albumLength === 0 ? albumLength : prevState.albumLength,
                 loaded: true
             }))
+        }
         })        
         .catch(() => {
-            return <Redirect push to={`/photography`}/>
+            //this.isRedirected()
         })
   
     }
 
-    pictureDisplayOn = (currentPhoto) =>{
+    isRedirected = () =>{
+        this.setState({
+            redirect: true
+        })
+    }
+
+    pictureDisplayToggle = (currentPhoto = null) =>{
         this.setState(prevState =>({
             modalShow: !prevState.modalShow,
             modalPhoto: currentPhoto
@@ -51,87 +64,75 @@ class Pictures extends Component{
 
     }
 
-    pictureDisplayOff = () =>{
-        this.setState(prevState=>({
-            modalShow: !prevState.modalShow,
-            modalPhoto: null
-        }))
-    }
-
     clickL = () =>{
         let index = this.state.modalPhoto;
-        let currLength = this.state.images.length -1
-        index--
-        if(index<0){
-            index = currLength
+        if(index !== 0){
+            index--
+            this.setState({
+                modalPhoto: index
+            })
         }
-
-        this.setState({
-            modalPhoto: index
-        })
     }
 
     clickR = () =>{
         let index = this.state.modalPhoto;
-        let currLength = this.state.images.length -1
-        index++
-        if(index> currLength){
-            index = 0
+        const currLength = this.state.images.length -1
+        if (index !== currLength){
+            index++
+            this.setState({
+                modalPhoto: index
+            })
         }
-
-        this.setState({
-            modalPhoto: index
-        })
     }
 
     preventDragHandler = (e) => {
         e.preventDefault();
       }
 
-        modalPhotoGallery= () =>{
-            const {modalPhoto, modalShow, images, albumTitle} = this.state;
-            return modalShow ? (
-            <div className= { cssPictures.photoModal } >
-                <div className={ cssPictures.closePhotoModal } onClick={()=> this.pictureDisplayOff()}>x</div>
-                <div className ={ cssPictures.photoContent}>
-                    { modalPhoto < images.length -1 ?
-                        <div className={ cssPictures.imageGalleryButtons } onClick={()=>this.clickL()}>{`<`}</div>    
-                        : ""
-                    }
-                    
-                    <div className={ cssPictures.sliderContainer } onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
-                        <img alt={ albumTitle + modalPhoto } src={`/images/photography/${albumTitle}/${images[modalPhoto]}` }/>
-                    </div>
-                    { modalPhoto > 0 ?
-                        <div className={ cssPictures.imageGalleryButtons } onClick={()=>this.clickR()}>{`>`}</div>
-                        : ""
-                    }
-                </div>
-            </div>
-        ) : null;
-    }
 
     render(){
+        const {modalShow, modalPhoto, images, albumLength, albumTitle, loaded, redirect} = this.state;
+        console.log(`Images Length: ${images.length} === Album Length ${albumLength}`)
+        if(redirect){
+            return <Redirect push to={`/photography`}/>
+        }
 
-        const {modalPhoto, modalShow, images, albumLength, albumTitle, loaded} = this.state;
-
-        return(
+        return albumTitle ? (
             <div className = { cssPictures.fadeIn }>
-                { this.modalPhotoGallery }
-                <h1 className = {cssPictures.albumTitleText}>{albumTitle}</h1>
+                <PicModal
+                    state={{modalPhoto, modalShow, images, albumTitle}}
+                    clickL = {this.clickL}
+                    clickR = {this.clickR}
+                    pictureDisplayToggle = {this.pictureDisplayToggle}
+                    preventDragHandler = {this.preventDragHandler}
+                />
+                <h1 className = {cssPictures.photoHeader2}>{albumTitle}</h1>
                 <div className = { cssPictures.photoGalleryContainer }>
-                    <div className = { cssPictures.photoGrid }>
-                        { images.map((image, i) => {
-                            return(
-                                <div key={ i } className={cssPictures.photoBox} onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
-                                    <img onClick={() => this.pictureDisplayOn(i) } alt={ albumTitle + i } src={`/images/photography/${albumTitle}/${image}`}/>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <InfiniteScroll
+                        dataLength={images.length}
+                        next={() => this.getPhotos(images.length, albumTitle.toLowerCase())}
+                        hasMore={images.length !== albumLength}
+                        loader={
+                            <img
+                            className={cssPictures.loader}
+                            src="/images/loadingImage.gif"
+                            alt="loading"
+                        />
+                        }
+                    >
+                        <div className = { cssPictures.photoGrid }>
+                            { loaded ? images.map((image, i) => {
+                                return(
+                                    <div key={ i } className={cssPictures.photoBox} onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
+                                        <img onClick={() => this.pictureDisplayToggle(i) } alt={ albumTitle + i } src={`/images/photography/${albumTitle}/${image}`}/>
+                                    </div>
+                                )
+                            }) : ""}
+                        </div>
+                    </InfiniteScroll>
                 </div>
             </div>
-        )
+        ) : null
         
     }
 }

@@ -51,6 +51,6 @@ export const musicPhotos = [
         band: 'More Photos',
         image: 'images/design/musicPhotog/insta.jpg',
         website: 'https://www.gregroques.com/photography',
-        target: '_self'
+        target: 'LINK'
     }
 ]

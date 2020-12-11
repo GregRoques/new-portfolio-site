@@ -22,10 +22,16 @@
   font-size: 4rem;
   text-align:center;
   font-weight: bolder;
-  color: #4C61B2;;
+  color: #4C61B2;
   margin-top:3rem;
   margin-bottom:2rem;
 }
+
+.designDescriptions{
+  color: #9A9A9A;
+  font-size: 1rem;
+  margin: 0 1rem 3rem 1rem;
+ }
 
 /* =============================== Headings */
 

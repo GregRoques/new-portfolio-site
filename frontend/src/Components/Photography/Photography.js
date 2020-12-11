@@ -45,6 +45,9 @@ class Photography extends Component {
           return isNoError ? (
             <div className={cssPhotography.fadeIn}>
               <div className={cssPhotography.photoHeader}>Photography</div>
+              <div className={cssPhotography.photographySubHeader}>
+              I picked up photography as a hobby about a decade ago. Working as a creative director for New Orleans’ <a href="https://www.whereyat.com/" target="_blank"><i>Where Y’at Magazine</i></a> at the time, I observed the artistic and technical techniques of commissioned professionals while directing shoots for the publication. As my skills grew, I began contributing music and travel photographs to <i>Where Y’at</i>, as well as other local and regional publications.
+              </div>
             <div className={cssPhotography.galleryContainer}>
                 <InfiniteScroll
                     dataLength={albums.length}

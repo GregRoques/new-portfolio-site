@@ -130,7 +130,6 @@
   }
 
   .techHeader{
-    font-size: 2.75rem;
     padding-bottom: 15px;
   }
 
@@ -180,10 +179,6 @@
     height: 25vw;
   }
 
-  .techHeader{
-    font-size: 2rem;
-  }
-
 
   .skillIcon{
     height:55px
@@ -218,9 +213,6 @@
     width: 100%
   }
 
-  .techHeader{
-    font-size: 2.5rem;
-  }
 
 }
 
@@ -237,16 +229,10 @@
     height:45px
   }
 
-  .techHeader{
-    font-size: 1.75rem;
-  }
 
 }
 
 @media screen and (max-width: 350px){
-  .techHeader{
-    font-size: 1.5rem;
-  }
   .part2{
     height: 200px;
   }

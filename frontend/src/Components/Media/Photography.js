@@ -1,6 +1,7 @@
 import React from "react";
 import cssDesign from './design.module.css'
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from "react-router-dom";
 import {musicPhotos} from '../../Dependencies/Design_MusicPhotos'
 
 const Photography = () =>{
@@ -21,13 +22,19 @@ const Photography = () =>{
                                     <Carousel.Caption>
                                         <h3 className={cssDesign.designPhotoBandName}>{musician.band}</h3>
                                         <p className={cssDesign.designPhotoCaptionContainer}>
-                                        <a 
-                                            className={cssDesign.designPhotoHyperlink}
-                                            href={musician.website}
-                                            target ={musician.target}
-                                        >
+                                        { musician.target === "LINK" ?
+                                        <Link className={cssDesign.designPhotoHyperlink} to="/photography">
                                             More Images
-                                        </a>
+                                        </Link>
+                                        :  <a 
+                                        className={cssDesign.designPhotoHyperlink}
+                                        href={musician.website}
+                                        target ={musician.target}
+                                    >
+                                        More Images
+                                    </a>
+                                    }
+                                       
                                         </p>
                                     </Carousel.Caption>
                                 </Carousel.Item>

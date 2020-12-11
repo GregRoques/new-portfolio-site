@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import cssPhotoGallery from './photography.module.css'
 
 var myInterval
@@ -7,7 +7,6 @@ var myInterval
 class PhotoGallery extends Component{
     state = {
         currentImage: 0,
-        redirect: ""
       }
     
     maskOn = gallery => {
@@ -44,24 +43,22 @@ class PhotoGallery extends Component{
 
   render(){
     const { album, images } = this.props;
-    const { currentImage, redirect } = this.state;
-
-    if (redirect) {
-      return <Redirect to={`/photography/${redirect}`}/>
-    }
+    const { currentImage } = this.state;
+    const extension = album.toLowerCase().replaceAll(" ", "_")
 
     return(
       <div className= { cssPhotoGallery.centerText }>
-        <div className= { cssPhotoGallery.box } onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
-          <img 
-            src = { `/images/photography/${album}/${images[currentImage]}`}
-            alt = { this.props.album }
-            onMouseEnter = {()=> this.maskOn(images)}
-            onMouseLeave ={()=> this.maskOff()}
-            onClick ={()=> this.selectAlbumHandler(album)}
-          />
-        </div>
-        { album }
+          <div className= { cssPhotoGallery.box } onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
+            <Link to={`/photography/${extension}`}>
+              <img 
+                src = { `/images/photography/${album}/${images[currentImage]}`}
+                alt = { this.props.album }
+                onMouseEnter = {()=> this.maskOn(images)}
+                onMouseLeave ={()=> this.maskOff()}
+              />
+            </Link>
+          </div>
+          { album }
       </div>
     )
     }
