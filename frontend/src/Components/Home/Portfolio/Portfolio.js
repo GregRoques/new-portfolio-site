@@ -9,6 +9,8 @@ const Portfolio = () =>{
             <div className={cssPortfolio.artDirection}>Portfolio</div>
             <div className={cssPortfolio.portfolioProjectDescriptions}>
                 Most of my professional work as a full-time software developer over the past year-and-a-half has been for a website exclusively accessible to employees and clients of my company – hence, I am unable to showcase this work on my personal webpage. However, here are two freelance projects, and one personal project, that I developed and deployed during 2020.
+                <br/><br/>
+                You can see more of my personal projects, as well as indepedent learning and certification pursuits, on my <a href="https://github.com/GregRoques" target="_blank">GitHub page</a>.
             </div>
             <div className={cssPortfolio.portfolioDisplayContainerLarge}>
                 <Carousel className={cssPortfolio.photographyContainer} indicators={false}>

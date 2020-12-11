@@ -5,7 +5,7 @@ const maxValue = allRecs.length;
 
 function fixNum(randNum){
   // console.log(randNum)
-  if(randNum === maxValue){
+  if(randNum === maxValue - 1){
     return randNum -1 ;
   }else{
     return randNum +1 ;

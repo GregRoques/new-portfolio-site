@@ -5,7 +5,7 @@ export const portfolioSamples =[
         name: 'Varicure Vein Center',
         image: '/images/portfolioImages/varicure1.png',
         description: `Full Stack website for Miami-based medical practice.`,
-        demo: 'https://www.Varicure.com',
+        demo: 'https://www.youtube.com/watch?v=gYZEp7zgvIw&list=PLM2GdNHvfSCHPHRWbFlOst-EK8K4wkv5f&index=1&t=1s',
         readMe: 'https://github.com/GregRoques/VeriCure/blob/master/README.md'
     },
     {

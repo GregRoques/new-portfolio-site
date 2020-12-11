@@ -6,7 +6,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const instaImages = require("./routes/instaImages");
-//const photogList = require("./routes/photoList");
+const photography = require("./routes/photography");
 const linkedIn = require("./routes/linkedIn");
 
 app.use(cors());
@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.use("/instagramImages", instaImages);
-// app.use("/photoList", photoList);
+// app.use("/instagramImages", instaImages);
+app.use("/photography", photography);
 app.use("/linkedIn", linkedIn);
 
 const PORT = 2000;

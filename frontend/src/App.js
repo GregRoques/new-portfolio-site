@@ -7,8 +7,8 @@ import Layout from "./Containers/Layout/Layout";
 // Visitor Pages
 import Home from './Components/Home/Home';
 import Media from './Components/Media/Design' 
-// import Photography from './Components/Photography/Photography'
-// import Pictures from './Components/Photography/Pictures'
+import Photography from './Components/Photography/Photography'
+import Pictures from './Components/Photography/Pictures'
 
 
 class App extends Component {
@@ -28,8 +28,8 @@ class App extends Component {
            <Switch>
                 <Route path="/" exact component={Home}/>
                 <Route exact path="/media" component={Media}/>
-                {/* <Route exact path="/photography" component={Photography}/> */}
-                {/* <Route exact path="/photography/:album" component={Pictures}/> */}
+                <Route exact path="/photography" component={Photography}/>
+                <Route exact path="/photography/:album" component={Pictures}/>
                 <Route exact path='/resume' component={() => { 
                     window.location.href = "https://www.gregroques.com/images/socialIcons/Resume.pdf"; 
                     return false;

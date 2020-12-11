@@ -6,30 +6,30 @@ import "./header.css";
 const isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 class Header extends Component {
-    state = {
-        isOpen: false,
-        isFadeOut: false,
-    };
+    // state = {
+    //     isOpen: false,
+    //     isFadeOut: false,
+    // };
 
-    modalToggler = (e) => {
+    // modalToggler = (e) => {
         
-        if(e && e.target !== e.currentTarget && isOpen){
-            return
-        }
-        if (!isFadeOut && isOpen) {
-            this.setState({ isFadeOut: true });
-            setTimeout(() => {
-                this.modalToggler();
-            }, 1500);
+    //     if(e && e.target !== e.currentTarget && isOpen){
+    //         return
+    //     }
+    //     if (!isFadeOut && isOpen) {
+    //         this.setState({ isFadeOut: true });
+    //         setTimeout(() => {
+    //             this.modalToggler();
+    //         }, 1500);
            
-        } else {
-            this.setState(prevState=({
-                isOpen: !prevState.isOpen,
-                isFadeOut: false
-            }));
+    //     } else {
+    //         this.setState(prevState=({
+    //             isOpen: !prevState.isOpen,
+    //             isFadeOut: false
+    //         }));
            
-        }
-    }
+    //     }
+    // }
    
     render () {
         return (
