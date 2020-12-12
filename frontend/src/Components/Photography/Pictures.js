@@ -45,7 +45,7 @@ class Pictures extends Component{
         }
         })        
         .catch(() => {
-            //this.isRedirected()
+            this.isRedirected()
         })
   
     }

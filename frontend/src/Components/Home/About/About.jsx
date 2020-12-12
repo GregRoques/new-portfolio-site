@@ -14,7 +14,7 @@ const About = ()=>{
             
                 <div className={cssAbout.aboutMeText}>
                     <div>I am a full-stack developer and graphic designer specializing in the MERN stack (MySQL, Express, React, Node). I also bring more than 10 years of experience managing award-winning <Link to="/media">print and digital publications</Link> to developing efficient, user-friendly software solutions.</div> 
-                    <div>A New Orleans native, I am an avid marathon runner and enjoy <Link to="/photography">urban and music photography</Link>, graphic arts, music, and spending time with my wife, Rebecca, and our two cats.</div>
+                    <div>A New Orleans native, I am an avid marathon runner and enjoy <Link to="/photography">street and music photography</Link>, graphic arts, music, and spending time with my wife, Rebecca, and our two cats.</div>
                 </div>     
             </div>
         </div>
