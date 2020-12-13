@@ -56,6 +56,11 @@
     margin-top: 80px;
 }
 
+.routeContainer a, .routeContainer a:hover, .routeContainer a:focus{
+    text-decoration: none;
+    color: #4C61B2;
+}
+
 .closeButton {
     float: right;
     margin: 12.5px 25px 0px 0px;
@@ -69,7 +74,7 @@
 }
 
 .glyphs{
-    color:rgb(0,183,241);
+    color:#4C61B2;;
 }
 
 .contactFormat{

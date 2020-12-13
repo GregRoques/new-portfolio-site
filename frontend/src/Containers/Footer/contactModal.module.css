@@ -48,7 +48,7 @@
 }
 
 .glyphs{
-    color:rgb(0,183,241);
+    color: #4D95B4;
     font-size:1rem;
     position:relative;
     top:2px;
@@ -57,7 +57,7 @@
 .contactFormat{
     color:   rgb(100,100,100,0.65);
     font-size:1rem;
-    margin: 0px .5rem;
+    margin: .5rem .5rem 0rem .5rem;
     font-family: sans-serif;
     display: inline-block;
 }
