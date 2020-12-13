@@ -33,6 +33,6 @@ This site (www.GregRoques.com) is an updated version of my personal Portfolio pa
 # Demo Video
 ## Click image below to view video
 
-[![demo video](./frontend/public/readMeImages/readMe_main.png)](https://youtu.be/YhksUFOM09Q)
+[![demo video](/frontend/public/readMeImages/readMe_main.png)](https://youtu.be/YhksUFOM09Q)
 
   
