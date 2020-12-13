@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -16,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-// app.use("/instagramImages", instaImages);
+app.use("/instagramImages", instaImages);
 app.use("/photography", photography);
 app.use("/linkedIn", linkedIn);
 

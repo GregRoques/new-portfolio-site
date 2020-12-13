@@ -17,35 +17,22 @@ This site (www.GregRoques.com) is an updated version of my personal Portfolio pa
 - Node/Express
 - HTML/CSS/JavaScript
 
-## Packages
-### Front-end:
-- npx create-react-app
-- npm i react-router-dom
-- npm i redux
-- npm i react-redux
-- npm i axios
+## Ignored Files
+### Front-end – Dependency Folder:
+- BackendAPI.js
+    - Includes grAPI (to access backend)
+    - trackingID (for Google Analytics)
 
-CSS in JS for homepage:
-- npm i emotion
+### Back-end – Util Folder
+- insta.js (link to access Instagram long term token and token's expiration date)
+- linkedInList.js (currated list of Instagram recommendations)
+- sendGripApi.js (sendGripApi key ... used to email me when Instagram key has almost expired)
 
-Google Analytics:
-- npm i react-ga
-- npm i history
-
-### Back-end
-- npm i node
-- npm i express
-- npm i body-parser
-- npm i cors
-- npm i axios
-- npm i helmet
-- npm i nodemailer
-- npm i nodemailer-sendgrid-transport
 
 
 # Demo Video
 ## Click image below to view video
 
-[![demo video](./readMeImages/playVideo.png)](https://youtu.be/YhksUFOM09Q)
+[![demo video](./readMeImages/readMe_main.png)](https://youtu.be/YhksUFOM09Q)
 
   

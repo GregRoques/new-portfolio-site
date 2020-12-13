@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const { readdirSync, statSync } = require("fs-extra");
-const fs = require('fs')
 const { join } = require("path");
 
 const source = path.join(__dirname, "../../frontend/public/images/photography");
@@ -48,7 +47,6 @@ function createAlbums(){
 }
 
 createAlbums()
-
 
 setInterval(()=>{
   createAlbums()
