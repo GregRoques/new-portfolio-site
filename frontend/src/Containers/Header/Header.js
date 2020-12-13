@@ -1,49 +1,54 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./header.css";
-// import Modal from "./Modal";
+import cssHeader from "./header.module.css";
+import HamburgerModal from './hamburgerModal';
 
-const isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 class Header extends Component {
-    // state = {
-    //     isOpen: false,
-    //     isFadeOut: false,
-    // };
+    state = {
+        isOpen: false,
+        isFadeOut: false,
+    };
 
-    // modalToggler = (e) => {
-        
-    //     if(e && e.target !== e.currentTarget && isOpen){
-    //         return
-    //     }
-    //     if (!isFadeOut && isOpen) {
-    //         this.setState({ isFadeOut: true });
-    //         setTimeout(() => {
-    //             this.modalToggler();
-    //         }, 1500);
+    modalToggler = (e=false) => {
+        const fadeOut = this.state.fadeOut;
+        const openClose = this.state.isOpen;
+
+        if(e && e.target !== e.currentTarget){
+            return
+        }
+
+        if (!fadeOut && openClose) {
+            this.setState({ isFadeOut: true });
+            setTimeout(()=>{
+                this.setState({
+                    isOpen: false,
+                    isFadeOut: false
+                })
+            },600);
            
-    //     } else {
-    //         this.setState(prevState=({
-    //             isOpen: !prevState.isOpen,
-    //             isFadeOut: false
-    //         }));
-           
-    //     }
-    // }
+        } else{
+            this.setState({
+                isOpen: true,
+            });
+        } 
+    }
    
     render () {
+        const { isOpen, isFadeOut} = this.state;
+        const {modalToggler} = this;
         return (
             <div>
-                {/* <Modal
-                    isOpen={ this.state.isOpen }
-                    close={ this.modalToggler}
-                    isFadeOut = {this.state.isFadeOut}
-                /> */}
-                <div className="headerPosition">
-                    <div className="headerContainer">
-                        <Link to="/"><img alt="GregRoques.com" className="B4Llogo" src="/images/Greg Roques_LOGO.png"/></Link>
-                            <div className="headerHamburgerContainer">
-                                <img alt="hamburger" className="headerHamburger" src="/images/hamburger.png" onClick={() => this.modalToggler()}/>
+                <HamburgerModal
+                    isOpen={isOpen }
+                    close={modalToggler}
+                    isFadeOut = {isFadeOut}
+                />
+                <div className={cssHeader.headerPosition}>
+                    <div className={cssHeader.headerContainer}>
+                        <Link to="/"><img alt="GregRoques.com" className={cssHeader.B4Llogo} src="/images/Greg Roques_LOGO.png"/></Link>
+                            <div className={cssHeader.headerHamburgerContainer}>
+                                <img alt="hamburger" className={cssHeader.headerHamburger} src="/images/hamburger.png" onClick={() => this.modalToggler()}/>
                             </div>
                     </div>
                 </div>
