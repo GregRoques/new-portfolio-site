@@ -1,12 +1,10 @@
-import React, {Component} from "react";
-import cssFooter from "./footer.module.css";
+import React, {Component} from 'react';
+import cssFooter from './footer.module.css';
 import ContactModal from './ContactModal';
 import { Contact, LinkedIn, GitHub, Resume } from './FooterLinks'
 
-
 class Footer extends Component{
-
-    state ={
+    state = {
         isContactOpen: false,
     }
 

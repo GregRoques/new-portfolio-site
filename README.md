@@ -1,19 +1,10 @@
 # Personal Portfolio Site
 
-# Contents
-
-* Description
-* Technologies
-* Challenges and Solutions
-* MVP
-* Stretch Goals
-* Images
-
 # Description
-This site (www.GregRoques.com) is an updated version of my personal Portfolio page created using React and Redux. I chose to recreate my former site, built with vanilla JS and Bootstrap, to allow for cleaner content routing and more dyanmic animation rendering.
+Revamped personal website (www.GregRoques.com).
 
 # Technologies
-- React/Redux
+- React
 - Node/Express
 - HTML/CSS/JavaScript
 

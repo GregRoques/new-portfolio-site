@@ -16,6 +16,6 @@
     "helmet": "^3.23.3",
     "nodemailer": "^6.4.10",
     "nodemailer-sendgrid-transport": "^0.2.0",
-    "path": "^0.12.7",
+    "path": "^0.12.7"
   }
 }
