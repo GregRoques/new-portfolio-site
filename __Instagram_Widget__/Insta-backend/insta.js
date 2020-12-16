@@ -1,9 +1,10 @@
 const instaDefaultLongTermToken = {
-    token: "[YOUR_INITIAL_LONG_TERM_TOKEN]",
-    expiration: '[GENERATE A "new Date().getTime()" FOR NEW TOKEN AND PASTE THE MILLISECOND DATE HERE] + 4752000000' 
+    token: "YOUR INITIAL LONG TERM TOKEN GOES HERE",
+    expiration: "new Date(DATE TOKEN WAS CREATED GOES HERE).getTime() + 4752000000"
 } 
-
 module.exports = instaDefaultLongTermToken;
 
-// I get the DEFAULT ACCESS TOKEN from the "long token generator" in my custom-created Instagram app via Facebook for Developers
-// expiration is date the token was created + 55 days, displayed in milliseconds
+// get your long term token from the "long term token generator" in your Facebook for Developers custom Instagram App
+// long term tokens are good for 60 days, and can be refreshed every 24 hours; 
+// above, we set it to 55 days from the date the token was created; 
+// this gives us some time to create a new token in the app if something goes wrong with the refresh

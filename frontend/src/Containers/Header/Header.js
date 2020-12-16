@@ -25,7 +25,7 @@ class Header extends Component {
                     isOpen: false,
                     isFadeOut: false
                 })
-            },600);
+            },500);
            
         } else{
             this.setState({

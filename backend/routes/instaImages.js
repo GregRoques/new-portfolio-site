@@ -79,6 +79,7 @@ const getInstaInfo = () => {
       data.map((pic) => {
         if (pic.media_type !== "VIDEO") {
           const { media_url, caption, timestamp, permalink, children } = pic;
+          returnObject.userName = "qtrmileatatime"
           returnObject.image.push({
             pic: media_url,
             caption: abridgeCaption(caption),
@@ -112,11 +113,12 @@ const isTimeUp = () => {
     .get(`${refreshUrl}?${grantType}&${accessToken}`)
     .then((res) => {
       //console.log(res.data)
+      const todayPlusFiftyFiveDays = new Date().getTime() + 4752000000;
       const refreshedLoginInfo = res.data;
       instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
         token_type: refreshedLoginInfo.token_type,
-        expires_in: new Date().getTime() + (refreshedLoginInfo.expires_in * 1000),
+        expires_in: todayPlusFiftyFiveDays
       };
     })
     .catch((err) => {
@@ -134,7 +136,7 @@ setInterval(() => {
   }
 }, 21600000); // refreshes every 6 hours
 
-//getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
+getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
 
 router.get("/", (req, res, next) => {
   if (returnObject !== {}) {

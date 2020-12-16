@@ -44,7 +44,7 @@ class instaGallery extends Component {
                 <div onClick={(e) => this.isPopUpOpen(e, "")} className={cssInstagram.closeButton}>X</div>
                 <div className={cssInstagram.selectedContainer}>
                     <div className={cssInstagram.selectedHeader}>
-                        <img alt="profile pic" className={cssInstagram.selectedHeaderImage} src='/images/homepage/instaPic.jpg'/>
+                        <img alt="profile pic" className={cssInstagram.selectedHeaderImage} src='/images/headShots/instaPic.jpg'/>
         <a className={cssInstagram.selectedHyperlink} href={`${image[selectedPic].url}`} target="_blank" rel="noopener noreferrer nofollow">{userName}</a> 
                     </div>
                     { image[selectedPic].children !== null ?
