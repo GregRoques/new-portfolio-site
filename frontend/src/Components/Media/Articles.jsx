@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { articleList } from "../../Dependencies/Design_ArticleList";
 import cssDesign from './design.module.css'
 

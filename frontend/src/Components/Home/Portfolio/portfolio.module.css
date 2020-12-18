@@ -215,15 +215,10 @@
   }
 }
 
-
 @media screen and (max-width: 449px){
-
-
-
   .imgDescription{
     width:175px;
     font-size: 1rem;
     font-weight: bold;
-}
-
+  }
 }

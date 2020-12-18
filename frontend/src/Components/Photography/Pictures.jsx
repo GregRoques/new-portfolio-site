@@ -31,7 +31,6 @@ class Pictures extends Component{
             album: album
         })
         .then(res => {
-            console.log(res.data)
             if(res.data === true){
                 return this.isRedirected()
             } else {
@@ -92,7 +91,6 @@ class Pictures extends Component{
 
     render(){
         const {modalShow, modalPhoto, images, albumLength, albumTitle, loaded, redirect} = this.state;
-        console.log(`Images Length: ${images.length} === Album Length ${albumLength}`)
         if(redirect){
             return <Redirect push to={`/photography`}/>
         }

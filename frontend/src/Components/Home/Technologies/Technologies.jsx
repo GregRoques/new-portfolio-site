@@ -12,7 +12,6 @@ class Tech extends Component{
             <div className={cssTech.techRows}>
                 { Object.keys(mySkills).map((skills, i) => {
                     const { name , tech } = mySkills[skills]
-                    console.log(name, tech)
                     return (
                         <div className={cssTech.techContainers}  id ={`skills${i}`}>
                             <div className={cssTech.techSkills}>{name}</div>

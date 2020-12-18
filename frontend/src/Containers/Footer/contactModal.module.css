@@ -43,7 +43,6 @@
     transition: 0.25s
 }
 .closeButton:hover {
-    /* color: rgb(35,64,143); */
     background-color:transparent;
 }
 

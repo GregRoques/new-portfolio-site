@@ -54,7 +54,6 @@
 
 .boldHover{
     cursor: pointer;
-    /* transition: .25s; */
     text-decoration: underline;
     -webkit-user-select: none; 
     -khtml-user-select: none; 
@@ -62,11 +61,6 @@
        -ms-user-select: none; 
            user-select: none;
 }
-
-/* .boldHover:hover{
-    font-weight: bold;
-    transition: .25s
-} */
 
 .container{
     width: 830px;

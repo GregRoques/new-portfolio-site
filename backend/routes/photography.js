@@ -5,6 +5,7 @@ const { readdirSync, statSync } = require("fs-extra");
 const { join } = require("path");
 
 const source = path.join(__dirname, "../../frontend/public/images/photography");
+//const source = path.join(__dirname, "../build/images/photography");
 
 const dirs = (p) =>
   readdirSync(p).filter((f) => statSync(join(p, f)).isDirectory());

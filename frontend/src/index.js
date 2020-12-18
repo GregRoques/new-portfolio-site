@@ -5,7 +5,6 @@ import './index.css';
 
 import App from './App';
 
-// import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
 // import { trackingId } from './Dependencies/BackendAPI'
 

@@ -33,12 +33,6 @@
 }
   
 .gridContainer {
-  /* width:100%;
-  display:flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  text-align:center;
-  margin: auto; */
   display:grid;
   margin:auto;
   grid-template-columns: repeat(auto-fill, 12rem);
@@ -95,7 +89,6 @@
   
   .centerText{
     margin:auto;
-    /* color: #4C61B2; */
     justify-content: center;
     text-align: center;
   }
@@ -105,7 +98,6 @@
     display:grid;
     margin:auto;
     grid-template-columns: repeat(auto-fill, 12rem);
-    /* grid-template-rows: repeat(auto-fill, 16rem); */
     justify-content: center; 
     text-align:center;
     row-gap: 2rem;

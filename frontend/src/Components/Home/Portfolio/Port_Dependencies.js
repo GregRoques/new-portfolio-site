@@ -1,5 +1,3 @@
-// ================================= Featured Projects
-
 export const portfolioSamples =[
     {
         name: 'Varicure Vein Center',

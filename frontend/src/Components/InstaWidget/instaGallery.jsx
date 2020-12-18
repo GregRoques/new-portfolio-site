@@ -21,7 +21,6 @@ class instaGallery extends Component {
     getInstaGallery = () =>{
         axios.get(`${grAPI}/instagramImages`)
           .then(res => {
-              //console.log(res.data)
               const { userName, image } = res.data; //profilePic
               this.setState({
                   user: {
@@ -31,8 +30,8 @@ class instaGallery extends Component {
                   instaDisplay: image.length >= 5 ? true : false
               })
           })
-          .catch( err => {
-            console.log(err);
+          .catch(() => {
+            return
           });
     }
 
@@ -55,10 +54,10 @@ class instaGallery extends Component {
                             <div className={ cssInstagram.buttonLeft }>
                                 <div className={ cssInstagram.imageGalleryButtons } onClick={()=>this.clickL()}>{'<'}</div>
                             </div>
-                            <img class={cssInstagram.chosenImage} alt={ `insta${selectedPic}`} src={ image[selectedPic].children[selectedPicIndex].media_url }/>
+                            <img className={cssInstagram.chosenImage} alt={ `insta${selectedPic}`} src={ image[selectedPic].children[selectedPicIndex].media_url }/>
                         </div>
                             : <div className={cssInstagram.selectedImageContainer}>
-                                <img class={cssInstagram.chosenImage} alt={ `insta${selectedPic}`} src={ image[selectedPic].pic }/>
+                                <img className={cssInstagram.chosenImage} alt={ `insta${selectedPic}`} src={ image[selectedPic].pic }/>
                             </div>
                         }
                     <div className={cssInstagram.selectedCaption}>
@@ -116,18 +115,14 @@ class instaGallery extends Component {
                 ? 0 
                 : picIndex + (total - picIndex - 5)
 
-        console.log(newIndex)
         this.setState({
             picIndex: newIndex
         })
     }
 
-    // ========================================================= RENDER
-    // ================================================================ 
 
     render(){
         const { image, picIndex, instaDisplay } = this.state;
-        console.log(picIndex)
         return instaDisplay === true ? (
             <div>
                 <this.instaPopUp/> 
@@ -190,7 +185,7 @@ class instaGallery extends Component {
             </div>
 
         ): <div className={cssInstagram.instaNotVisibleCenter}>
-            <a href="https://www.instagram.com/qtrmileatatime/" target="_blank"><img src="/images/instagramNotVisible.jpg"/></a>
+            <a href="https://www.instagram.com/qtrmileatatime/" rel="noopener noreferrer nofollow" target="_blank"><img alt="Follow Me: @qtrmileatatime" src="/images/instagramNotVisible.jpg"/></a>
         </div>;
     };
 }

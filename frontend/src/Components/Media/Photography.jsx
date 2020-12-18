@@ -29,7 +29,8 @@ const Photography = () =>{
                                         :  <a 
                                         className={cssDesign.designPhotoHyperlink}
                                         href={musician.website}
-                                        target ={musician.target}
+                                        target ="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         More Images
                                     </a>

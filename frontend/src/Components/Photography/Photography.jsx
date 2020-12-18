@@ -4,7 +4,7 @@ import PhotoGallery from './GalleryHandler';
 import axios from 'axios';
 import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import InstaGallery from '../InstaWidget/instaGallery.js'
+import InstaGallery from '../InstaWidget/instaGallery.jsx'
 
 
 class Photography extends Component {
@@ -26,7 +26,6 @@ class Photography extends Component {
           album: "ALL"
       })
       .then(res => {
-          //console.log(res.data)
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],
               albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
@@ -46,7 +45,7 @@ class Photography extends Component {
             <div className={cssPhotography.fadeIn}>
               <div className={cssPhotography.photoHeader}>Photography</div>
               <div className={cssPhotography.photographySubHeader}>
-              I picked up photography as a hobby about a decade ago. Working as a creative director for New Orleans’ <a href="https://www.whereyat.com/" target="_blank"><i>Where Y’at Magazine</i></a> at the time, I observed the artistic and technical techniques of commissioned professionals while directing shoots for the publication. As my skills grew, I began contributing music and travel photographs to <i>Where Y’at</i>, as well as other local and regional publications.
+              I picked up photography as a hobby about a decade ago. Working as a creative director for New Orleans’ <a href="https://www.whereyat.com/" target="_blank" rel="noreferrer"><i>Where Y’at Magazine</i></a> at the time, I observed the artistic and technical techniques of commissioned professionals while directing shoots for the publication. As my skills grew, I began contributing music and travel photographs to <i>Where Y’at</i>, as well as other local and regional publications.
               </div>
             <div className={cssPhotography.galleryContainer}>
                 <InfiniteScroll
