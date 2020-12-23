@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-// app.use("/instagramImages", instaImages);
+app.use("/instagramImages", instaImages);
 app.use("/photography", photography);
 app.use("/linkedIn", linkedIn);
 
