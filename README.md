@@ -24,8 +24,8 @@ Revamped personal website (www.GregRoques.com).
 
 ## New (Current) Website
 
-[![demo video](./frontend/public/ReadMeImages/readMe_main.png)](https://youtu.be/mXTeQFUmI1E)
+[![demo video](./frontend/public/ReadMeImages/readMe_main2.png)](https://youtu.be/mXTeQFUmI1E)
 
 # Instagram Video – How To
 
-[![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram.png)](https://youtu.be/wXMqwr-X6fI)
+[![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram2.png)](https://youtu.be/wXMqwr-X6fI)
