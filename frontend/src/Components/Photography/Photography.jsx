@@ -83,7 +83,6 @@ class Photography extends Component {
           <div className={cssPhotography.errorText}>
               Sorry, we cannot load this content right now. Please try again later.
           </div>
-          <InstaGallery/>
         </div>
         
       }

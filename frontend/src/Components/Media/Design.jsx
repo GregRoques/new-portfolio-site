@@ -66,7 +66,6 @@ class Design extends Component{
                     testmonialIndex={1}
                 />
                 <Articles/>
-                <InstaGallery/>
             </div>
         )
     }

@@ -20,10 +20,18 @@ Revamped personal website (www.GregRoques.com).
 - sendGripApi.js (sendGripApi key ... used to email me when Instagram key has almost expired)
 
 
+# Website Demo Video
 
-# Demo Video
-## Click image below to view video
+## New (Current) Website
 
-[![demo video](./frontend/public/ReadMeImages/readMe_main.png)](https://youtu.be/YhksUFOM09Q)
+[![demo video](./frontend/public/ReadMeImages/readMe_main.png)](https://youtu.be/mXTeQFUmI1E)
 
+## Previous Website
   
+[![Old Site Demo](./frontend/public/ReadMeImages/playVideo.png)](https://youtu.be/YhksUFOM09Q)
+
+**Link to previous website GitHub page:** https://github.com/GregRoques/Portfolio-Take-2
+
+# Instagram Video – How To
+
+[![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram.png)](https://youtu.be/wXMqwr-X6fI)

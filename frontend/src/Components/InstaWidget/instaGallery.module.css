@@ -39,12 +39,12 @@
     /* margin-bottom: .25rem; */
     padding: .5rem 0px .5rem 0px;
     /* color: #23408F; */
-    color: purple;
+    color: white;
 }
 
 .header a, .header a:focus, .header a:active{
     text-decoration: none;
-    color: purple;
+    color: white;
 }
 
 .postCount{
@@ -54,6 +54,7 @@
 
 .boldHover{
     cursor: pointer;
+    color: white;
     text-decoration: underline;
     -webkit-user-select: none; 
     -khtml-user-select: none; 
@@ -62,10 +63,12 @@
            user-select: none;
 }
 
+
 .container{
     width: 830px;
-    background-color: #FBAB7E;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background: #4D95B4;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
     padding: 0 1rem 2rem 1rem;
     border-radius: 1rem 1rem 0px 0px;
 }
@@ -430,10 +433,7 @@ img{
 .closeButton{
     color:white;
     font-size: 20px;
-    /* width:20px;
-    height: 20px; */
     font-weight:bold;
-    /* background-color: white; */
     border-radius: 5px;
     text-align: center;
     vertical-align: middle;
