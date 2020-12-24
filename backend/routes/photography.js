@@ -55,7 +55,7 @@ setInterval(()=>{
 
 router.post("/", (req, res, next) => {
   const { album, lengthStart } = req.body;
-  console.log(album)
+  //console.log(album)
   if (album === "ALL") {
     if (photoHome.albumsLength > 0) {
       let currResponseHome = {
@@ -76,7 +76,7 @@ router.post("/", (req, res, next) => {
           currResponseAlbum.albumLength = myPhotoAlbums[album].albumLength;
           currResponseAlbum.title = myPhotoAlbums[album].title;
         }
-        console.log(currResponseAlbum)
+        //console.log(currResponseAlbum)
         return res.json(currResponseAlbum);
       } else{
         res.json(error=true)

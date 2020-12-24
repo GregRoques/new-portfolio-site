@@ -4,7 +4,6 @@ const { allRecs } = require("../util/linkedInList");
 const maxValue = allRecs.length;
 
 function fixNum(randNum){
-  // console.log(randNum)
   if(randNum === maxValue - 1){
     return randNum -1 ;
   }else{
@@ -37,7 +36,6 @@ router.get("/", (req, res) => {
     allRecs[randIntEven],
     allRecs[randIntOdd]
   ]
-  //console.log(recommendations)
   res.json(recommendations);
 
 });

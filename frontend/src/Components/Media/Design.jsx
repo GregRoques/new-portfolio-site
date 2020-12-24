@@ -5,7 +5,6 @@ import Photography from './Photography';
 import Magazines from './Magazines';
 import Articles from './Articles';
 import {grAPI} from "../../Dependencies/BackendAPI";
-import InstaGallery from '../InstaWidget/instaGallery';
 import cssDesign from './design.module.css'
 
 

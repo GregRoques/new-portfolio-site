@@ -12,7 +12,7 @@
 .modalPositionFadeIn{
     top:0;
     right:-320px;
-    animation: slideIn .5s forwards;
+    animation: slideIn .2s forwards;
     position: fixed;
     background-color: white;
     height:100%;
@@ -54,9 +54,11 @@
     margin-top: 85px;
 }
 
-.routeContainer a, .routeContainer a:hover, .routeContainer a:focus{
+.routeContainer a, .routeContainer a:hover, .routeContainer a:focus,
+.headerModalResume, .headerModalResume:hover, .headerModalResume:focus{
     text-decoration: none;
     color: #4C61B2;
+    cursor:pointer;
 }
 
 .closeButton {

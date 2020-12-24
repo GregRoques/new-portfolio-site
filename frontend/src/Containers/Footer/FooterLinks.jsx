@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import cssFooter from './footer.module.css';
 
 export const Contact = ({ isEmailToggled, isShown }) => {
@@ -35,11 +34,9 @@ export const GitHub = () => {
 
 export const Resume = () => {
     return(
-        <div className={`${cssFooter.resume} ${cssFooter.socialIcon}`}>
-            <Link onClick={e =>{ e.preventDefault(); window.open('https://www.gregroques.com/images/socialIcons/Resume.pdf')}}>
+            <div className={`${cssFooter.resume} ${cssFooter.socialIcon}`} onClick={e =>{ e.preventDefault(); window.open('https://www.gregroques.com/images/socialIcons/Resume.pdf')}}>
                 <img className={cssFooter.resume1}  src= '/images/socialIcons/pdf2.png' alt='2019 Resume'/>
                 <img className={cssFooter.resume2} src= '/images/socialIcons/pdf1.png' alt='2019 Resume'/>
-            </Link>
-        </div>
+            </div>
     )
 };

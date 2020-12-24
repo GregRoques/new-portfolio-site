@@ -16,7 +16,7 @@ const Portfolio = () =>{
                 <Carousel className={cssPortfolio.photographyContainer} indicators={false}>
                     {portfolioSamples.map(sample=>{
                         return(
-                            <Carousel.Item>
+                            <Carousel.Item key={sample.name}>
                                 <img
                                 className="d-block w-100"
                                 src={sample.image}
@@ -55,7 +55,7 @@ const Portfolio = () =>{
             <div className={cssPortfolio.portfolioDisplayContainerSmall}>
                     {portfolioSamples.map((sample,i) => {
                         return(
-                            <div className={cssPortfolio.portfolioSmallMarginBottom}> 
+                            <div key={i} className={cssPortfolio.portfolioSmallMarginBottom}> 
                                 <div className={cssPortfolio.portfolioSmall}>
                                     <img src={sample.image} alt={sample.name}/>
                                 </div>

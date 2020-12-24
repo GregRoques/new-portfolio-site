@@ -13,7 +13,7 @@ const Photography = () =>{
                     <Carousel className={cssDesign.photographyContainer} indicators={false}>
                         {musicPhotos.map(musician=>{
                             return(
-                                <Carousel.Item>
+                                <Carousel.Item key={musician.band}>
                                     <img
                                     className="d-block w-100"
                                     src={musician.image}

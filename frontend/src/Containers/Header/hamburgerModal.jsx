@@ -16,7 +16,7 @@ const HamburgerModal = ({ close, isOpen, isFadeOut }) => {
                         <hr style={{width: '80%', margin: '1rem 10%', border: '1px solid #4D95B4'}}/>
                         <Link onClick={e=>close(e)} to="/photography">Photography</Link>
                         <hr style={{width: '80%', margin: '1rem 10%', border: '1px solid #4D95B4'}}/>
-                        <a onClick={e=>close(e)} href="/resume" target="_blank">Resume</a>
+                        <div className={cssHamburgerModal.headerModalResume} onClick={e =>{ close(e); window.open('https://www.gregroques.com/images/socialIcons/Resume.pdf')}}>Resume</div>
                         <hr style={{width: '80%', margin: '1rem 10% 2rem 10%', border: '1px solid #4D95B4'}}/>
                     </div>
                     <div className={cssHamburgerModal.contactContainer}>
