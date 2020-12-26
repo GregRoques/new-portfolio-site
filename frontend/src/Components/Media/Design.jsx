@@ -4,6 +4,7 @@ import ReactHtmlParser from "react-html-parser";
 import Photography from './Photography';
 import Magazines from './Magazines';
 import Articles from './Articles';
+import Film from './Film';
 import {grAPI} from "../../Dependencies/BackendAPI";
 import cssDesign from './design.module.css'
 
@@ -65,6 +66,8 @@ class Design extends Component{
                     testmonialIndex={1}
                 />
                 <Articles/>
+                <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
+                <Film/>
             </div>
         )
     }
