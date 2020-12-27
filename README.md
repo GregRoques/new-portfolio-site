@@ -28,9 +28,9 @@ Revamped personal website (www.GregRoques.com).
 
 # Instagram Video – How To
 
-In the below video, I discuss the functionality of an Instagram widget I created for my photography page, including how to generate a long term token granting access to your Instagram account's user and media information using Facebook for developers. 
+In the below video, I discuss the functionality of an Instagram widget I created for my photography page, including how to generate a long term token granting access to your Instagram account's user and media information using Facebook for Developers. 
 
-I used this same widget on my previous site, however I am currently unsure if I plan to include it on this site as I don't care for Instagram's current direction (IGTV, stories, reels, stores... basically all of its moves away from straigh-forward photography).
+I used this same widget on my previous site, however I am currently unsure if I plan to include it on this site as I don't care for Instagram's current direction (IGTV, stories, reels, stores... basically all of its moves away from straigh-forward photography); I also have a growing distrust of Facebook in general.
 
 You can find the widget's scripting in my site directory outside of the frontend and backend folders.
 
