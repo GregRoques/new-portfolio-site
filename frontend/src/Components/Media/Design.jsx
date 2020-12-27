@@ -4,7 +4,7 @@ import ReactHtmlParser from "react-html-parser";
 import Photography from './Photography';
 import Magazines from './Magazines';
 import Articles from './Articles';
-import Film from './Film';
+import Film from './Film'
 import {grAPI} from "../../Dependencies/BackendAPI";
 import cssDesign from './design.module.css'
 
@@ -53,7 +53,7 @@ class Design extends Component{
                 <div className={cssDesign.designDescriptions}>
                 Before becoming a full-time software developer, I worked as a creative in the media/communications field. The skills I developed during this time have been indispensable to my current work. My decade of graphic design and layout experience has allowed me to guide UI/UX best practices; likewise my more than eight years in leadership roles as a manager and director have allowed me to successfully partner with multiple SCRUM-teams within my organization to see projects through to completion.
                 <br/><br/>
-                I continue to contribute freelance works to various publications on a freelance basis. Below is a sample of my published design, photography and writing contributions.
+                I continue to contribute freelance works to various publications on a freelance basis. Below is a sample of my published design/layout, photography and writing contributions.
                 </div>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
                 {window.scrollTo(0, 0)}

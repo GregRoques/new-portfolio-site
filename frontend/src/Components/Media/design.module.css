@@ -117,7 +117,14 @@
   visibility: visible;
 }
 
+/* ================================== video */
 
+.videoAlign{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom:4rem;
+}
 
 
 /* =================================================================== Redirect Buttons */
@@ -178,15 +185,6 @@
 .testemonialContainer{
   /* padding: 0px 3rem; */
   font-size: 1rem;
-}
-
-/* ============================================ Video */
-
-.videoAlign{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom:4rem;
 }
 
 /* ============================================ Responsiveness */
