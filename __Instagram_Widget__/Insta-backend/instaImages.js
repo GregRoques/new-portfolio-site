@@ -20,7 +20,7 @@ let isSentToday = false;
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: myKey,
+      api_key: instaDefaultLongTermToken.sendgridApiKey,
     },
   })
 ); // you grab your sendGrip api key from the utils folder

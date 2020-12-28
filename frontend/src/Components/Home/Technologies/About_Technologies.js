@@ -15,12 +15,12 @@ export const mySkills = {
         name: "Stack",
         tech: [
             'mysql.png',
-            "graphql.png",
             'express.png',
-            'nodejs.png',
             'react.png',
             'redux.png',
-            'bootstrap.png',
+            'nodejs.png',
+            "graphql.png",
+            'bootstrap.png'
         ]
     },
     auxillary: {
