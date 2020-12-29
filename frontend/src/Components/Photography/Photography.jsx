@@ -21,24 +21,31 @@ class Photography extends Component {
     }
 
     getPhotos = (start) => {
-      axios.post(`${grAPI}/photography`, {
+      axios.post(`${grAPI}/backendPhotos`, {
           lengthStart: start,
           album: "ALL"
       })
       .then(res => {
+        if(Object.keys(res.data).includes('albums')){
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],
               albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
               loaded: true
           }))
+        } else {
+          this.displayError()
+        }
       })        
       .catch(() => {
-          this.setState({
-            isNoError: false
-          })
+        this.displayError()
       })
+    }      
 
-  }      
+    displayError = () =>{
+      this.setState({
+        isNoError: false
+      })
+    }
       render(){
         const {albumLength, loaded, isNoError, albums } = this.state;
           return isNoError ? (

@@ -26,7 +26,7 @@ class Pictures extends Component{
     }
 
     getPhotos = (start, album) => {
-        axios.post(`${grAPI}/photography`, {
+        axios.post(`${grAPI}/backendPhotos`, {
             lengthStart: start,
             album: album
         })
