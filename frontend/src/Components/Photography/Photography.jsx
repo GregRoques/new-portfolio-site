@@ -26,7 +26,8 @@ class Photography extends Component {
           album: "ALL"
       })
       .then(res => {
-        if(Object.keys(res.data).includes('albums')){
+        if(!Object.keys(res.data).includes('albums')){
+          console.log(res.data)
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],
               albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
@@ -55,6 +56,7 @@ class Photography extends Component {
               I picked up photography as a hobby about a decade ago. Working as a creative director for New Orleans’ <a href="https://www.whereyat.com/" target="_blank" rel="noreferrer"><i>Where Y’at Magazine</i></a> at the time, I observed the artistic and technical techniques of commissioned professionals while directing shoots for the publication. As my skills grew, I began contributing music and travel photographs to <i>Where Y’at</i>, as well as other local and regional publications.
               </div>
             <div className={cssPhotography.galleryContainer}>
+            { albums.length > 0 ?
                 <InfiniteScroll
                     dataLength={albums.length}
                     next={() => this.getPhotos(albums.length)}
@@ -80,9 +82,14 @@ class Photography extends Component {
                             )
                         }) : ""}
                         </div>
-                    </InfiniteScroll>
+                    </InfiniteScroll> 
+                    : <img
+                      className={cssPhotography.loader}
+                      src="/images/loadingImage.gif"
+                      alt="loading"
+                      />}
                 </div>
-                <InstaGallery/>
+                <InstaGallery/> 
               </div>
         ) : 
         <div className={`${cssPhotography.fadeIn}`}>
