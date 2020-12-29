@@ -26,6 +26,7 @@ class Photography extends Component {
           album: "ALL"
       })
       .then(res => {
+        console.log(res.data)
         if(Object.keys(res.data).includes('albums')){
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],

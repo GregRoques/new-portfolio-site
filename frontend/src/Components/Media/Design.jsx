@@ -17,6 +17,7 @@ class Design extends Component{
     componentDidMount(){
         axios.get(`${grAPI}/linkedIn`).then(res=>{
             const recommendations = res.data; 
+            console.log(res.data)
             if (res.data.length === 2){
                 this.setState({
                     testemonials: recommendations
