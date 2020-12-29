@@ -36,6 +36,7 @@ router.get("/", (req, res) => {
     allRecs[randIntEven],
     allRecs[randIntOdd]
   ]
+  console.log(recommendations)
   res.json(recommendations);
 
 });

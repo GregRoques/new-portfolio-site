@@ -64,7 +64,7 @@ router.post("/", (req, res, next) => {
       if (lengthStart === 0) {
         currResponseHome.albumLength = photoHome.albumsLength;
       }
-    //   console.log(currResponseHome)
+       console.log(currResponseHome)
       res.json(currResponseHome);
     }
   } else {

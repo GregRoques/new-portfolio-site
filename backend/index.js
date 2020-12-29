@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.use("/instagramImages", instaImages);
-app.use("/photography", photography);
-app.use("/linkedIn", linkedIn);
+app.use("/backend/instagramImages", instaImages);
+app.use("/backend/photography", photography);
+app.use("/backend/linkedIn", linkedIn);
 
 const PORT = 2000;
 app.listen(PORT, () => {
