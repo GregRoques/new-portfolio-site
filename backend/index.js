@@ -19,10 +19,10 @@ app.use("/instagramImages", instaImages);
 app.use("/backendPhotos", photography);
 app.use("/linkedIn", linkedIn);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.get("/*", (req, res, next) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+// app.use(express.static(path.join(__dirname, "public")));
+// app.get("/*", (req, res, next) => {
+//     res.sendFile(path.join(__dirname, "public", "index.html"));
+// });
 
 const PORT = 2000;
 app.listen(PORT, () => {
