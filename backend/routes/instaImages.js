@@ -37,7 +37,7 @@ const emailWarning = (message, err) => {
   transporter
     .sendMail({
       to: "greg.roques@gmail.com",
-      from: "greg@gregroques.com",
+      from: "website-debug@gregroques.com",
       subject: `${message}`,
       html: `<b>Date:</b> ${sendDate} <br/><br/>
           ${message} <br/><br/>
