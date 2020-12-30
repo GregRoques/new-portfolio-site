@@ -24,15 +24,11 @@ class Photography extends Component {
           album: "ALL"
       })
       .then(res => {
-        if(Object.keys(res.data).includes('albums')){
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],
               albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
               loaded: true
           }))
-        } else {
-          this.displayError()
-        }
       })        
       .catch(() => {
         this.displayError()
