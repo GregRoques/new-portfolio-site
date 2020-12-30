@@ -55,7 +55,6 @@ setInterval(()=>{
 
 router.post("/", (req, res, next) => {
   const { album, lengthStart } = req.body;
-  //console.log(album)
   if (album === "ALL") {
     if (photoHome.albumsLength > 0) {
       let currResponseHome = {

@@ -4,8 +4,6 @@ import PhotoGallery from './GalleryHandler';
 import axios from 'axios';
 import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import InstaGallery from '../InstaWidget/instaGallery.jsx'
-
 
 class Photography extends Component {
     state = {
@@ -26,8 +24,7 @@ class Photography extends Component {
           album: "ALL"
       })
       .then(res => {
-        if(!Object.keys(res.data).includes('albums')){
-          console.log(res.data)
+        if(Object.keys(res.data).includes('albums')){
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],
               albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
@@ -89,7 +86,6 @@ class Photography extends Component {
                       alt="loading"
                       />}
                 </div>
-                <InstaGallery/> 
               </div>
         ) : 
         <div className={`${cssPhotography.fadeIn}`}>

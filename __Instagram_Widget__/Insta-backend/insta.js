@@ -1,7 +1,7 @@
 const instaDefaultLongTermToken = {
     token: "YOUR INITIAL LONG TERM TOKEN GOES HERE",
     expiration: "new Date(DATE TOKEN WAS CREATED GOES HERE).getTime() + 4752000000",
-    sendgridApiKey = " YOUR SEND GRID API KEY GOES HERE"
+    sendgridApiKey: " YOUR SEND GRID API KEY GOES HERE"
 } 
 module.exports = instaDefaultLongTermToken;
 

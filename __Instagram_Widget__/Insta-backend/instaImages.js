@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const instaDefaultLongTermToken = require('../util/insta');
-const myKey = require("../util/sendgripApi");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 
