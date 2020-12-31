@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const instaDefaultLongTermToken = require('../util/insta');
-const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 let instaUserLoginInfo = {
   access_token:  instaDefaultLongTermToken.token, 
@@ -12,43 +10,6 @@ let instaUserLoginInfo = {
 };
 
 let returnObject = {};
-let fiveDayWarningCount = 0;
-
-let isSentToday = false;
-
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: instaDefaultLongTermToken.sendgridApiKey,
-    },
-  })
-); // you grab your sendGrip api key from the utils folder
-
-const setSentTodayToTrue = () => {
-  isSentToday = true;
-  setTimeout(() => {
-    isSentToday = false;
-  }, 86400000); // sets to false in 24 hours...this is so you don't get more than one email each day.
-}
-
-const emailWarning = (message, err) => {
-  const sendDate = new Date().toISOString().slice(0, 10);
-  transporter
-    .sendMail({
-      to: "greg.roques@gmail.com",
-      from: "greg@gregroques.com",
-      subject: `${message}`,
-      html: `<b>Date:</b> ${sendDate} <br/><br/>
-          ${message} <br/><br/>
-          <b>ERROR MESSAGE:</b> ${err}`,
-    })
-    .then(() => {
-      setSentTodayToTrue();
-    })
-    .catch((err) => {
-      console.log(`Could not send error email (emailWarning): ${err}`);
-    });
-};
 
 const abridgeCaption = (caption) => {
   const trimCaption = caption.trim();
@@ -90,16 +51,7 @@ const getInstaInfo = () => {
       });
     })
     .catch((err) => {
-      const dayOfTheWeekNumeral = new Date().getDay(); //I don't usually check personal email on weekends, hence this.
-      if (!isSentToday && dayOfTheWeekNumeral !== 6 && dayOfTheWeekNumeral !== 0) {
-        const subject =
-          "GregRoques.com: InstaGram Long Term Token has experienced an error or has expired.";
-        emailWarning(subject, err);
-        fiveDayWarningCount++
-      }
-      console.log(
-        `getInstaInfo–Could not get media info from Instagram: ${err}`
-      );
+      console.log(err)
       returnObject = {}; // we don't want the expired info to remain, so we clear this variable
     });
 };
@@ -121,15 +73,13 @@ const isTimeUp = () => {
       };
     })
     .catch((err) => {
-    console.log(err)
+      console.log(err)
     });
 };
 
 setInterval(() => {
   const todaysDate = new Date().getTime()
-  if (fiveDayWarningCount < 6) {
-    getInstaInfo();
-  }
+  getInstaInfo();
   if(todaysDate > instaUserLoginInfo.expires_in){
     isTimeUp()
   }
