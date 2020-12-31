@@ -1,6 +1,6 @@
 const instaDefaultLongTermToken = {
     token: "YOUR INITIAL LONG TERM TOKEN GOES HERE",
-    expiration: "new Date(DATE TOKEN WAS CREATED GOES HERE).getTime() + 4752000000"
+    expiration: "new Date().getTime() + 4752000000"
 } 
 module.exports = instaDefaultLongTermToken;
 
