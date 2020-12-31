@@ -20,11 +20,10 @@ const Photography = () =>{
                                     alt={musician.band}
                                     />
                                     <Carousel.Caption>
-                                        <h3 className={cssDesign.designPhotoBandName}>{musician.band}</h3>
                                         <p className={cssDesign.designPhotoCaptionContainer}>
                                         { musician.target === "LINK" ?
                                         <Link className={cssDesign.designPhotoHyperlink} to="/photography">
-                                            More Images
+                                            Full Gallery
                                         </Link>
                                         :  <a 
                                         className={cssDesign.designPhotoHyperlink}
@@ -32,7 +31,7 @@ const Photography = () =>{
                                         target ="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        More Images
+                                        {musician.band}
                                     </a>
                                     }
                                        

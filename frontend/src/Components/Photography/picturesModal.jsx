@@ -9,7 +9,7 @@ const PicModal = ({state, clickL, clickR, pictureDisplayToggle, preventDragHandl
                 <div className ={ cssPicModal.photoContent}>
                     { modalPhoto > 0 ?
                         <div className={ cssPicModal.imageGalleryButtons } onClick={()=>clickL()}>{`<`}</div>    
-                        : ""
+                        : <div className={cssPicModal.imageGalleryButtonsHidden }>{`<`}</div>
                     }
                     
                     <div className={ cssPicModal.sliderContainer } onContextMenu={preventDragHandler} onDragStart={preventDragHandler}>
@@ -17,7 +17,7 @@ const PicModal = ({state, clickL, clickR, pictureDisplayToggle, preventDragHandl
                     </div>
                     { modalPhoto < images.length -1  ?
                         <div className={ cssPicModal.imageGalleryButtons } onClick={()=>clickR()}>{`>`}</div>
-                        : ""
+                        : <div className={cssPicModal.imageGalleryButtonsHidden }>{`>`}</div>
                     }
                 </div>
             </div>

@@ -71,19 +71,15 @@
     border-radius:50%;
     margin-bottom: 1rem;
     transition: 0.5s ;
-    overflow: hidden;
+    overflow: auto;
   }
 
   .box IMG{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    
+    height: 100%; width: 100%; object-fit: cover
   }
   
   .box:hover{
-    transform:scale(0.8);
+    transform:scale(0.95);
     transition: 1s ;
   }
 
@@ -98,21 +94,17 @@
   .photoGrid {
     display:grid;
     margin:auto;
-    grid-template-columns: repeat(auto-fill, 12rem);
     justify-content: center; 
     text-align:center;
+    padding-bottom:1rem;
     row-gap: 2rem;
     column-gap: 2rem;
-    padding-bottom:1rem;
   }
 
   .photoBox {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border-style: solid;
-    border-color: transparent;
-    border-width: 10px;
   }
 
   .photoBox IMG {
@@ -217,6 +209,18 @@
   user-select: none;
   padding: 10px;
 }
+
+.imageGalleryButtonsHidden{
+  display: flex;
+  flex-direction: row;
+  align-content:center;
+  align-items: center;
+  color:transparent;
+  font-size:2rem;
+  font-weight:bold;
+  user-select: none;
+  padding: 10px;
+}
   
 
 /* =============================================== Media Queries */
@@ -235,7 +239,17 @@
   }
 }
 
+@media screen and (min-width: 480px){
+  .photoGrid{
+    grid-template-columns: repeat(auto-fill, 12rem);
+  }
+}
 
+@media screen and (max-width: 359px){
+  .photoHeader{
+    font-size: 2rem;
+  }
+}
 
 /* ========================================================== */
 
@@ -266,4 +280,8 @@
 .publishedWorkButtonAlign{
   text-align:center;
   margin: 4rem 0px 4rem 0px;
+}
+
+.ishidden{
+  display: hidden;
 }

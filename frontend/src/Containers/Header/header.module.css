@@ -38,7 +38,8 @@
 
 .headerHamburger{
     height: 60px;
-    background-image: contain;
+    /* width:60px; */
+    object-fit: contain;
     cursor: pointer;
     font-size:30px;
     color: rgb(77,149,180);

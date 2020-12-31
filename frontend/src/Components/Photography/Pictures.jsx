@@ -122,7 +122,7 @@ class Pictures extends Component{
                             { loaded ? images.map((image, i) => {
                                 return(
                                     <div key={ i } className={cssPictures.photoBox} onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
-                                        <img onClick={() => this.pictureDisplayToggle(i) } alt={ albumTitle + i } src={`/images/photography/${albumTitle}/${image}`}/>
+                                        <img onClick={() => this.pictureDisplayToggle(i) } alt={ albumTitle + i } src={`/images/tn_photography/${albumTitle}/${image}`}/>
                                     </div>
                                 )
                             }) : ""}
