@@ -16,8 +16,7 @@ Revamped personal website (www.GregRoques.com).
 
 ### Back-end – Util Folder
 - insta.js (link to access Instagram long term token and token's expiration date)
-- linkedInList.js (currated list of Instagram recommendations)
-- sendGripApi.js (sendGripApi key ... used to email me when Instagram key has almost expired)
+- linkedInList.js (currated list of LinkedIn recommendations)
 
 
 # Website Demo Video
@@ -30,7 +29,7 @@ Revamped personal website (www.GregRoques.com).
 
 In the below video, I discuss the functionality of an Instagram widget I created for my photography page, including how to generate a long term token granting access to your Instagram account's user and media information using Facebook for Developers. 
 
-I used this same widget on my previous site, however I am currently unsure if I plan to include it on this site as I don't care for Instagram's current direction (IGTV, stories, reels, stores... basically all of its moves away from straigh-forward photography).
+I used this same widget on my previous site, however I am currently unsure if I plan to include it on this site as I don't care for Instagram's current direction (IGTV, stories, reels, DMs, stores... basically all of its moves away from straigh-forward photography).
 
 You can find the widget's scripting in my site directory outside of the frontend and backend folders.
 

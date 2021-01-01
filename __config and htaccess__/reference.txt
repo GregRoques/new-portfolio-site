@@ -60,6 +60,9 @@ RewriteRule . /index.html [L]
     ProxyPass /backendPhotos http://127.0.0.1:2000/backendPhotos
     ProxyPassReverse /backendPhotos http://127.0.0.1:2000/backendPhotos
 
+    ProxyPass /instaImages http://127.0.0.1:2000/instaImages
+    ProxyPassReverse /instaImages http://127.0.0.1:2000/instaImages
+
     Include /etc/letsencrypt/options-ssl-apache.conf
     SSLCertificateFile /etc/letsencrypt/live/[NAME_OF_YOUR_AWS_INSTANCE...AWS AUTO-POPULATES THIS]/fullchain.pem
     SSLCertificateKeyFile /etc/letsencrypt/live/[NAME_OF_YOUR_AWS_INSTANCE...AWS AUTO-POPULATES THIS]/privkey.pem
