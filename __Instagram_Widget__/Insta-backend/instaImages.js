@@ -1,15 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const instaDefaultLongTermToken = require('../util/insta');
+const instaDefaultLongTermToken = require("../util/insta");
 
 let instaUserLoginInfo = {
-  access_token:  instaDefaultLongTermToken.token, 
+  access_token: instaDefaultLongTermToken.token,
   token_type: "bearer",
-  expires_in: instaDefaultLongTermToken.expiration
+  expires_in: instaDefaultLongTermToken.expiration,
 };
 
 let returnObject = {};
+
+const stopInterval = () => {
+  clearInterval(startInterval);
+};
 
 const abridgeCaption = (caption) => {
   const trimCaption = caption.trim();
@@ -25,6 +29,8 @@ const abridgeCaption = (caption) => {
   }
 }; // I restrict my caption here to no more than 75 characters; this is better than attempting this server-side with CSS, as CSS is finicky depending on a user's browser and browser version.
 
+let returnError = 0;
+
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
   const fields =
@@ -33,13 +39,13 @@ const getInstaInfo = () => {
   axios
     .get(`${url}${fields}${accessToken}`)
     .then((res) => {
-      fiveDayWarningCount = 0;
+      returnError = 0;
       const data = res.data.data;
       returnObject.image = [];
       data.map((pic) => {
         if (pic.media_type !== "VIDEO") {
           const { media_url, caption, timestamp, permalink, children } = pic;
-          returnObject.userName = "qtrmileatatime"
+          returnObject.userName = "qtrmileatatime";
           returnObject.image.push({
             pic: media_url,
             caption: abridgeCaption(caption),
@@ -51,8 +57,13 @@ const getInstaInfo = () => {
       });
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       returnObject = {}; // we don't want the expired info to remain, so we clear this variable
+
+      returnError++;
+      if (returnError === 12) {
+        stopInterval();
+      } // if returns error for 3 days in a row, cancel interval
     });
 };
 
@@ -63,25 +74,24 @@ const isTimeUp = () => {
   axios
     .get(`${refreshUrl}?${grantType}&${accessToken}`)
     .then((res) => {
-      //console.log(res.data)
       const todayPlusFiftyFiveDays = new Date().getTime() + 4752000000;
       const refreshedLoginInfo = res.data;
       instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
         token_type: refreshedLoginInfo.token_type,
-        expires_in: todayPlusFiftyFiveDays
+        expires_in: todayPlusFiftyFiveDays,
       };
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     });
 };
 
-setInterval(() => {
-  const todaysDate = new Date().getTime()
+const startInterval = setInterval(() => {
   getInstaInfo();
-  if(todaysDate > instaUserLoginInfo.expires_in){
-    isTimeUp()
+  const todaysDate = new Date().getTime();
+  if (todaysDate > instaUserLoginInfo.expires_in) {
+    isTimeUp();
   }
 }, 21600000); // refreshes every 6 hours
 

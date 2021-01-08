@@ -51,7 +51,7 @@ class PhotoGallery extends Component{
         <Link to={`/photography/${extension}`}>
           <div className= { cssPhotoGallery.box } onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
               <img 
-                src = { `/images/photography/${album}/${images[currentImage]}`}
+                src = { `/images/tn_photography/${album}/${images[currentImage]}`}
                 alt = { this.props.album }
                 onMouseEnter = {()=> this.maskOn(images)}
                 onMouseLeave ={()=> this.maskOff()}

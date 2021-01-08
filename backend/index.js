@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/backendPhotos", photography);
 app.use("/linkedIn", linkedIn);
-app.use("/instagramImages", insta)
+app.use("/instagramImages", insta);
 
 const PORT = 2000;
 app.listen(PORT, () => {

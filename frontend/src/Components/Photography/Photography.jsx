@@ -4,7 +4,7 @@ import PhotoGallery from './GalleryHandler';
 import axios from 'axios';
 import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import InstaGallery from '../InstaWidget/instaGallery'
+import InstaGallery from '../InstaWidget/instaGallery';
 
 class Photography extends Component {
     state = {

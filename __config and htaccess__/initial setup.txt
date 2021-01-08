@@ -1,0 +1,29 @@
+Commands from initial SSH
+
+$ sudo apt update
+$ clear
+$ sudo apt install apache2
+$ cd /etc/apache2/sites-available/
+$ clear
+$ ls
+$ sudo vi [NAME OF YOUR CONF FILE].conf
+$ cd /var/www
+$ sudo git clone https://[LINK TO GITHUB REPO] [NAME YOUR FOLDER HERE]
+  -- see below to make ownership of this folder recursive (line 25)
+$ sudo a2ensite [NAME OF YOUR CONF FILE].conf 
+$ sudo service apache2 restart
+$ sudo apt-get update
+$ clear
+$ sudo apt-get install software-properties-common
+$ cd /etc/apache2/sites-available/
+$ sudo add-apt-repository ppa:certbot/certbot
+$ clear
+$ sudo apt-get update
+$ sudo apt-get install python-certbot-apache 
+$ clear
+$ sudo certbot --apache
+
+========================================= remove sudo (helps to implement before dropping image files for photo gallery in FileZilla)
+
+- cd into /var/www
+- sudo chown -R root [NAME OF FOLDER WITH YOUR PROJECT INSIDE]

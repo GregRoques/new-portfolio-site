@@ -441,7 +441,7 @@ img{
     animation: close .75s forwards; 
     animation-delay: 1s;
     opacity:0;
-    
+    cursor:pointer;
 }
 
 .closeButton:hover{
