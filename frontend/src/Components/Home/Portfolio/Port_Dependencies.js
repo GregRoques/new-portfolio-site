@@ -18,7 +18,7 @@ export const portfolioSamples =[
         image: '/images/portfolioImages/urlshredder1.png',
         description: `MERN-stack Wedding Album site.`,
         demo: `https://youtu.be/nng-GhXo3Ww`,
-        readMe: 'https://github.com/GregRoques/URL-Shortener/blob/master/README.md'
+        readMe: 'https://github.com/GregRoques/MERN-Wedding-Album'
 
     }
 ]
