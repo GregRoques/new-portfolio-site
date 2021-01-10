@@ -33,4 +33,4 @@ I used this same widget on my previous site, however I am currently unsure if I 
 
 You can find the widget's scripting in my site directory outside of the frontend and backend folders.
 
-[![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram2.png)](https://youtu.be/wXMqwr-X6fI)
+[![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram2.png)](https://youtu.be/KMnqWYsYokA)
