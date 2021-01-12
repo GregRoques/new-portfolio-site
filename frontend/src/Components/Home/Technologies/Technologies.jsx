@@ -1,6 +1,7 @@
 import React from "react";
 import cssTech from "./technologies.module.css";
-import { mySkills, imageLink } from './About_Technologies'
+import { mySkills, imageLink } from './About_Technologies';
+import ImageLoader from '../../ImgLoader/imgLoader'
 
 const Tech = () =>{
     return(
@@ -16,7 +17,9 @@ const Tech = () =>{
                             {(tech).map((language, j) => {
                                 const altText = language.replace(/\.[^/.]+$/, "").replaceAll("_", " ")
                                 return(
-                                    <img className={cssTech.skillIcon} key={j} title={altText} id={`Tech${j}`} src= {imageLink + language} alt={altText}/>
+                                    <span key={j}>
+                                        <ImageLoader className={cssTech.skillIcon} passKey={j} title={altText} id={`Tech${j}`} src= {imageLink + language} alt={altText}/>
+                                    </span>
                                 )
                             })}
                         </div>

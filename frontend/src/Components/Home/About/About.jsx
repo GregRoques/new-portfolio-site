@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cssAbout from './about.module.css';
+import ImageLoader from '../../ImgLoader/imgLoader';
 
 const About = () => {
     return (
         <div>
             <div className={cssAbout.portraitCenterSmall}>
-                <img className={cssAbout.portrait} alt='Greg_Roques_Headshot' src='/images/headShots/myPic.jpg'/>
+                <ImageLoader className={cssAbout.portrait} alt='Greg_Roques_Headshot' src='/images/headShots/myPic.jpg'/>
             </div>
             <div className={cssAbout.aboutMeHeader}>About</div>
             <div className='whoAmIPadding'>
