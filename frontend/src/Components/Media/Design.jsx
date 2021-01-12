@@ -6,8 +6,7 @@ import Magazines from './Magazines';
 import Articles from './Articles';
 import Film from './Film'
 import {grAPI} from "../../Dependencies/BackendAPI";
-import cssDesign from './design.module.css'
-
+import cssDesign from './design.module.css';
 
 class Design extends Component{
     state={
