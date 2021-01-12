@@ -1,12 +1,14 @@
 import React from 'react'
 import { articleList } from "../../Dependencies/Design_ArticleList";
-import cssDesign from './design.module.css'
+import cssDesign from './design.module.css';
+import ImageLoader from '../ImgLoader/imgLoader';
 
 const IssueList = ({art}) => {
     return(
         <div>
             <a rel="noopener noreferrer" target="_blank" href={articleList[art]['link']} >
-                <div className={cssDesign.mags}> <img src={articleList[art]['image']} alt={articleList[art]['title']}/>
+                <div className={cssDesign.mags}> 
+                    <ImageLoader src={articleList[art]['image']} alt={articleList[art]['title']}/>
                     <div className={cssDesign.imgDescription}>
                         – {articleList[art]['category']} –
                         <br/>

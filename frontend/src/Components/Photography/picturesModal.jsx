@@ -1,5 +1,6 @@
 import React from 'react';
 import cssPicModal from './photography.module.css'
+import ImageLoader from '../ImgLoader/imgLoader'
 
 const PicModal = ({state, clickL, clickR, pictureDisplayToggle, preventDragHandler}) =>{
     const {modalShow, modalPhoto, images, albumTitle} = state;
@@ -9,7 +10,9 @@ const PicModal = ({state, clickL, clickR, pictureDisplayToggle, preventDragHandl
                 <div className ={ cssPicModal.photoContent}>
                     <div className={ modalPhoto > 0 ? cssPicModal.imageGalleryButtons : cssPicModal.imageGalleryButtonsHidden } onClick={()=>clickL()}>{`<`}</div>
                     <div className={ cssPicModal.sliderContainer } onContextMenu={preventDragHandler} onDragStart={preventDragHandler}>
-                        <img alt={ albumTitle + modalPhoto } src={`/images/photography/${albumTitle}/${images[modalPhoto]}` }/>
+                        <ImageLoader
+                        alt={ albumTitle + modalPhoto } 
+                        src={`/images/photography/${albumTitle}/${images[modalPhoto]}`}/>
                     </div>
                     <div className={ modalPhoto < images.length -1  ? cssPicModal.imageGalleryButtons: cssPicModal.imageGalleryButtonsHidden  } onClick={()=>clickR()}>{`>`}</div>
                 </div>

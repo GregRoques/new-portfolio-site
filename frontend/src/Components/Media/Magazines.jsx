@@ -1,12 +1,14 @@
 import React from 'react'
 import cssDesign from './design.module.css'
 import { magList } from '../../Dependencies/Design_Magazine';
+import ImageLoader from '../ImgLoader/imgLoader';
 
 const IssueList = ({mag}) => {
     return(
         <div>
             <a rel="noopener noreferrer" target="_blank" href={magList[mag]['link']} >
-                <div className={cssDesign.mags}> <img src={magList[mag]['image']} alt={magList[mag]['issue']}/>
+                <div className={cssDesign.mags}> 
+                <ImageLoader src={magList[mag]['image']} alt={magList[mag]['issue']}/>
                     <div className={cssDesign.imgDescription}><i>{magList[mag]['issue']}</i></div>
                 </div>
             </a>

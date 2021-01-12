@@ -5,6 +5,7 @@ import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import cssPictures from './photography.module.css'
 import PicModal from './picturesModal';
+import ImageLoader from '../ImgLoader/imgLoader'
 
 class Pictures extends Component{
 
@@ -84,11 +85,6 @@ class Pictures extends Component{
         }
     }
 
-    preventDragHandler = (e) => {
-        e.preventDefault();
-      }
-
-
     render(){
         const {modalShow, modalPhoto, images, albumLength, albumTitle, loaded, redirect} = this.state;
         if(redirect){
@@ -102,7 +98,6 @@ class Pictures extends Component{
                     clickL = {this.clickL}
                     clickR = {this.clickR}
                     pictureDisplayToggle = {this.pictureDisplayToggle}
-                    preventDragHandler = {this.preventDragHandler}
                 />
                 <h1 className = {cssPictures.photoHeader2}>{albumTitle}</h1>
                 <div className = { cssPictures.photoGalleryContainer }>
@@ -121,8 +116,11 @@ class Pictures extends Component{
                         <div className = { cssPictures.photoGrid }>
                             { loaded ? images.map((image, i) => {
                                 return(
-                                    <div key={ i } className={cssPictures.photoBox} onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
-                                        <img onClick={() => this.pictureDisplayToggle(i) } alt={ albumTitle + i } src={`/images/tn_photography/${albumTitle}/${image}`}/>
+                                    <div key={ i } className={cssPictures.photoBox}>
+                                        <ImageLoader 
+                                        onClick={() => this.pictureDisplayToggle(i) } 
+                                        alt={ albumTitle + i } 
+                                        src={`/images/photography/${albumTitle}/${image}`}/>
                                     </div>
                                 )
                             }) : ""}
