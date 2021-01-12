@@ -41,6 +41,7 @@
   text-align:center;
   grid-gap: 4rem;
   overflow-y:hidden;
+  overflow-x:hidden;
   padding: 0 0 1rem 0;
 }
   
