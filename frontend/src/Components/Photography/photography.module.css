@@ -63,6 +63,16 @@
   }
   
   /* ================ Dummy Data */
+
+  .galleryInitialImgTransition {
+    transition: opacity .5s;
+  }
+  .galleryInitialImgVisible {
+    opacity: 1;
+  }
+  .galleryInitialImgHidden {
+    opacity: 0;
+  }
   
   .box {
     width: 200px;

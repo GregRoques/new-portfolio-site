@@ -7,7 +7,14 @@ var myInterval
 class PhotoGallery extends Component{
     state = {
         currentImage: 0,
+        initialImageLoaded: false
       }
+
+    setImageLoaded = () => {
+        this.setState({
+          initialImageLoaded: true
+        })
+    }
     
     maskOn = gallery => {
     myInterval =  setInterval(() => {
@@ -43,16 +50,17 @@ class PhotoGallery extends Component{
 
   render(){
     const { album, images } = this.props;
-    const { currentImage } = this.state;
+    const { currentImage, initialImageLoaded } = this.state;
     const extension = album.toLowerCase().replaceAll(" ", "_")
 
     return(
-      <div className= { cssPhotoGallery.centerText }>
+      <div className= { `${cssPhotoGallery.centerText} ${cssPhotoGallery.galleryInitialImgTransition} ${initialImageLoaded ? cssPhotoGallery.galleryInitialImgVisible :  cssPhotoGallery.galleryInitialImgHidden }` }>
         <Link to={`/photography/${extension}`}>
           <div className= { cssPhotoGallery.box } onContextMenu={this.preventDragHandler} onDragStart={this.preventDragHandler}>
               <img 
                 src = { `/images/photography/${album}/${images[currentImage]}`}
                 alt = { this.props.album }
+                onLoad={()=> this.setImageLoaded()}
                 onMouseEnter = {()=> this.maskOn(images)}
                 onMouseLeave ={()=> this.maskOff()}
               />
