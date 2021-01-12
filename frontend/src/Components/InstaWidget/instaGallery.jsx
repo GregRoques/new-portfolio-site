@@ -191,7 +191,7 @@ class instaGallery extends Component {
                 
             </div>
 
-        ): instaDisplay && !isLoading ? <div className={cssInstagram.instaNotVisibleCenter}>
+        ): !instaDisplay && !isLoading ? <div className={cssInstagram.instaNotVisibleCenter}>
             <a href="https://www.instagram.com/qtrmileatatime/" rel="noopener noreferrer nofollow" target="_blank"><img alt="Follow Me: @qtrmileatatime" src="/images/instagramNotVisible.jpg"/></a>
         </div>
         : "";
