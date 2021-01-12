@@ -52,6 +52,8 @@
     margin-bottom: 9rem;
     animation-name: fadeIn;
     animation-duration:2s;
+    overflow-x:hidden;
+    overflow-y:hidden;
   }
   
   @keyframes fadeIn{
