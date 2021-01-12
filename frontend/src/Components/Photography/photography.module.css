@@ -52,8 +52,6 @@
     margin-bottom: 9rem;
     animation-name: fadeIn;
     animation-duration:2s;
-    overflow-x:hidden;
-    overflow-y:hidden;
   }
   
   @keyframes fadeIn{
@@ -112,6 +110,8 @@
     padding-bottom:1rem;
     row-gap: 2rem;
     column-gap: 2rem;
+    overflow-x:hidden;
+    overflow-y:hidden;
   }
 
   .photoBox {
