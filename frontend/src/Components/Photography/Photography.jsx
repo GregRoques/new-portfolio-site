@@ -83,7 +83,9 @@ class Photography extends Component {
                       alt="loading"
                       />}
                 </div>
+                { albums.length === albumLength ?
                 <InstaGallery/>
+                : "" }
               </div>
         ) : 
         <div className={`${cssPhotography.fadeIn}`}>
