@@ -11,7 +11,8 @@ class instaGallery extends Component {
         picIndex: 0,
         selectedPic: 0,
         selectedPicIndex: 0,
-        display: false
+        display: false,
+        isLoading: true
     }
 
     componentDidMount = () =>{
@@ -32,13 +33,19 @@ class instaGallery extends Component {
           })
           .catch(() => {
             return
-          });
+          })
+          .finally(()=>{
+              this.setState({
+                  isLoading: false
+              })
+          })
+          ;
     }
 
     instaPopUp = () =>{
         const { image, selectedPic, selectedPicIndex } = this.state;
         const { userName } = this.state.user;
-        return  this.state.display === true ? (
+        return  this.state.display ? (
             <div className={cssInstagram.centerAndBackground} onClick={(e) => this.isPopUpOpen(e, "")}>
                 <div onClick={(e) => this.isPopUpOpen(e, "")} className={cssInstagram.closeButton}>X</div>
                 <div className={cssInstagram.selectedContainer}>
@@ -122,8 +129,8 @@ class instaGallery extends Component {
 
 
     render(){
-        const { image, picIndex, instaDisplay } = this.state;
-        return instaDisplay === true ? (
+        const { image, picIndex, instaDisplay, isLoading } = this.state;
+        return instaDisplay && !isLoading ? (
             <div>
                 <this.instaPopUp/> 
                 <div className={cssInstagram.instagramParentHeader}>Instagram</div>
@@ -184,9 +191,10 @@ class instaGallery extends Component {
                 
             </div>
 
-        ): <div className={cssInstagram.instaNotVisibleCenter}>
+        ): !instaDisplay && !isLoading ? <div className={cssInstagram.instaNotVisibleCenter}>
             <a href="https://www.instagram.com/qtrmileatatime/" rel="noopener noreferrer nofollow" target="_blank"><img alt="Follow Me: @qtrmileatatime" src="/images/instagramNotVisible.jpg"/></a>
-        </div>;
+        </div>
+        : "";
     };
 }
 
