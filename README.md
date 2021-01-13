@@ -31,6 +31,6 @@ In the below video, I discuss the functionality of an Instagram widget I created
 
 I used this same widget on my previous site, however I am currently unsure if I plan to include it on this site as I don't care for Instagram's current direction (IGTV, stories, reels, DMs, stores... basically all of its moves away from straigh-forward photography).
 
-You can find the widget's scripting in my site directory outside of the frontend and backend folders.
+You can find the widget's scripting in my site directory outside of the frontend and backend folders in my unused components folder.
 
 [![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram2.png)](https://youtu.be/KMnqWYsYokA)
