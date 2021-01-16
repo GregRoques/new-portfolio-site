@@ -4,10 +4,8 @@ import cssFooter from './footer.module.css';
 export const Contact = ({ isEmailToggled, isShown }) => {
     return(
         <div className={`${cssFooter.contact} ${cssFooter.socialIcon}`} onClick={isEmailToggled}>
-            <a href="mailto:greg@gregroques.com">
-                <img className={cssFooter.contact1}  src= '/images/socialIcons/contact2.png' alt='LinkedIn: @GregRoques'/>
-                <img className={cssFooter.contact2} src= '/images/socialIcons/contact1.png' alt='LinkedIn: @GregRoques'/>
-            </a>
+            <img className={cssFooter.contact1}  src= '/images/socialIcons/contact2.png' alt='greg@gregroques.com'/> 
+            { !isShown ?  <img className={cssFooter.contact2} src= '/images/socialIcons/contact1.png' alt='greg@gregroques.com'/>: null}
         </div>
     )
 }
