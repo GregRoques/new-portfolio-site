@@ -5,7 +5,7 @@ const videoLinks = [
     {
         title: 'Short Film',
         video: "https://www.youtube.com/embed/seAiVYhv3ls",
-        description: 'Below is my favorite of our efforts, a parody of the increasingly dark and mature nature of super hero films around that time.'
+        description: 'Below is my favorite of 48 Hour Film Fest efforts, a parody of the increasingly dark and mature nature of super hero films around that time.'
     },{
         title: 'Social Videos',
         video:"https://youtube.com//embed/videoseries?list=PLM2GdNHvfSCFxXlNNVB8nrR0ogbg59Pbd",
