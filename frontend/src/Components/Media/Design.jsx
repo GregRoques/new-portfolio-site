@@ -19,6 +19,8 @@ class Design extends Component{
                 this.setState({
                     testemonials: recommendations
                 })
+        }).catch(err=>{
+            console.log(err)
         })
     }
 
