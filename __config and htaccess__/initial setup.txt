@@ -26,4 +26,4 @@ $ sudo certbot --apache
 ========================================= remove sudo (helps to implement before dropping image files for photo gallery in FileZilla)
 
 - cd into /var/www
-- sudo chown -R root [NAME OF FOLDER WITH YOUR PROJECT INSIDE]
+- sudo chown -R ubuntu(or root, whoever you want to grant access to) [NAME OF FOLDER WITH YOUR PROJECT INSIDE]
