@@ -32,22 +32,17 @@ class Pictures extends Component{
             album: album
         })
         .then(res => {
-            if(res.data === true){
-                return this.isRedirected()
-            } else {
             const {albumLength, title, images} = res.data;
             this.setState(prevState => ({
                 images: [...prevState.images, ...images],
-                albumTitle: !prevState.albumTitle ? title : prevState.albumTitle,
-                albumLength: prevState.albumLength === 0 ? albumLength : prevState.albumLength,
+                albumTitle: title || prevState.albumTitle,
+                albumLength: albumLength || prevState.albumLength,
                 loaded: true
             }))
-        }
         })        
         .catch(() => {
             this.isRedirected()
         })
-  
     }
 
     isRedirected = () =>{
@@ -90,7 +85,6 @@ class Pictures extends Component{
         if(redirect){
             return <Redirect push to={`/photography`}/>
         }
-
         return albumTitle ? (
             <div className = { cssPictures.fadeIn }>
                 <PicModal

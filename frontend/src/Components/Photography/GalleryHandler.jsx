@@ -41,13 +41,6 @@ class PhotoGallery extends Component{
       })
     }
 
-    selectAlbumHandler = folder => {
-      const extension = folder.toLowerCase().replaceAll(" ", "_")
-      this.setState({
-        redirect: extension
-      })
-    }
-
   render(){
     const { album, images } = this.props;
     const { currentImage, initialImageLoaded } = this.state;

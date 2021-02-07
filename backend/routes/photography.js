@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require("path");
 const { readdirSync, statSync } = require("fs-extra");
 const { join } = require("path");
+const cron = require("node-cron");
 
 //const source = path.join(__dirname, "../../frontend/public/images/photography");
 const source = path.join(__dirname, "../build/images/photography");
@@ -47,40 +48,36 @@ function createAlbums(){
   } 
 }
 
-createAlbums()
+createAlbums() // creates album on system boot
 
-setInterval(()=>{
+cron.schedule("59 23 * * 0", () => {
   createAlbums()
-}, 604800000)
+}); // refreshes every Sunday night at 11:59 p.m.
 
 router.post("/", (req, res, next) => {
   const { album, lengthStart } = req.body;
-  if (album === "ALL") {
-    if (photoHome.albumsLength > 0) {
+  if (album === "ALL" && photoHome.albumsLength > 0) {
       let currResponseHome = {
         albums: photoHome.albums.slice(lengthStart, lengthStart + 25),
       };
       if (lengthStart === 0) {
         currResponseHome.albumLength = photoHome.albumsLength;
       }
-       console.log(currResponseHome)
-      res.json(currResponseHome);
-    }
-  } else {
-      if (myPhotoAlbums[album]) {
-        let currResponseAlbum = {
-          images: myPhotoAlbums[album].images.slice(lengthStart, lengthStart + 25),
-        };
-        if (lengthStart === 0) {
-          currResponseAlbum.albumLength = myPhotoAlbums[album].albumLength;
-          currResponseAlbum.title = myPhotoAlbums[album].title;
-        }
-        //console.log(currResponseAlbum)
-        return res.json(currResponseAlbum);
-      } else{
-        res.json(error=true)
-      }
+       //console.log(currResponseHome)
+      return res.json(currResponseHome);
   } 
+  if (myPhotoAlbums[album]) {
+    let currResponseAlbum = {
+      images: myPhotoAlbums[album].images.slice(lengthStart, lengthStart + 25),
+    };
+    if (lengthStart === 0) {
+      currResponseAlbum.albumLength = myPhotoAlbums[album].albumLength;
+      currResponseAlbum.title = myPhotoAlbums[album].title;
+    }
+    //console.log(currResponseAlbum)
+    return res.json(currResponseAlbum);
+  }
+  throw new Error('Error')
 });
 
 module.exports = router;

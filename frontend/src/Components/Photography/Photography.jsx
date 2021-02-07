@@ -10,7 +10,7 @@ class Photography extends Component {
       albums: [],
       albumLength: 0,
       loaded: false,
-      isNoError: true,
+      isDisplayed: ""
     }
 
     componentDidMount() {
@@ -26,23 +26,21 @@ class Photography extends Component {
       .then(res => {
           this.setState(prevState => ({
               albums: [...prevState.albums, ...res.data.albums],
-              albumLength: prevState.albumLength === 0 ? res.data.albumLength : prevState.albumLength,
-              loaded: true
+              albumLength: res.data.albumLength || prevState.albumLength,
+              loaded: true,
+              isDisplayed:"photos"
           }))
+      }).catch(()=>{
+        this.setState({
+          isDisplayed: "error"
+        })
       })        
-      .catch(() => {
-        this.displayError()
-      })
     }      
 
-    displayError = () =>{
-      this.setState({
-        isNoError: false
-      })
-    }
+   
       render(){
-        const {albumLength, loaded, isNoError, albums } = this.state;
-          return isNoError ? (
+        const {albumLength, loaded, isDisplayed , albums } = this.state;
+          return isDisplayed === "photos" ? (
             <div className={cssPhotography.fadeIn}>
               <div className={cssPhotography.photoHeader}>Photography</div>
               <div className={cssPhotography.photographySubHeader}>
@@ -83,14 +81,14 @@ class Photography extends Component {
                       />}
                 </div>
               </div>
-        ) : 
+        ) : isDisplayed === "error" ? 
         <div className={`${cssPhotography.fadeIn}`}>
           <div className={cssPhotography.photoHeader}>Error</div>
           <div className={cssPhotography.errorText}>
               Sorry, we cannot load this content right now. Please try again later.
           </div>
         </div>
-        
+        :""
       }
     }
 

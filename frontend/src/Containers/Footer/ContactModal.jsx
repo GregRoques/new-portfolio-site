@@ -15,7 +15,7 @@ const ResumeModal = ({ close, isShown }) => {
                     <span className={cssFooterModal.contactTitle}>Contact</span>
                     <div>
                         <div className={cssFooterModal.contactFormat}> <LocationOn className={cssFooterModal.glyphs} /> Atlanta, GA</div>
-                        <div className={cssFooterModal.contactFormat}><a href="tel:504-220-3832"><Phone className={cssFooterModal.glyphs} />  504.220.3832</a></div>
+                        <div className={cssFooterModal.contactFormat}><a href="tel:‪404-913-2832‬"><Phone className={cssFooterModal.glyphs} />  ‪404.913.2832‬</a></div>
                         <div className={cssFooterModal.contactFormat}><a href="mailto:greg@gregroques.com"> <Email className={cssFooterModal.glyphs} />  Greg@GregRoques.com</a></div>
                     </div>
                 </div>

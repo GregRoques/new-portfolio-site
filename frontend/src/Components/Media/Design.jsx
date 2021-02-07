@@ -10,23 +10,23 @@ import cssDesign from './design.module.css';
 
 class Design extends Component{
     state={
-        testemonials: [false, false]
+        testemonials: [],
+        isLoaded:false
     }
     
     componentDidMount(){
         axios.get(`${grAPI}/linkedIn`).then(res=>{
             const recommendations = res.data; 
                 this.setState({
-                    testemonials: recommendations
+                    testemonials: recommendations,
+                    isLoaded: res.data.length === 2
                 })
-        }).catch(err=>{
-            console.log(err)
         })
     }
 
     TestmonialDisplay = ({testmonialIndex}) =>{
         const {testemonials} = this.state;
-        return testemonials[testmonialIndex] ? (
+        return this.state.isLoaded ? (
             <div className={cssDesign.testemonialContainer}>
                 <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
                 <div className={cssDesign.testmonialDisclaimer}>via LinkedIn Recommendations</div>

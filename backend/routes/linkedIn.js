@@ -29,6 +29,7 @@ function getRandomInt(isEven) {
 
 
 router.get("/", (req, res) => {
+  
   randIntEven = getRandomInt(true),
   randIntOdd = getRandomInt(false)
 
@@ -36,7 +37,7 @@ router.get("/", (req, res) => {
     allRecs[randIntEven],
     allRecs[randIntOdd]
   ]
-  console.log(recommendations)
+  //console.log(recommendations)
   res.json(recommendations);
 
 });

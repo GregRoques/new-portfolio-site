@@ -28,7 +28,7 @@ class instaGallery extends Component {
                       userName: userName
                   },
                   image: image,
-                  instaDisplay: image.length >= 5 ? true : false
+                  instaDisplay: true
               })
           })
           .catch(() => {

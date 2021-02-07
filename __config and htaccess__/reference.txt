@@ -33,7 +33,10 @@ RewriteRule . /index.html [L]
 
 ================= HTTPS
 
-***NOTE:*** Certbot will take care of this; pay attention to the Proxy information, as you will need to add this. ONLY include Insta link if including Instagram Widget in final build.
+***NOTE 1:*** Certbot will take care of this; pay attention to the Proxy information, as you will need to add this. ONLY include Insta link if including Instagram Widget in final build.
+***NOTE 2:*** You will need to install the following for your proxy's to work:
+– sudo a2enmod proxy
+– sudo a2enmod proxy_http
 
 <VirtualHost *:443>
   DocumentRoot /var/www/[PATH_TO_FOLDER_WITH_BUILD_FILE]

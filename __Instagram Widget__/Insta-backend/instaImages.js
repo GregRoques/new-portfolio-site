@@ -6,16 +6,11 @@ const instaDefaultLongTermToken = require("../util/insta");
 let instaUserLoginInfo = {
   access_token: instaDefaultLongTermToken.token,
   token_type: "bearer",
-  expires_in_five_days: instaDefaultLongTermToken.expiration, //token creation date + 55 days... insta token expires in 60 days
-  expired: instaUserLoginInfo.expires_in_five_days + 432000000, //token expires after 60 days... it has expired now
+  expires_in_five_days: instaDefaultLongTermToken.expiresInFiveDays, //token creation date + 55 days... insta token expires in 60 days
+  is_expired: instaDefaultLongTermToken.isExpired, //token expires after 60 days... it has expired now
 };
 
 let returnObject = {};
-
-const stopInterval = () => {
-  clearInterval(startInterval);
-  returnObject = {};
-};
 
 const abridgeCaption = (caption) => {
   const trimCaption = caption.trim();
@@ -31,8 +26,6 @@ const abridgeCaption = (caption) => {
   }
 }; // I restrict my caption here to no more than 75 characters; this is better than attempting this server-side with CSS, as CSS is finicky depending on a user's browser and browser version.
 
-let returnError = 0;
-
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
   const fields =
@@ -41,7 +34,6 @@ const getInstaInfo = () => {
   axios
     .get(`${url}${fields}${accessToken}`)
     .then((res) => {
-      returnError = 0;
       const data = res.data.data;
       returnObject.image = [];
       data.map((pic) => {
@@ -59,14 +51,7 @@ const getInstaInfo = () => {
       });
     })
     .catch((err) => {
-      console.log(err);
-
-      returnError++;
-      if (returnError === 16) {
-        // if returns error for 4 days in a row, cancel interval
-        stopInterval();
-        return;
-      }
+      //console.log(getInstaError)
       returnObject = {}; // we don't want the expired info to remain, so we clear this variable
     });
 };
@@ -79,11 +64,12 @@ const isTimeUp = () => {
     .get(`${refreshUrl}?${grantType}&${accessToken}`)
     .then((res) => {
       const todayPlusFiftyFiveDays = new Date().getTime() + 4752000000; //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
+      const todayPlusSixtyDays = new Date().getTime() + 5184000000; // your query will return a expires_in field, but you need to convert it to milliseconds from seconds and add it to todays date...this is just easier
       const refreshedLoginInfo = res.data;
       instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
-        token_type: refreshedLoginInfo.token_type,
         expires_in_five_days: todayPlusFiftyFiveDays,
+        is_expired: todayPlusSixtyDays
       };
     })
     .catch((err) => {
@@ -91,26 +77,26 @@ const isTimeUp = () => {
     });
 };
 
-const startInterval = setInterval(() => {
-  getInstaInfo();
+setInterval(() => {
   const todaysDate = new Date().getTime(); //today's date in milliseconds
-  if (
-    todaysDate > instaUserLoginInfo.expires_in_five_days &&
-    todaysDate < instaUserLoginInfo.expired
-  ) {
-    isTimeUp();
-  }
-  if (todaysDate > instaUserLoginInfo.expired) {
-    stopInterval();
+  if (todaysDate < instaUserLoginInfo.is_expired) {
+    getInstaInfo();
+    if (
+      todaysDate > instaUserLoginInfo.expires_in_five_days &&
+      todaysDate < instaUserLoginInfo.is_expired
+    ) {
+      isTimeUp();
+    }
   }
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
 getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
 
 router.get("/", (req, res, next) => {
-  if (returnObject !== {}) {
-    res.json(returnObject);
+  if (returnObject !== {} && returnObject.image.length >= 5) {
+    return res.json(returnObject);
   }
+  throw err;
 });
 
 module.exports = router;

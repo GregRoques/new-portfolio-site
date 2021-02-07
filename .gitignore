@@ -1,6 +1,9 @@
 node_modules
 /backend/node_modules
+/backend/package-lock.json
+
 /frontend/node_modules
+/frontend/package-lock.json
 /frontend/public/images/photography
 /frontend/public/images/tn_photography
 /frontend/src/Dependencies/BackendAPI.js
