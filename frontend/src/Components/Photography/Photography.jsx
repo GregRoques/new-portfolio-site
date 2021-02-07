@@ -4,6 +4,7 @@ import PhotoGallery from './GalleryHandler';
 import axios from 'axios';
 import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Insta from '../InstaWidget/instaGallery';
 
 class Photography extends Component {
     state = {
@@ -80,6 +81,9 @@ class Photography extends Component {
                       alt="loading"
                       />}
                 </div>
+                {albums.length === albumLength ?
+                <Insta/>
+                : ""}
               </div>
         ) : isDisplayed === "error" ? 
         <div className={`${cssPhotography.fadeIn}`}>
