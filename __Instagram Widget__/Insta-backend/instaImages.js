@@ -39,7 +39,7 @@ const getInstaInfo = () => {
       data.map((pic) => {
         if (pic.media_type !== "VIDEO") {
           const { media_url, caption, timestamp, permalink, children } = pic;
-          returnObject.userName = "qtrmileatatime";
+          returnObject.userName = "gregroques";
           returnObject.image.push({
             pic: media_url,
             caption: abridgeCaption(caption),
