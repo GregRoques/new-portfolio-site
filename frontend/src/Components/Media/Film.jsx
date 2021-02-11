@@ -3,18 +3,19 @@ import cssFilm from './design.module.css';
 
 const videoLinks = [
     {
-        title: 'Short Film',
-        video: "https://www.youtube.com/embed/seAiVYhv3ls",
-        description: 'Below is my favorite of 48 Hour Film Fest efforts, a parody of the increasingly dark and mature nature of super hero films around that time.'
-    },{
-        title: 'Social Videos',
-        video:"https://youtube.com//embed/videoseries?list=PLM2GdNHvfSCFxXlNNVB8nrR0ogbg59Pbd",
-        description:"Videos I created or directed for the American Red Cross of Louisiana's various social media accounts"
-    },
-    {
         title: 'Tulane Class',
         video:"https://youtube.com//embed/videoseries?list=PLM2GdNHvfSCEaQ_nVee4e1CVi4s8FumaX",
         description: "A class I taught the for the Tulane University Community Partner Nework. The class teaches participants how to record, edit and post a short video to one's social media outlets live from the scene of an event."
+    },
+    {
+        title: 'Social Videos',
+        video:"https://youtube.com//embed/videoseries?list=PLM2GdNHvfSCFxXlNNVB8nrR0ogbg59Pbd",
+        description:"Videos I created or directed for the American Red Cross of Louisiana's various social media accounts."
+    },
+    {
+        title: 'Short Film',
+        video: "https://www.youtube.com/embed/seAiVYhv3ls",
+        description: 'Below is my favorite of 48 Hour Film Fest efforts, a parody of the increasingly dark and mature nature of super hero films around that time.'
     }
 ]
 
