@@ -142,7 +142,7 @@ class instaGallery extends Component {
             </a> 
         </div>
         <div className={cssInstagram.postCount}>
-            { image.length > 5 ? <span title="Click to Toggle Instagram Images" className={cssInstagram.boldHover} onClick={()=> this.togglePics()}>More Pics</span> : "" }
+            { image.length >= 10 ? <span title="Click to Toggle Instagram Images" className={cssInstagram.boldHover} onClick={()=> this.togglePics()}>More Pics</span> : "" }
         </div>
         <div className={cssInstagram.flexFiveCenter}>
         <div className={cssInstagram.hitemwiththatflexRow}>

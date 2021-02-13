@@ -10,7 +10,7 @@ let instaUserLoginInfo = {
   is_expired: instaDefaultLongTermToken.isExpired, //token expires after 60 days... it has expired now
 };
 
-let returnObject = {};
+let returnObject = "";
 
 const abridgeCaption = (caption) => {
   const trimCaption = caption.trim();
@@ -29,35 +29,38 @@ const abridgeCaption = (caption) => {
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
   const fields =
-    "?fields=media_url,permalink,caption,timestamp,media_type,children{media_url}"; // username,id,
+    "?fields=media_url,permalink,caption,timestamp,media_type{CAROUSEL_ALBUM,IMAGE},username,children{media_url,media_type{IMAGE}}";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
   axios
     .get(`${url}${fields}${accessToken}`)
     .then((res) => {
       const data = res.data.data;
-      returnObject.image = [];
-      data.map((pic) => {
-        if (pic.media_type !== "VIDEO") {
-          const { media_url, caption, timestamp, permalink, children } = pic;
-          returnObject.userName = "qtrmileatatime";
-          returnObject.image.push({
-            pic: media_url,
-            caption: abridgeCaption(caption),
-            date: timestamp.slice(5, 10) + "-" + timestamp.slice(0, 4),
-            url: permalink,
-            children: children ? children.data : null,
-          });
-        }
-      });
+      returnObject = {}
+      if(data.length >= 5){
+        returnObject.image = [];
+        returnObject.userName = data[0].username;
+        data.map((pic) => {
+            const { media_url, media_type, caption, timestamp, permalink, thumbnail_url, children } = pic;
+            returnObject.image.push({
+              pic: media_type === "VIDEO" ? thumbnail_url : media_url,
+              caption: abridgeCaption(caption),
+              date: timestamp.slice(5, 10) + "-" + timestamp.slice(0, 4),
+              url: permalink,
+              children: children ? children.data : null,
+            });
+        });
+        return;
+      }
+      returnObject = "";
     })
     .catch((err) => {
       //console.log(getInstaError)
-      returnObject = {}; // we don't want the expired info to remain, so we clear this variable
+      returnObject = ""; // we don't want the expired info to remain, so we clear this variable
     });
 };
 
 const isTimeUp = () => {
-  const refreshUrl = `https://graph.instagram.com/refresh_access_token`;
+  const refreshUrl = `https://graph.injstagram.com/refresh_access_token`;
   const grantType = `grant_type=ig_refresh_token`;
   const accessToken = `access_token=${instaUserLoginInfo.access_token}`;
   axios
@@ -93,10 +96,10 @@ setInterval(() => {
 getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
 
 router.get("/", (req, res, next) => {
-  if (returnObject !== {} && returnObject.image.length >= 5) {
+  if (returnObject) {
     return res.json(returnObject);
   }
-  throw err;
+  throw "err";
 });
 
 module.exports = router;
