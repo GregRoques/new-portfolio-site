@@ -32,8 +32,7 @@ const abridgeCaption = (caption) => {
 
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
-  const fields =
-    "?fields=media_url,permalink,caption,timestamp,media_type{CAROUSEL_ALBUM,IMAGE},username,children{media_url,media_type{IMAGE}}";
+  const fields = "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url}";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
   axios
     .get(`${url}${fields}${accessToken}`)
