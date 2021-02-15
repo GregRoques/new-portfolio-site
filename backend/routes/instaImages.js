@@ -12,6 +12,10 @@ let instaUserLoginInfo = {
 
 let returnObject = "";
 
+const clearReturnObject = () =>{
+  returnObject = "";
+};
+
 const abridgeCaption = (caption) => {
   const trimCaption = caption.trim();
   if (trimCaption.length < 76) return trimCaption;
@@ -51,11 +55,11 @@ const getInstaInfo = () => {
         });
         return;
       }
-      returnObject = "";
+      clearReturnObject();
     })
     .catch((err) => {
       //console.log(getInstaError)
-      returnObject = ""; // we don't want the expired info to remain, so we clear this variable
+      clearReturnObject(); // we don't want the expired info to remain, so we clear this variable
     });
 };
 
@@ -90,7 +94,9 @@ setInterval(() => {
     ) {
       isTimeUp();
     }
+    return;
   }
+  clearReturnObject();
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
 getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
@@ -99,7 +105,7 @@ router.get("/", (req, res, next) => {
   if (returnObject) {
     return res.json(returnObject);
   }
-  throw "err";
+  throw new Error('Error');
 });
 
 module.exports = router;

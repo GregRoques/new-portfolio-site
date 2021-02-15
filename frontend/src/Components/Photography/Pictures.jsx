@@ -85,7 +85,7 @@ class Pictures extends Component{
         if(redirect){
             return <Redirect push to={`/photography`}/>
         }
-        return albumTitle ? (
+        return(
             <div className = { cssPictures.fadeIn }>
                 <PicModal
                     state={{modalPhoto, modalShow, images, albumTitle}}
@@ -122,8 +122,7 @@ class Pictures extends Component{
                     </InfiniteScroll>
                 </div>
             </div>
-        ) : null
-        
+        ) 
     }
 }
 
