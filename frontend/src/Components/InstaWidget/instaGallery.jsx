@@ -192,7 +192,7 @@ class InstaGallery extends Component {
     InstaBodyError = () => {
         return(
             <div className={cssInstagram.instaNotVisibleCenter}>
-                <a href='https://www.instagram.com/gregroques/' rel="noopener noreferrer nofollow" target="_blank"><img alt='Follow Me: @gregroques' src="/images/instagramNotVisible.jpg"/></a>
+                <a href='https://www.instagram.com/gregroques/' rel="noopener noreferrer nofollow" target="_blank"><img alt='Instagram' src="/images/instagramNotVisible.jpg"/></a>
             </div>
         )
     }
