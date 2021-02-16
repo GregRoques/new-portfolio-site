@@ -4,7 +4,6 @@ import PhotoGallery from './GalleryHandler';
 import axios from 'axios';
 import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Insta from '../InstaWidget/instaGallery';
 
 class Photography extends Component {
     state = {
@@ -81,10 +80,6 @@ class Photography extends Component {
                     />
             }
           </div>
-          {albums.length === albumLength ?
-            <Insta/> :
-            ""
-          } 
         </div>
       )
     }
