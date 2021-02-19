@@ -2,18 +2,23 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const instaDefaultLongTermToken = require("../util/insta");
+const { token, expiresInFiveDays, isExpired } = instaDefaultLongTermToken;
 
 let instaUserLoginInfo = {
-  access_token: instaDefaultLongTermToken.token,
+  access_token: token,
   token_type: "bearer",
-  expires_in_five_days: instaDefaultLongTermToken.expiresInFiveDays, //token creation date + 55 days... insta token expires in 60 days
-  is_expired: instaDefaultLongTermToken.isExpired, //token expires after 60 days... it has expired now
+  expires_in_five_days: !isNaN(expiresInFiveDays) ? Number(expiresInFiveDays) : 0,
+  is_expired: !isNaN(isExpired) ? Number(isExpired) : 0,
 };
 
 let returnObject = "";
 
-const clearReturnObject = () =>{
+const clearReturnObject = () => {
   returnObject = "";
+};
+
+const stopInstaInterval = () => {
+  clearInterval(startInstaInterval);
 };
 
 const abridgeCaption = (caption) => {
@@ -32,25 +37,34 @@ const abridgeCaption = (caption) => {
 
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
-  const fields = "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url}";
+  const fields =
+    "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url}";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
   axios
     .get(`${url}${fields}${accessToken}`)
     .then((res) => {
       const data = res.data.data;
-      returnObject = {}
-      if(data.length >= 5){
+      if (data.length >= 5) {
+        returnObject = {};
         returnObject.image = [];
         returnObject.userName = data[0].username;
         data.map((pic) => {
-            const { media_url, media_type, caption, timestamp, permalink, thumbnail_url, children } = pic;
-            returnObject.image.push({
-              pic: media_type === "VIDEO" ? thumbnail_url : media_url,
-              caption: abridgeCaption(caption),
-              date: timestamp.slice(5, 10) + "-" + timestamp.slice(0, 4),
-              url: permalink,
-              children: children ? children.data : null,
-            });
+          const {
+            media_url,
+            media_type,
+            caption,
+            timestamp,
+            permalink,
+            thumbnail_url,
+            children,
+          } = pic;
+          returnObject.image.push({
+            pic: media_type === "VIDEO" ? thumbnail_url : media_url,
+            caption: abridgeCaption(caption),
+            date: timestamp.slice(5, 10) + "-" + timestamp.slice(0, 4),
+            url: permalink,
+            children: children ? children.data : null,
+          });
         });
         return;
       }
@@ -75,7 +89,7 @@ const isTimeUp = () => {
       instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
         expires_in_five_days: todayPlusFiftyFiveDays,
-        is_expired: todayPlusSixtyDays
+        is_expired: todayPlusSixtyDays,
       };
     })
     .catch((err) => {
@@ -83,19 +97,18 @@ const isTimeUp = () => {
     });
 };
 
-setInterval(() => {
+const startInstaInterval = setInterval(() => {
+  const { expires_in_five_days, is_expired } = instaUserLoginInfo;
   const todaysDate = new Date().getTime(); //today's date in milliseconds
-  if (todaysDate < instaUserLoginInfo.is_expired) {
-    getInstaInfo();
-    if (
-      todaysDate > instaUserLoginInfo.expires_in_five_days &&
-      todaysDate < instaUserLoginInfo.is_expired
-    ) {
-      isTimeUp();
-    }
+  if (todaysDate > is_expired) {
+    stopInstaInterval();
+    clearReturnObject();
     return;
   }
-  clearReturnObject();
+  getInstaInfo();
+  if (todaysDate > expires_in_five_days && todaysDate < is_expired) {
+    isTimeUp();
+  }
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
 getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
@@ -104,7 +117,7 @@ router.get("/", (req, res, next) => {
   if (returnObject) {
     return res.json(returnObject);
   }
-  throw new Error('Error');
+  throw new Error("Error");
 });
 
 module.exports = router;
