@@ -71,7 +71,9 @@ const getInstaInfo = () => {
       clearReturnObject();
     })
     .catch((err) => {
-      //console.log(getInstaError)
+      if(err.error.message === "Invalid OAuth 2.0 Access Token"){
+        stopInstaInterval();
+      }
       clearReturnObject(); // we don't want the expired info to remain, so we clear this variable
     });
 };
