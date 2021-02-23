@@ -29,8 +29,8 @@ Revamped personal website (www.GregRoques.com).
 
 In the below video, I discuss the functionality of an Instagram widget I created for my photography page, including how to generate a long term token granting access to your Instagram account's user and media information using Facebook for Developers. 
 
-I used this same widget on my previous site, however I am currently unsure if I plan to include it on this site as I don't care for Instagram's new updates, and have generally lost interest in social media over the past few years.
+While I have included the widget in my project's build, I am unsure if I will activate it. I am not doing freelance photography these days (new city, pandemic) and have set my privacy settings to private (Instagram only grants valid tokens to public accounts).
 
-You can find the widget's scripting in my site directory outside of the frontend and backend folders in my unused components folder.
+You can find an additional folder with a copy of the widget's scripts in my site directory outside of the frontend and backend folders.
 
 [![Instagram Widget demo video](./frontend/public/ReadMeImages/readMe_Instagram2.png)](https://youtu.be/KMnqWYsYokA)
