@@ -115,7 +115,9 @@ const startInstaInterval = setInterval(() => {
   }
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
-getInstaInfo(); // generates list of images to pass to front-end app the moment the server is started
+if (new Date().getTime() < is_expired) {
+  getInstaInfo(); 
+}; // generates list of images to pass to front-end app the moment the server is started, as long as current date does not exceed token expiration date
 
 router.get("/", (req, res, next) => {
   if (returnObject) {
