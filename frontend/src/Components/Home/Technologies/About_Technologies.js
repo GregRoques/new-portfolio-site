@@ -28,7 +28,6 @@ export const mySkills = {
         tech: [
             'angularjs.png', 
             'AWS_amazon_web_services.png',
-            'google_analytics.png',
             'postman.png'
         ]
     },
