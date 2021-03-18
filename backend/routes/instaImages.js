@@ -7,7 +7,9 @@ const { token, expiresInFiveDays, isExpired } = instaDefaultLongTermToken;
 let instaUserLoginInfo = {
   access_token: token,
   token_type: "bearer",
-  expires_in_five_days: !isNaN(expiresInFiveDays) ? Number(expiresInFiveDays) : 0,
+  expires_in_five_days: !isNaN(expiresInFiveDays)
+    ? Number(expiresInFiveDays)
+    : 0,
   is_expired: !isNaN(isExpired) ? Number(isExpired) : 0,
 };
 
@@ -21,7 +23,20 @@ const stopInstaInterval = () => {
   clearInterval(startInstaInterval);
 };
 
-const abridgeCaption = (caption) => {
+const editChildren = (children) => {
+  const childrenImages = [];
+  children.map((child) => {
+    if (child.media_type === "VIDEO") {
+      childrenImages.push(child.thumbnail_url);
+    }
+    if (child.media_type === "IMAGE") {
+      childrenImages.push(child.media_url);
+    }
+  });
+  return childrenImages;
+};
+
+const editCaption = (caption) => {
   const trimCaption = caption.trim();
   if (trimCaption.length < 76) return trimCaption;
   if (trimCaption.length > 75) {
@@ -29,19 +44,20 @@ const abridgeCaption = (caption) => {
       0,
       trimCaption.lastIndexOf(" ", 75)
     );
-    return slicedCaption[slicedCaption.length - 1] === 75
-      ? slicedCaption
-      : `${slicedCaption}...`;
+    return slicedCaption.length <= 75
+      ? `${slicedCaption}...`
+      : `${slicedCaption.slice(0, 75)}...`;
   }
 }; // I restrict my caption here to no more than 75 characters; this is better than attempting this server-side with CSS, as CSS is finicky depending on a user's browser and browser version.
 
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
   const fields =
-    "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url}";
+    "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url,media_type,thumbnail_url}";
+  const instaCount = "&limit=5";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
   axios
-    .get(`${url}${fields}${accessToken}`)
+    .get(`${url}${fields}${instaCount}${accessToken}`)
     .then((res) => {
       const data = res.data.data;
       if (data.length >= 5) {
@@ -60,10 +76,10 @@ const getInstaInfo = () => {
           } = pic;
           returnObject.image.push({
             pic: media_type === "VIDEO" ? thumbnail_url : media_url,
-            caption: abridgeCaption(caption),
+            caption: editCaption(caption),
             date: timestamp.slice(5, 10) + "-" + timestamp.slice(0, 4),
             url: permalink,
-            children: children ? children.data : null,
+            children: children ? editChildren(children.data) : null,
           });
         });
         return;
@@ -73,7 +89,7 @@ const getInstaInfo = () => {
     .catch((err) => {
       const errorCode = err.response.data.error.code;
       //console.log(errorCode);
-      if(errorCode === 190){
+      if (errorCode === 190) {
         stopInstaInterval();
       }
       clearReturnObject(); // we don't want the expired info to remain, so we clear this variable
@@ -101,7 +117,7 @@ const isTimeUp = () => {
     });
 };
 
-const startInstaInterval = setInterval(() => {
+const startIntervalAction = function(){
   const { expires_in_five_days, is_expired } = instaUserLoginInfo;
   const todaysDate = new Date().getTime(); //today's date in milliseconds
   if (todaysDate > is_expired) {
@@ -113,11 +129,15 @@ const startInstaInterval = setInterval(() => {
   if (todaysDate > expires_in_five_days && todaysDate < is_expired) {
     isTimeUp();
   }
+}
+
+const startInstaInterval = setInterval(() => {
+  startIntervalAction();
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
 if (new Date().getTime() < is_expired) {
-  getInstaInfo(); 
-}; // generates list of images to pass to front-end app the moment the server is started, as long as current date does not exceed token expiration date
+  getInstaInfo();
+} // generates list of images to pass to front-end app the moment the server is started, as long as current date does not exceed token expiration date
 
 router.get("/", (req, res, next) => {
   if (returnObject) {
@@ -125,5 +145,3 @@ router.get("/", (req, res, next) => {
   }
   throw new Error("Error");
 });
-
-module.exports = router;
