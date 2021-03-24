@@ -56,8 +56,7 @@ const getInstaInfo = () => {
     "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url,media_type,thumbnail_url}";
   const instaCount = "&limit=5";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
-  axios
-    .get(`${url}${fields}${instaCount}${accessToken}`)
+  axios.get(`${url}${fields}${instaCount}${accessToken}`)
     .then((res) => {
       const data = res.data.data;
       if (data.length >= 5) {
@@ -85,10 +84,8 @@ const getInstaInfo = () => {
         return;
       }
       clearReturnObject();
-    })
-    .catch((err) => {
+    }).catch((err) => {
       const errorCode = err.response.data.error.code;
-      //console.log(errorCode);
       if (errorCode === 190) {
         stopInstaInterval();
       }
@@ -135,9 +132,7 @@ const startInstaInterval = setInterval(() => {
   startIntervalAction();
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
-if (new Date().getTime() < is_expired) {
-  getInstaInfo();
-} // generates list of images to pass to front-end app the moment the server is started, as long as current date does not exceed token expiration date
+startIntervalAction();
 
 router.get("/", (req, res, next) => {
   if (returnObject) {
@@ -145,3 +140,5 @@ router.get("/", (req, res, next) => {
   }
   throw new Error("Error");
 });
+
+module.exports = router;

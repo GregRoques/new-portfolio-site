@@ -297,12 +297,12 @@ class InstaGallery extends Component {
     return (
       <div className={cssInstagram.instaNotVisibleCenter}>
         <a
-          href="https://www.instagram.com/qtrmileatatime/"
+          href="https://www.instagram.com/gregroques/"
           rel="noopener noreferrer nofollow"
           target="_blank"
         >
           <img
-            alt="Instagram: @qtrmileatatime"
+            alt="Instagram: @gregroques"
             src="/images/instagramNotVisible.jpg"
           />
         </a>
