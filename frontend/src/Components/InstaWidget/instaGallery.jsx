@@ -211,7 +211,7 @@ class InstaGallery extends Component {
                   >
                     <img
                       className={cssInstagram.bigPicture}
-                      alt={"insta1"}
+                      alt={`insta_${[0 + picIndex]}`}
                       src={image[0 + picIndex].pic}
                     />
                     <div className={cssInstagram.onHover}>
@@ -228,7 +228,7 @@ class InstaGallery extends Component {
                   >
                     <img
                       className={cssInstagram.smallPicture}
-                      alt={"insta2"}
+                      alt={`insta_${[1 + picIndex]}`}
                       src={image[1 + picIndex].pic}
                     />
                     <div className={cssInstagram.onHover}>
@@ -243,7 +243,7 @@ class InstaGallery extends Component {
                   >
                     <img
                       className={cssInstagram.smallPicture}
-                      alt={"insta3"}
+                      alt={`insta_${[2 + picIndex]}`}
                       src={image[2 + picIndex].pic}
                     />
                     <div className={cssInstagram.onHover}>
@@ -260,7 +260,7 @@ class InstaGallery extends Component {
                   >
                     <img
                       className={cssInstagram.smallPicture}
-                      alt={"insta4"}
+                      alt={`insta_${[3 + picIndex]}`}
                       src={image[3 + picIndex].pic}
                     />
                     <div className={cssInstagram.onHover}>
@@ -275,7 +275,7 @@ class InstaGallery extends Component {
                   >
                     <img
                       className={cssInstagram.smallPicture}
-                      alt={"insta5"}
+                      alt={`insta_${[4 + picIndex]}`}
                       src={image[4 + picIndex].pic}
                     />
                     <div className={cssInstagram.onHover}>
