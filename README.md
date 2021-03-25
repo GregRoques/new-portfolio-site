@@ -15,7 +15,15 @@ Revamped personal website (www.GregRoques.com).
     - trackingID (for Google Analytics)
 
 ### Back-end – Util Folder
-- insta.js (link to access Instagram long term token and token's expiration date)
+- instaToken.json (link to access Instagram long term token and token's expiration date); structure looks like this:
+```
+{
+  "access_token": "STRING",
+  "token_type": "bearer",
+  "expires_in_five_days": INTEGER (time in milliseconds),
+  "is_expired": INTEGER (time in milliseconds)
+}
+```
 - linkedInList.js (currated list of LinkedIn recommendations)
 
 

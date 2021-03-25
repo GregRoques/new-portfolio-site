@@ -1,16 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const instaDefaultLongTermToken = require("../util/insta");
-const { token, expiresInFiveDays, isExpired } = instaDefaultLongTermToken;
+const fs = require('fs');
+const instaJson = require("../util/instaToken.json");
 
 let instaUserLoginInfo = {
-  access_token: token,
-  token_type: "bearer",
-  expires_in_five_days: !isNaN(expiresInFiveDays)
-    ? Number(expiresInFiveDays)
-    : 0,
-  is_expired: !isNaN(isExpired) ? Number(isExpired) : 0,
+  access_token: instaJson.access_token || "",
+  token_type: instaJson.token_type || "",
+  expires_in_five_days: instaJson.expires_in_five_days && !isNaN(instaJson.expires_in_five_days) ? Number(instaJson.expires_in_five_days) : 0,
+  is_expired: instaJson.is_expired && !isNaN(instaJson.is_expired) ? Number(instaJson.is_expired) : 0
 };
 
 let returnObject = "";
@@ -94,7 +92,7 @@ const getInstaInfo = () => {
 };
 
 const isTimeUp = () => {
-  const refreshUrl = `https://graph.injstagram.com/refresh_access_token`;
+  const refreshUrl = `https://graph.instagram.com/refresh_access_token`;
   const grantType = `grant_type=ig_refresh_token`;
   const accessToken = `access_token=${instaUserLoginInfo.access_token}`;
   axios
@@ -103,11 +101,13 @@ const isTimeUp = () => {
       const todayPlusFiftyFiveDays = new Date().getTime() + 4752000000; //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
       const todayPlusSixtyDays = new Date().getTime() + 5184000000; // your query will return a expires_in field, but you need to convert it to milliseconds from seconds and add it to todays date...this is just easier
       const refreshedLoginInfo = res.data;
-      instaUserLoginInfo = {
+      const instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
+        token_type: refreshedLoginInfo.token_type,
         expires_in_five_days: todayPlusFiftyFiveDays,
         is_expired: todayPlusSixtyDays,
       };
+      fs.writeFileSync("../util/instaToken.json", JSON.stringify(instaUserLoginInfo))
     })
     .catch((err) => {
       console.log(err);
