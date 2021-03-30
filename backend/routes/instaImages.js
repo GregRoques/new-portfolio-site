@@ -98,8 +98,8 @@ const isTimeUp = () => {
   axios
     .get(`${refreshUrl}?${grantType}&${accessToken}`)
     .then((res) => {
-      const todayPlusFiftyFiveDays = new Date().getTime() + 4752000000; //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
-      const todayPlusSixtyDays = new Date().getTime() + 5184000000; // your query will return a expires_in field, but you need to convert it to milliseconds from seconds and add it to todays date...this is just easier
+      const todayPlusFiftyFiveDays = new Date().setDate(new Date().getDate() + 55); //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
+      const todayPlusSixtyDays = new Date().setDate(new Date().getDate() + 60); // your query will return a expires_in field, but you need to convert it to milliseconds from seconds and add it to todays date...this is just easier
       const refreshedLoginInfo = res.data;
       const instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
