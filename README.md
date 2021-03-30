@@ -13,6 +13,10 @@ Revamped personal website (www.GregRoques.com).
 - BackendAPI.js
     - Includes grAPI (to access backend)
     - trackingID (for Google Analytics)
+```
+export const grAPI = "MY_WEBSITE"
+export const trackingId = "MY_GOOGLE_ANALYTICS_TRACKING_ID";
+```
 
 ### Back-end – Util Folder
 - instaToken.json (link to access Instagram long term token and token's expiration date); structure looks like this:
@@ -24,8 +28,19 @@ Revamped personal website (www.GregRoques.com).
   "is_expired": INTEGER (time in milliseconds)
 }
 ```
-- linkedInList.js (currated list of LinkedIn recommendations)
 
+- linkedInList.js (currated list of LinkedIn recommendations)
+```
+[
+  {
+    name: "STRING",
+    title: "STRING",
+    workedWith: "STRING",
+    recommendation: "STRING",
+  },
+    etc.
+]  
+```
 
 # Website Demo Video
 
