@@ -11,11 +11,20 @@ Revamped personal website (www.GregRoques.com).
 ## Ignored Files
 ### Front-end – Dependency Folder:
 - BackendAPI.js
-    - Includes grAPI (to access backend)
+    - Includes grAPI (to access my backend server)
     - trackingID (for Google Analytics)
 ```
 export const grAPI = "MY_WEBSITE"
 export const trackingId = "MY_GOOGLE_ANALYTICS_TRACKING_ID";
+```
+
+- MyConact.js
+    - Phone and Email; hidden to protect my contacts in Git
+```
+const myContactInfo = {
+    phone: "PHONE_NUMBER",
+    email: "EMAIL"
+}
 ```
 
 ### Back-end – Util Folder

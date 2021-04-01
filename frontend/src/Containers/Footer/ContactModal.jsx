@@ -3,6 +3,7 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import Email from '@material-ui/icons/Email';
 import Phone from '@material-ui/icons/Phone';
 import cssFooterModal from './contactModal.module.css';
+import contactInfo from '../../Dependencies/MyContact'
 
 //NOTE: NO PHONE # IN PLACE RIGHT NOW. CHECK PHONE PHONE # LINE IF YOU USE THIS FOOTER.
 
@@ -15,8 +16,8 @@ const ResumeModal = ({ close, isShown }) => {
                     <span className={cssFooterModal.contactTitle}>Contact</span>
                     <div>
                         <div className={cssFooterModal.contactFormat}> <LocationOn className={cssFooterModal.glyphs} /> Atlanta, GA</div>
-                        <div className={cssFooterModal.contactFormat}><a href="tel:‪404-913-2832‬"><Phone className={cssFooterModal.glyphs} />  ‪404.913.2832‬</a></div>
-                        <div className={cssFooterModal.contactFormat}><a href="mailto:greg@gregroques.com"> <Email className={cssFooterModal.glyphs} />  Greg@GregRoques.com</a></div>
+                        <div className={cssFooterModal.contactFormat}><a href={`tel:‪${contactInfo.phone}`}><Phone className={cssFooterModal.glyphs} />  ‪{contactInfo.phone}</a></div>
+                        <div className={cssFooterModal.contactFormat}><a href={`mailto:${contactInfo.email}`}> <Email className={cssFooterModal.glyphs} />  {contactInfo.email}</a></div>
                     </div>
                 </div>
             </div>
