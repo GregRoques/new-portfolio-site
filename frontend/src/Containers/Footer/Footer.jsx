@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import cssFooter from './footer.module.css';
 import ContactModal from './ContactModal';
-import { Contact, LinkedIn, GitHub, Resume } from './FooterLinks'
+import { Contact, GitHub, LinkedIn, Resume } from './FooterLinks'
 
 class Footer extends Component{
     state = {

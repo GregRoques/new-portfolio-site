@@ -51,7 +51,7 @@ const editCaption = (caption) => {
 const getInstaInfo = () => {
   const url = `https://graph.instagram.com/me/media`;
   const fields =
-    "?fields=media_url,permalink,caption,timestamp,media_type,username,children{media_url,media_type,thumbnail_url}";
+    "?fields=media_url,permalink,caption,timestamp,media_type,thumbnail_url,username,children{media_url,media_type,thumbnail_url}";
   const instaCount = "&limit=5";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
   axios.get(`${url}${fields}${instaCount}${accessToken}`)
