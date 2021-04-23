@@ -1,5 +1,5 @@
 import React from "react";
-import cssDesign from './design.module.css'
+import cssDesign from './media.module.css'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from "react-router-dom";
 import {musicPhotos} from '../../Dependencies/Design_MusicPhotos'

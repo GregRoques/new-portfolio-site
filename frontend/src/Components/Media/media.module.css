@@ -238,38 +238,7 @@
   cursor: pointer;
 }
 
-/* ================================================================= Testmonials...home page */
 
-.testemonial{
-  color: #9A9A9A;
-  margin-bottom: 1rem;
-  font-size: 18px;
-}
-
-.testmonialDisclaimer{
-  text-align: center;
-  color: #4D95B4;
-  margin-bottom: 1rem;
-  font-style:italic;
-  font-size: 20px;
-}
-
-.recommender1{
-  text-indent: 1rem;
-  color: #4C61B2;
-  font-weight:bold;
-}
-.recommender2{
-  text-indent: 1rem;
-  color: #4D95B4;
-  font-weight:bold;
-  font-style:italic;
-}
-
-.testemonialContainer{
-  /* padding: 0px 3rem; */
-  font-size: 1rem;
-}
 
 /* ============================================ Responsiveness */
 
@@ -355,16 +324,6 @@
     width:175px;
     font-size: 1rem;
     font-weight: bold;
-  }
-
-  .testemonial{
-    color: #9A9A9A;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-  }
-
-  .testmonialDisclaimer{
-    font-size: 1rem;
   }
 }
 

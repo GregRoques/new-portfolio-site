@@ -5,7 +5,7 @@
     font-style: oblique;
     font-weight: bolder;
     color: #4C61B2;
-    font-size: 3rem; 
+    font-size: 4rem; 
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -144,6 +144,13 @@
 
 }
 
+@media screen and (max-width: 949px){
+   .techHeader{
+      font-size:3.5rem;
+    }
+
+}
+
 @media screen and (max-width: 900px){
 
   .bioGrid{
@@ -183,9 +190,6 @@
   .skillIcon{
     height:55px
   }
-
-
-
 }
 
 @media screen and (max-width: 750px){
@@ -212,10 +216,17 @@
   .aboutContainers{
     width: 100%
   }
-
+  .techHeader{
+    font-size:2.5rem;
+  }
 
 }
 
+@media screen and (max-width: 449px){
+  .techHeader{
+    font-size:2rem;
+  }
+}
 
 
 @media screen and (max-width: 400px){

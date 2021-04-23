@@ -1,0 +1,44 @@
+/* ================================================================= Testmonials...home page */
+  
+.testemonialContainer{
+  text-align: center;
+  color: #9A9A9A;
+  font-size: 1rem;
+}
+
+.testemonial{
+    color: #9A9A9A;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  
+  .testmonialDisclaimer{
+    text-align: center;
+    color: #4D95B4;
+    margin-bottom: 1rem;
+    font-style:italic;
+    font-size: 20px;
+  }
+  
+  .recommender1{
+    color: #4C61B2;
+    font-weight:bold;
+  }
+  .recommender2{
+    color: #4D95B4;
+    font-weight:bold;
+    font-style:italic;
+  }
+
+  @media screen and (max-width: 449px){
+
+    .testemonial{
+      color: #9A9A9A;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+  
+    .testmonialDisclaimer{
+      font-size: 1rem;
+    }
+  }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import cssFooter from './footer.module.css';
 import ContactModal from './ContactModal';
-import { Contact, GitHub, LinkedIn, Resume } from './FooterLinks'
+import { Contact, LinkedIn, Resume } from './FooterLinks'
 
 class Footer extends Component{
     state = {
@@ -30,7 +30,6 @@ class Footer extends Component{
                         isShown={isContactOpen}
                     />
                     <LinkedIn/>
-                    <GitHub/>
                     <Resume/>
                 </div>
             </div>

@@ -1,17 +1,12 @@
 import React from "react";
-import cssPortfolio from "./portfolio.module.css";
+import cssPortfolio from "./web.module.css";
 import Carousel from 'react-bootstrap/Carousel';
-import {portfolioSamples} from './Port_Dependencies'
+import {portfolioSamples} from './Web_Dependencies'
 
 const Portfolio = () =>{
     return(
         <div className={cssPortfolio.fadeIn}>
-            <div className={cssPortfolio.artDirection}>Portfolio</div>
-            <div className={cssPortfolio.portfolioProjectDescriptions}>
-                Most of my professional work as a full-time software developer over the past year-and-a-half has been for a website exclusively accessible to employees and clients of my company – hence, I am unable to showcase this work on my personal webpage. However, here are two freelance projects, and one personal project, that I developed and deployed during 2020.
-                <br/><br/>
-                You can see more of my personal projects, as well as indepedent learning and certification pursuits, on my <a href="https://github.com/GregRoques" rel="noopener noreferrer" target="_blank">GitHub page</a>.
-            </div>
+            <div className={cssPortfolio.artDirection}>Web</div>
             <div className={cssPortfolio.portfolioDisplayContainerLarge}>
                 <Carousel className={cssPortfolio.photographyContainer} indicators={false}>
                     {portfolioSamples.map(sample=>{
@@ -27,23 +22,27 @@ const Portfolio = () =>{
                                         <h2>{sample.name}</h2>
                                         <p>
                                             {sample.description}<br/>
-                                        <a 
-                                            className={cssPortfolio.portfolioCarouselHyperlink}
-                                            href={sample.demo}
-                                            target ="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            Demo
-                                        </a>
-                                        <span style={{margin: "0px 8px", color: "white"}}>|</span>
-                                        <a 
-                                            className={cssPortfolio.portfolioCarouselHyperlink}
-                                            href={sample.readMe}
-                                            target ="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            GitHub
-                                        </a>
+                                            {sample.demo_type ? 
+                                                <span>
+                                                    <a 
+                                                        className={cssPortfolio.portfolioCarouselHyperlink}
+                                                        href={sample.demo}
+                                                        target ="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        {sample.demo_type}
+                                                    </a>
+                                                    <span style={{margin: "0px 8px", color: "white"}}>|</span>
+                                                </span>
+                                            : "" }
+                                            <a 
+                                                className={cssPortfolio.portfolioCarouselHyperlink}
+                                                href={sample.readMe}
+                                                target ="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                GitHub
+                                            </a>
                                         </p>
                                     </div>
                                 </Carousel.Caption>
@@ -61,16 +60,20 @@ const Portfolio = () =>{
                                 </div>
                                 <div className={cssPortfolio.portfolioSmallimgDescription}>{sample.name}</div>
                                 <div className={cssPortfolio.portfolioSmallCaptionContainer}>
-                                                {sample.description}<br/>
-                                    <a 
-                                        className={cssPortfolio.portfolioSmallHyperlink}
-                                        href={sample.demo}
-                                        target ="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        Demo
-                                    </a>
-                                    <span style={{margin: "0px 8px", color: "white"}}>|</span>
+                                    {sample.description}<br/>
+                                    {sample.demo_type ? 
+                                    <span>
+                                        <a 
+                                            className={cssPortfolio.portfolioSmallHyperlink}
+                                            href={sample.demo}
+                                            target ="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {sample.demo_type}
+                                        </a>
+                                        <span style={{margin: "0px 8px", color: "white"}}>|</span>
+                                    </span>
+                                    : "" }
                                     <a 
                                         className={cssPortfolio.portfolioSmallHyperlink}
                                         href={sample.readMe}
@@ -86,6 +89,9 @@ const Portfolio = () =>{
                             </div>
                         )
                     })}
+            </div>
+            <div className={cssPortfolio.portfolioProjectDescriptions}>
+                Additional works can be found on my <a href="https://github.com/GregRoques" rel="noopener noreferrer" target="_blank">GitHub page</a>.
             </div>
         </div>
     )

@@ -1,0 +1,142 @@
+
+.artDirection{
+    font-family: sans-serif;
+    font-style: oblique;
+    font-size: 4rem;
+    text-align:center;
+    font-weight: bolder;
+    color: #4C61B2;
+    margin-top:3rem;
+    margin-bottom:2rem;
+  }
+
+.magGrid{
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(2, 30rem);
+  }
+  
+  
+  .mags{
+    display:flex;
+    margin:0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: cover;
+    vertical-align: center;
+  }
+  
+  
+  .mags IMG{
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .imgDescription{
+    width:275px;
+    position:absolute;
+    color: white;
+    font-family: serif;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-shadow: 1.25px 1.25px 1px black;
+    visibility: hidden;
+  }
+  
+  
+  .imgDescription:hover{
+    cursor:pointer;
+  }
+  
+  
+  .mags:hover IMG{
+    filter: grayscale(75%) blur(0.75px) opacity(75%);
+  }
+  
+  .mags:hover .imgDescription{
+    visibility: visible;
+  }
+
+  /* ============================================ Responsiveness */
+
+
+@media screen and (max-width: 1149px){
+    .magGrid{
+      grid-template-columns: repeat(2, 25rem);
+    }
+  }
+  
+  
+  @media screen and (max-width: 949px){
+    .magGrid{
+      grid-template-columns: repeat(2, 20rem);
+    }
+    .artDirection{
+      font-size:3.25rem;
+      /* margin:2rem; */
+    }
+    .imgDescription{
+      font-size: 1.15rem;
+      font-weight: bold;
+      text-shadow: 1px 1px .9px black;
+    }
+  
+  }
+  
+  
+  @media screen and (max-width: 750px){
+  
+    .magGrid{
+      grid-template-columns: repeat(2, 17rem);
+    }
+  
+    .artDirection{
+      font-size:2.5rem;
+    }
+
+    .imgDescription{
+      width:250px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  
+  
+  }
+  
+  @media screen and (max-width: 686px){
+    .magGrid{
+      grid-template-columns: repeat(auto-fill, 20rem);
+    }
+  
+    .imgDescription{
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+  }
+
+  
+  @media screen and (max-width: 449px){
+  
+    .magGrid{
+      grid-template-columns: repeat(auto-fill, 14rem);
+    }
+  
+    .artDirection{
+      font-size:2rem;
+      margin-bottom:1rem;
+    }
+  
+    .imgDescription{
+      width:175px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+  }
+  

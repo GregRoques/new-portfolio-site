@@ -3,10 +3,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // HOC
 import Layout from "./Containers/Layout/Layout";
-
 // Visitor Pages
-import Home from './Components/Home/Home';
-import Media from './Components/Media/Design' 
+import Design from './Components/Design/Design';
+import Media from './Components/Media/Media'; 
 import Photography from './Components/Photography/Photography'
 import Pictures from './Components/Photography/Pictures'
 
@@ -16,7 +15,7 @@ class App extends Component {
   NoPage = () =>{
     return(
       <div>
-          <Redirect push to={Home}/>
+          <Redirect push to={Media}/>
       </div>
     )
   }
@@ -26,12 +25,12 @@ class App extends Component {
       <div>
          <Layout >
            <Switch>
-                <Route path="/" exact component={Home}/>
-                <Route exact path="/media" component={Media}/>
+                <Route path="/" exact component={Media}/>
+                <Route exact path="/design" component={Design}/>
                 <Route exact path="/photography" component={Photography}/>
                 <Route exact path="/photography/:album" component={Pictures}/>
                 <Route exact path='/resume' component={() => { 
-                    window.location.href = "https://www.gregroques.com/images/socialIcons/Resume.pdf"; 
+                    window.location.href = "https://www.gregroques.com/Resume.pdf"; 
                     return false;
                 }}/>
                 <Route component ={this.NoPage}/>

@@ -4,7 +4,7 @@
 .artDirection{
   font-family: sans-serif;
   font-style: oblique;
-  font-size: 3rem;
+  font-size: 4rem;
   text-align:center;
   font-weight: bolder;
   color: #4C61B2;;
@@ -18,6 +18,7 @@
  color: #9A9A9A;
  font-size: 1rem;
  margin: 0 1rem 3rem 1rem;
+ text-align: center;
 }
 
 .portfolioCarouselCenter{
@@ -172,6 +173,9 @@
     font-weight: bold;
     text-shadow: 1px 1px .9px black;
   }
+   .artDirection{
+      font-size:3.5rem;
+    }
 
 }
 
@@ -198,6 +202,9 @@
 }
 
 @media screen and (max-width: 749px){
+  .artDirection{
+    font-size:2.5rem;
+  }
   .portfolioDisplayContainerSmall{
       display:block;
   }
@@ -216,6 +223,10 @@
 }
 
 @media screen and (max-width: 449px){
+  .artDirection{
+    font-size:2rem;
+    margin-bottom:1rem;
+  }
   .imgDescription{
     width:175px;
     font-size: 1rem;

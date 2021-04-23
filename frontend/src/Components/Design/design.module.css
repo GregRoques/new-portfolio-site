@@ -1,0 +1,60 @@
+/* Props Children Fade-In */
+.fadeIn{
+    animation-name: fadeIn;
+    animation-duration:2s;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+.artDirection{
+    font-family: sans-serif;
+    font-style: oblique;
+    font-size: 4rem;
+    text-align:center;
+    font-weight: bolder;
+    color: #4C61B2;
+    margin-top:3rem;
+    margin-bottom:2rem;
+  }
+  
+  .designDescriptions{
+    color: #9A9A9A;
+    font-size: 1rem;
+    margin: 0 1rem 3rem 1rem;
+   }
+
+
+@media screen and (max-width: 949px){
+    .artDirection{
+      font-size:3.25rem;
+      /* margin:2rem; */
+    }
+  }
+  
+  
+  @media screen and (max-width: 750px){
+    .artDirection{
+      font-size:2.5rem;
+    }
+  }
+  
+ 
+
+  
+  @media screen and (max-width: 449px){
+    .artDirection{
+      font-size:2rem;
+      margin-bottom:1rem;
+    }
+  }
+  
+
+  
+  

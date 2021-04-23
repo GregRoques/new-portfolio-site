@@ -1,6 +1,6 @@
 import React from 'react'
 import { articleList } from "../../Dependencies/Design_ArticleList";
-import cssDesign from './design.module.css';
+import cssDesign from './media.module.css';
 import ImageLoader from '../ImgLoader/imgLoader';
 
 const IssueList = ({art}) => {

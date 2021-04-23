@@ -13,13 +13,9 @@ function fixNum(randNum){
 
 function getRandomInt(isEven) {
   let randNum = Math.floor(Math.random() * Math.floor(maxValue));
-  
   if(isEven){
-    if(randNum %2 === 0){
-      return randNum
-    } else{
-      return fixNum(randNum)
-    }
+    if(randNum %2 === 0) return randNum
+    return fixNum(randNum)
   }
   if(!isEven){
     if(randNum %2 !== 0) return randNum
@@ -28,15 +24,13 @@ function getRandomInt(isEven) {
  }
 
 
-router.get("/", (req, res) => {
-  
-  randIntEven = getRandomInt(true),
-  randIntOdd = getRandomInt(false)
+router.post("/", (req, res) => {
+  const type = req.body.type;
+  const isTypeEven = type.toLowerCase() === 'even';
+  const randInt = getRandomInt(isTypeEven),
 
-  const recommendations = [
-    allRecs[randIntEven],
-    allRecs[randIntOdd]
-  ]
+  recommendations = allRecs[randInt]
+  
   //console.log(recommendations)
   res.json(recommendations);
 
