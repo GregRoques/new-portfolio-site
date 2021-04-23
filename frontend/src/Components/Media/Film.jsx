@@ -13,6 +13,11 @@ const videoLinks = [
         description:"Videos I created or directed for the American Red Cross of Louisiana's various social media accounts."
     },
     {
+        title: "Where Y'at",
+        video:"videoseries?list=PLM2GdNHvfSCFdCZM_rVoFJvLuYEMb3vMz",
+        description:"Videos I created or directed for the New Orleans' Where Y'at Magazine' YouTube channel."
+    },
+    {
         title: 'Short Film',
         video: "seAiVYhv3ls",
         description: 'Below is my favorite of 48 Hour Film Fest efforts, a parody of the increasingly dark and mature nature of super hero films around that time.'
