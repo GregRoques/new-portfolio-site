@@ -15,7 +15,7 @@ const videoLinks = [
     {
         title: "Where Y'at",
         video:"videoseries?list=PLM2GdNHvfSCFdCZM_rVoFJvLuYEMb3vMz",
-        description:"Videos I created or directed for the New Orleans' Where Y'at Magazine' YouTube channel."
+        description:"Videos I created or directed for the Where Y'at Magazine's YouTube channel."
     },
     {
         title: 'Short Film',
