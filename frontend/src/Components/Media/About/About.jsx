@@ -15,8 +15,10 @@ const About = () => {
                     <div></div> 
                     I am an Atlanta, GA based marketing and communications professional with more than 10 years media experience, 
                     including more than 8 years as an <Link to='/design'>editor/art director</Link> for 
-                    both internal and external corporate and media publications; I also bring an additional 
-                    2+ years serving as a disaster communications manager.
+                    both internal and external corporate and media publications. 
+                    I also bring an additional 2+ years serving as a disaster 
+                    communications manager, including preparing board members and senior leadership 
+                    for regional and national interviews and presentations.
                     <br/><br/>
                     A New Orleans native, I am an avid long-distance runner and 
                     enjoy <Link to='/photography'>photography</Link>, music, and 
@@ -24,7 +26,7 @@ const About = () => {
                     active with the Anti-Defamation League — Southeast chapter, and am a 
                     regular contributor to <a href='https://www.whereyat.com' rel="noopener noreferrer" target="_blank"><i>Where Y’at 
                     Magazine</i></a>. Samples of my writing and photography 
-                    contributions to the later can be found below.
+                    contributions to the latter can be found below.
                 </div>     
             </div>
         </div>
