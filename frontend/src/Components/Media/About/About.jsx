@@ -13,7 +13,7 @@ const About = () => {
             <div className='whoAmIPadding'>
                 <div className={cssAbout.aboutMeText}>
                     <div></div> 
-                    I am an Atlanta, GA based communications professional with more than 10 years media experience, 
+                    I am an Atlanta, GA based marketing and communications professional with more than 10 years media experience, 
                     including more than 8 years as an <Link to='/design'>editor/art director</Link> for 
                     both internal and external corporate and media publications; I also bring an additional 
                     2+ years serving as a disaster communications manager.
