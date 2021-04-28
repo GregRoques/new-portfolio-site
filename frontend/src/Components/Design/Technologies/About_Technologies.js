@@ -15,11 +15,12 @@ export const mySkills = {
             'html5.png',
             'css3.png',
             'sass.png',
-            'javascript.png'
+            'javascript.png',
+            'angularjs.png'
         ]
     },
     backEnd: {  
-        name: "Stack",
+        name: "Full Stack",
         tech: [
             'mysql.png',
             'express.png',
@@ -35,8 +36,7 @@ export const mySkills = {
         tech: [
             'google_analytics.png',
             'AWS_amazon_web_services.png',
-            'postman.png',
-            'angularjs.png'
+            'postman.png'
         ]
     }
 }
