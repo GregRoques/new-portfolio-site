@@ -11,8 +11,7 @@ class InstaGallery extends Component {
     picIndex: 0,
     selectedPic: 0,
     selectedPicIndex: 0,
-    display: false,
-    isLoading: true,
+    display: false
   };
 
   componentDidMount = () => {
@@ -35,11 +34,6 @@ class InstaGallery extends Component {
       .catch(() => {
         return;
       })
-      .finally(() => {
-        this.setState({
-          isLoading: false,
-        });
-      });
   };
 
   clickL = () => {
@@ -294,33 +288,14 @@ class InstaGallery extends Component {
     );
   };
 
-  InstaBodyError = () => {
-    return (
-      <div className={cssInstagram.instaNotVisibleCenter}>
-        <a
-          href="https://www.instagram.com/gregroques/"
-          rel="noopener noreferrer nofollow"
-          target="_blank"
-        >
-          <img
-            alt="Instagram: @gregroques"
-            src="/images/instagramNotVisible.jpg"
-          />
-        </a>
-      </div>
-    );
-  };
-
   render() {
-    const { instaDisplay, isLoading } = this.state;
-    const { InstaBody, InstaBodyError, InstaPopUp } = this;
-    return instaDisplay && !isLoading ? (
+    const { instaDisplay } = this.state;
+    const { InstaBody, InstaPopUp } = this;
+    return instaDisplay ? (
       <div>
         <InstaPopUp />
         <InstaBody />
       </div>
-    ) : !instaDisplay && !isLoading ? (
-      <InstaBodyError />
     ) : (
       ""
     );

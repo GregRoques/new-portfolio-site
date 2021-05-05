@@ -8,6 +8,7 @@ node_modules
 /frontend/public/images/tn_photography
 /frontend/src/Dependencies/BackendAPI.js
 /frontend/src/Dependencies/MyContact.js
+/frontend/public/Resume.pdf
 
 /backend/util
 
