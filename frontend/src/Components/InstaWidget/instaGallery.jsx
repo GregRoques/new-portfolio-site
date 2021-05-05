@@ -7,7 +7,7 @@ class InstaGallery extends Component {
   state = {
     user: {},
     image: [],
-    instaDisplay: false,
+    instaDisplay: "",
     picIndex: 0,
     selectedPic: 0,
     selectedPicIndex: 0,
@@ -30,21 +30,17 @@ class InstaGallery extends Component {
             userName: userName,
           },
           image: image,
-          instaDisplay: true,
+          instaDisplay: "widget",
         });
       })
       .catch((err) => {
         if(err.instaFollowRedirect !== "N/A"){
           this.setState({
-            errorRedirect: err.instaFollowRedirect
+            errorRedirect: err.instaFollowRedirect,
+            instaDisplay: "error"
           })
         }
       })
-      .finally(() => {
-        this.setState({
-          isLoading: false,
-        });
-      });
   };
 
   clickL = () => {
@@ -318,14 +314,14 @@ class InstaGallery extends Component {
   };
 
   render() {
-    const { instaDisplay, isLoading, errorRedirect } = this.state;
+    const { instaDisplay } = this.state;
     const { InstaBody, InstaBodyError, InstaPopUp } = this;
-    return instaDisplay && !isLoading ? (
+    return instaDisplay === "widget" ? (
       <div>
         <InstaPopUp />
         <InstaBody />
       </div>
-    ) : !instaDisplay && !isLoading && errorRedirect ? (
+    ) : instaDisplay === "error" ? (
       <InstaBodyError />
     ) : (
       ""
