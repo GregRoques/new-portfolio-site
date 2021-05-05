@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import cssInstagram from "./instaGallery.module.css";
-import { grAPI } from "../../Dependencies/BackendAPI";
+import { grAPI } from "../../../Dependencies/BackendAPI";
 
 class InstaGallery extends Component {
   state = {
@@ -11,7 +11,9 @@ class InstaGallery extends Component {
     picIndex: 0,
     selectedPic: 0,
     selectedPicIndex: 0,
-    display: false
+    display: false,
+    isLoading: true,
+    errorRedirect: ""
   };
 
   componentDidMount = () => {
@@ -31,9 +33,18 @@ class InstaGallery extends Component {
           instaDisplay: true,
         });
       })
-      .catch(() => {
-        return;
+      .catch((err) => {
+        if(err.instaFollowRedirect !== "N/A"){
+          this.setState({
+            errorRedirect: err.instaFollowRedirect
+          })
+        }
       })
+      .finally(() => {
+        this.setState({
+          isLoading: false,
+        });
+      });
   };
 
   clickL = () => {
@@ -288,14 +299,34 @@ class InstaGallery extends Component {
     );
   };
 
+  InstaBodyError = () => {
+    const { errorRedirect } = this.state;
+    return (
+      <div className={cssInstagram.instaNotVisibleCenter}>
+        <a
+          href={`https://www.instagram.com/${errorRedirect}/`}
+          rel="noopener noreferrer nofollow"
+          target="_blank"
+        >
+          <img
+            alt={`Instagram: @${errorRedirect}`}
+            src="/images/instagramNotVisible.jpg"
+          />
+        </a>
+      </div>
+    );
+  };
+
   render() {
-    const { instaDisplay } = this.state;
-    const { InstaBody, InstaPopUp } = this;
-    return instaDisplay ? (
+    const { instaDisplay, isLoading, errorRedirect } = this.state;
+    const { InstaBody, InstaBodyError, InstaPopUp } = this;
+    return instaDisplay && !isLoading ? (
       <div>
         <InstaPopUp />
         <InstaBody />
       </div>
+    ) : !instaDisplay && !isLoading && errorRedirect ? (
+      <InstaBodyError />
     ) : (
       ""
     );

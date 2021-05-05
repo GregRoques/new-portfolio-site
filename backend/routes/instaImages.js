@@ -1,14 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const fs = require('fs');
+const fs = require("fs");
 const instaJson = require("../util/instaToken.json");
 
 let instaUserLoginInfo = {
   access_token: instaJson.access_token || "",
   token_type: instaJson.token_type || "",
-  expires_in_five_days: instaJson.expires_in_five_days && !isNaN(instaJson.expires_in_five_days) ? Number(instaJson.expires_in_five_days) : 0,
-  is_expired: instaJson.is_expired && !isNaN(instaJson.is_expired) ? Number(instaJson.is_expired) : 0
+  expires_in_five_days:
+    instaJson.expires_in_five_days && !isNaN(instaJson.expires_in_five_days)
+      ? Number(instaJson.expires_in_five_days)
+      : 0,
+  is_expired:
+    instaJson.is_expired && !isNaN(instaJson.is_expired)
+      ? Number(instaJson.is_expired)
+      : 0,
+  user_name: instaJson.user_name || "",
 };
 
 let returnObject = "";
@@ -34,6 +41,21 @@ const editChildren = (children) => {
   return childrenImages;
 };
 
+const checkDataName = (newUserName) => {
+  const { expires_in_five_days } = instaUserLoginInfo;
+  const todaysDate = new Date().getTime();
+  if (
+    newUserName !== instaUserLoginInfo.user_name &&
+    todaysDate < expires_in_five_days
+  ) {
+    instaUserLoginInfo.user_name = newUserName;
+    fs.writeFileSync(
+      "../util/instaToken.json",
+      JSON.stringify(instaUserLoginInfo)
+    );
+  }
+}; // update redirect link if error thrown
+
 const editCaption = (caption) => {
   const trimCaption = caption.trim();
   if (trimCaption.length < 76) return trimCaption;
@@ -54,9 +76,11 @@ const getInstaInfo = () => {
     "?fields=media_url,permalink,caption,timestamp,media_type,thumbnail_url,username,children{media_url,media_type,thumbnail_url}";
   const instaCount = "&limit=5";
   const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
-  axios.get(`${url}${fields}${instaCount}${accessToken}`)
+  axios
+    .get(`${url}${fields}${instaCount}${accessToken}`)
     .then((res) => {
       const data = res.data.data;
+      checkDataName(data[0].username);
       if (data.length >= 5) {
         returnObject = {};
         returnObject.image = [];
@@ -82,7 +106,8 @@ const getInstaInfo = () => {
         return;
       }
       clearReturnObject();
-    }).catch((err) => {
+    })
+    .catch((err) => {
       const errorCode = err.response.data.error.code;
       if (errorCode === 190) {
         stopInstaInterval();
@@ -98,23 +123,29 @@ const isTimeUp = () => {
   axios
     .get(`${refreshUrl}?${grantType}&${accessToken}`)
     .then((res) => {
-      const todayPlusFiftyFiveDays = new Date().setDate(new Date().getDate() + 55); //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
+      const todayPlusFiftyFiveDays = new Date().setDate(
+        new Date().getDate() + 55
+      ); //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
       const todayPlusSixtyDays = new Date().setDate(new Date().getDate() + 60); // your query will return a expires_in field, but you need to convert it to milliseconds from seconds and add it to todays date...this is just easier
       const refreshedLoginInfo = res.data;
-      const instaUserLoginInfo = {
+      instaUserLoginInfo = {
         access_token: refreshedLoginInfo.access_token,
         token_type: refreshedLoginInfo.token_type,
         expires_in_five_days: todayPlusFiftyFiveDays,
         is_expired: todayPlusSixtyDays,
+        user_name: returnObject.userName || "",
       };
-      fs.writeFileSync("../util/instaToken.json", JSON.stringify(instaUserLoginInfo))
+      fs.writeFileSync(
+        "../util/instaToken.json",
+        JSON.stringify(instaUserLoginInfo)
+      );
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-const startIntervalAction = function(){
+const startIntervalAction = function () {
   const { expires_in_five_days, is_expired } = instaUserLoginInfo;
   const todaysDate = new Date().getTime(); //today's date in milliseconds
   if (todaysDate > is_expired) {
@@ -126,7 +157,7 @@ const startIntervalAction = function(){
   if (todaysDate > expires_in_five_days && todaysDate < is_expired) {
     isTimeUp();
   }
-}
+};
 
 const startInstaInterval = setInterval(() => {
   startIntervalAction();
@@ -138,7 +169,11 @@ router.get("/", (req, res, next) => {
   if (returnObject) {
     return res.json(returnObject);
   }
-  throw new Error("Error");
+  throw new Error({
+    error: "Error",
+    instaFollowRedirect:
+      !instaUserLoginInfo.user_name || !instaUserLoginInfo.access_token
+        ? "N/A"
+        : instaUserLoginInfo.userName,
+  });
 });
-
-module.exports = router;
