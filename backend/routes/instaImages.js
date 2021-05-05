@@ -1,305 +1,144 @@
-import React, { Component } from "react";
-import axios from "axios";
-import cssInstagram from "./instaGallery.module.css";
-import { grAPI } from "../../Dependencies/BackendAPI";
+const express = require("express");
+const router = express.Router();
+const axios = require("axios");
+const fs = require('fs');
+const instaJson = require("../util/instaToken.json");
 
-class InstaGallery extends Component {
-  state = {
-    user: {},
-    image: [],
-    instaDisplay: false,
-    picIndex: 0,
-    selectedPic: 0,
-    selectedPicIndex: 0,
-    display: false
-  };
+let instaUserLoginInfo = {
+  access_token: instaJson.access_token || "",
+  token_type: instaJson.token_type || "",
+  expires_in_five_days: instaJson.expires_in_five_days && !isNaN(instaJson.expires_in_five_days) ? Number(instaJson.expires_in_five_days) : 0,
+  is_expired: instaJson.is_expired && !isNaN(instaJson.is_expired) ? Number(instaJson.is_expired) : 0
+};
 
-  componentDidMount = () => {
-    this.getInstaGallery();
-  };
+let returnObject = "";
 
-  getInstaGallery = () => {
-    axios
-      .get(`${grAPI}/instagramImages`)
-      .then((res) => {
-        const { userName, image } = res.data; //profilePic
-        this.setState({
-          user: {
-            userName: userName,
-          },
-          image: image,
-          instaDisplay: true,
+const clearReturnObject = () => {
+  returnObject = "";
+};
+
+const stopInstaInterval = () => {
+  clearInterval(startInstaInterval);
+};
+
+const editChildren = (children) => {
+  const childrenImages = [];
+  children.map((child) => {
+    if (child.media_type === "VIDEO") {
+      childrenImages.push(child.thumbnail_url);
+    }
+    if (child.media_type === "IMAGE") {
+      childrenImages.push(child.media_url);
+    }
+  });
+  return childrenImages;
+};
+
+const editCaption = (caption) => {
+  const trimCaption = caption.trim();
+  if (trimCaption.length < 76) return trimCaption;
+  if (trimCaption.length > 75) {
+    const slicedCaption = trimCaption.slice(
+      0,
+      trimCaption.lastIndexOf(" ", 75)
+    );
+    return slicedCaption.length <= 75
+      ? `${slicedCaption}...`
+      : `${slicedCaption.slice(0, 75)}...`;
+  }
+}; // I restrict my caption here to no more than 75 characters; this is better than attempting this server-side with CSS, as CSS is finicky depending on a user's browser and browser version.
+
+const getInstaInfo = () => {
+  const url = `https://graph.instagram.com/me/media`;
+  const fields =
+    "?fields=media_url,permalink,caption,timestamp,media_type,thumbnail_url,username,children{media_url,media_type,thumbnail_url}";
+  const instaCount = "&limit=5";
+  const accessToken = `&access_token=${instaUserLoginInfo.access_token}`;
+  axios.get(`${url}${fields}${instaCount}${accessToken}`)
+    .then((res) => {
+      const data = res.data.data;
+      if (data.length >= 5) {
+        returnObject = {};
+        returnObject.image = [];
+        returnObject.userName = data[0].username;
+        data.map((pic) => {
+          const {
+            media_url,
+            media_type,
+            caption,
+            timestamp,
+            permalink,
+            thumbnail_url,
+            children,
+          } = pic;
+          returnObject.image.push({
+            pic: media_type === "VIDEO" ? thumbnail_url : media_url,
+            caption: editCaption(caption),
+            date: timestamp.slice(5, 10) + "-" + timestamp.slice(0, 4),
+            url: permalink,
+            children: children ? editChildren(children.data) : null,
+          });
         });
-      })
-      .catch(() => {
         return;
-      })
-  };
-
-  clickL = () => {
-    const { image, selectedPic, selectedPicIndex } = this.state;
-    let i = selectedPicIndex - 1;
-    if (i < 0) {
-      i = image[selectedPic].children.length - 1;
-    }
-
-    this.setState({
-      selectedPicIndex: i,
+      }
+      clearReturnObject();
+    }).catch((err) => {
+      const errorCode = err.response.data.error.code;
+      if (errorCode === 190) {
+        stopInstaInterval();
+      }
+      clearReturnObject(); // we don't want the expired info to remain, so we clear this variable
     });
-  };
+};
 
-  clickR = () => {
-    const { image, selectedPic, selectedPicIndex } = this.state;
-    let i = selectedPicIndex + 1;
-    if (i > image[selectedPic].children.length - 1) {
-      i = 0;
-    }
-
-    this.setState({
-      selectedPicIndex: i,
+const isTimeUp = () => {
+  const refreshUrl = `https://graph.instagram.com/refresh_access_token`;
+  const grantType = `grant_type=ig_refresh_token`;
+  const accessToken = `access_token=${instaUserLoginInfo.access_token}`;
+  axios
+    .get(`${refreshUrl}?${grantType}&${accessToken}`)
+    .then((res) => {
+      const todayPlusFiftyFiveDays = new Date().setDate(new Date().getDate() + 55); //token expires in 60 days...we try to renew after 55; must wait 24 hours after getting a new token before renewing again.
+      const todayPlusSixtyDays = new Date().setDate(new Date().getDate() + 60); // your query will return a expires_in field, but you need to convert it to milliseconds from seconds and add it to todays date...this is just easier
+      const refreshedLoginInfo = res.data;
+      const instaUserLoginInfo = {
+        access_token: refreshedLoginInfo.access_token,
+        token_type: refreshedLoginInfo.token_type,
+        expires_in_five_days: todayPlusFiftyFiveDays,
+        is_expired: todayPlusSixtyDays,
+      };
+      fs.writeFileSync("../util/instaToken.json", JSON.stringify(instaUserLoginInfo))
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  };
+};
 
-  isPopUpOpen = (e, num) => {
-    const { display } = this.state;
-    if (e.target !== e.currentTarget && display) {
-      return;
-    }
-    this.setState({
-      display: !display,
-      selectedPic: num,
-      selectedPicIndex: 0,
-    });
-  };
-
-  togglePics = () => {
-    const { picIndex } = this.state;
-    const total = this.state.image.length;
-
-    const newIndex =
-      picIndex + 10 <= total
-        ? picIndex + 5
-        : total - picIndex <= 5
-        ? 0
-        : picIndex + (total - picIndex - 5);
-
-    this.setState({
-      picIndex: newIndex,
-    });
-  };
-
-  InstaPopUp = () => {
-    const { image, selectedPic, selectedPicIndex } = this.state;
-    const { userName } = this.state.user;
-    return this.state.display ? (
-      <div
-        className={cssInstagram.centerAndBackground}
-        onClick={(e) => this.isPopUpOpen(e, "")}
-      >
-        <div
-          onClick={(e) => this.isPopUpOpen(e, "")}
-          className={cssInstagram.closeButton}
-        >
-          X
-        </div>
-        <div className={cssInstagram.selectedContainer}>
-          <div className={cssInstagram.selectedHeader}>
-            <img
-              alt="profile pic"
-              className={cssInstagram.selectedHeaderImage}
-              src="/images/headShots/instaPic.jpg"
-            />
-            <a
-              className={cssInstagram.selectedHyperlink}
-              href={`${image[selectedPic].url}`}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              {userName}
-            </a>
-          </div>
-          {image[selectedPic].children !== null ? (
-            <div className={cssInstagram.selectedImageContainer}>
-              <div className={cssInstagram.buttonRight}>
-                <div
-                  className={cssInstagram.imageGalleryButtons}
-                  onClick={() => this.clickR()}
-                >
-                  {">"}
-                </div>
-              </div>
-              <div className={cssInstagram.buttonLeft}>
-                <div
-                  className={cssInstagram.imageGalleryButtons}
-                  onClick={() => this.clickL()}
-                >
-                  {"<"}
-                </div>
-              </div>
-              <img
-                className={cssInstagram.chosenImage}
-                alt={`insta${selectedPic}`}
-                src={image[selectedPic].children[selectedPicIndex]}
-              />
-            </div>
-          ) : (
-            <div className={cssInstagram.selectedImageContainer}>
-              <img
-                className={cssInstagram.chosenImage}
-                alt={`insta${selectedPic}`}
-                src={image[selectedPic].pic}
-              />
-            </div>
-          )}
-          <div className={cssInstagram.selectedCaption}>
-            <b>{image[selectedPic].date}</b>
-            <br />
-            {image[selectedPic].children !== null ? (
-              <b>
-                {selectedPicIndex + 1}/{image[selectedPic].children.length}:{" "}
-              </b>
-            ) : null}
-            {image[selectedPic].caption}
-          </div>
-        </div>
-      </div>
-    ) : null;
-  };
-
-  InstaBody = () => {
-    const { image, picIndex } = this.state;
-    const { userName } = this.state.user;
-    return (
-      <div>
-        <div className={cssInstagram.instagramParentHeader}>Instagram</div>
-        <div className={cssInstagram.instaModuleSpacing}>
-          <div className={cssInstagram.container}>
-            <div className={cssInstagram.header}>
-              <a
-                href={`https://www.instagram.com/${userName}`}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                @{userName}
-              </a>
-            </div>
-            
-              <div className={cssInstagram.postCount}>
-              {image.length > 5 ? (
-                <span
-                  title="Click to Toggle Instagram Images"
-                  className={cssInstagram.boldHover}
-                  onClick={() => this.togglePics()}
-                >
-                  More Pics
-                </span>) : (
-              ""
-            )}
-              </div>
-            
-            <div className={cssInstagram.flexFiveCenter}>
-              <div className={cssInstagram.hitemwiththatflexRow}>
-                <div className={cssInstagram.hitemwiththatflexColumn1}>
-                  <div
-                    className={cssInstagram.instaImage1}
-                    onClick={(e) => this.isPopUpOpen(e, 0 + picIndex)}
-                  >
-                    <img
-                      className={cssInstagram.bigPicture}
-                      alt={`insta_${[0 + picIndex]}`}
-                      src={image[0 + picIndex].pic}
-                    />
-                    <div className={cssInstagram.onHover}>
-                      <div className={cssInstagram.onHoverDate}>
-                        {image[0 + picIndex].date}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={cssInstagram.hitemwiththatflexColumn2}>
-                  <div
-                    className={cssInstagram.instaImage2}
-                    onClick={(e) => this.isPopUpOpen(e, 1 + picIndex)}
-                  >
-                    <img
-                      className={cssInstagram.smallPicture}
-                      alt={`insta_${[1 + picIndex]}`}
-                      src={image[1 + picIndex].pic}
-                    />
-                    <div className={cssInstagram.onHover}>
-                      <div className={cssInstagram.onHoverDate}>
-                        {image[1 + picIndex].date}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={cssInstagram.instaImage3}
-                    onClick={(e) => this.isPopUpOpen(e, 2 + picIndex)}
-                  >
-                    <img
-                      className={cssInstagram.smallPicture}
-                      alt={`insta_${[2 + picIndex]}`}
-                      src={image[2 + picIndex].pic}
-                    />
-                    <div className={cssInstagram.onHover}>
-                      <div className={cssInstagram.onHoverDate}>
-                        {image[2 + picIndex].date}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={cssInstagram.hitemwiththatflexColumn3}>
-                  <div
-                    className={cssInstagram.instaImage4}
-                    onClick={(e) => this.isPopUpOpen(e, 3 + picIndex)}
-                  >
-                    <img
-                      className={cssInstagram.smallPicture}
-                      alt={`insta_${[3 + picIndex]}`}
-                      src={image[3 + picIndex].pic}
-                    />
-                    <div className={cssInstagram.onHover}>
-                      <div className={cssInstagram.onHoverDate}>
-                        {image[3 + picIndex].date}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={cssInstagram.instaImage5}
-                    onClick={(e) => this.isPopUpOpen(e, 4 + picIndex)}
-                  >
-                    <img
-                      className={cssInstagram.smallPicture}
-                      alt={`insta_${[4 + picIndex]}`}
-                      src={image[4 + picIndex].pic}
-                    />
-                    <div className={cssInstagram.onHover}>
-                      <div className={cssInstagram.onHoverDate}>
-                        {image[4 + picIndex].date}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  render() {
-    const { instaDisplay } = this.state;
-    const { InstaBody, InstaPopUp } = this;
-    return instaDisplay ? (
-      <div>
-        <InstaPopUp />
-        <InstaBody />
-      </div>
-    ) : (
-      ""
-    );
+const startIntervalAction = function(){
+  const { expires_in_five_days, is_expired } = instaUserLoginInfo;
+  const todaysDate = new Date().getTime(); //today's date in milliseconds
+  if (todaysDate > is_expired) {
+    stopInstaInterval();
+    clearReturnObject();
+    return;
+  }
+  getInstaInfo();
+  if (todaysDate > expires_in_five_days && todaysDate < is_expired) {
+    isTimeUp();
   }
 }
 
-export default InstaGallery;
+const startInstaInterval = setInterval(() => {
+  startIntervalAction();
+}, 21600000); // refreshes every 6 hours, or 4 times each day
+
+startIntervalAction();
+
+router.get("/", (req, res, next) => {
+  if (returnObject) {
+    return res.json(returnObject);
+  }
+  throw new Error("Error");
+});
+
+module.exports = router;
