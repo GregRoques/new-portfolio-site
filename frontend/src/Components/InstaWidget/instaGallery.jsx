@@ -12,7 +12,6 @@ class InstaGallery extends Component {
     selectedPic: 0,
     selectedPicIndex: 0,
     display: false,
-    isLoading: true,
     errorRedirect: ""
   };
 
