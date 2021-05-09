@@ -148,7 +148,7 @@ const isTimeUp = () => {
 const startIntervalAction = function () {
   const { expires_in_five_days, is_expired } = instaUserLoginInfo;
   const todaysDate = new Date().getTime(); //today's date in milliseconds
-  if (todaysDate > is_expired) {
+  if (!access_token || todaysDate > is_expired) {
     stopInstaInterval();
     clearReturnObject();
     return;
