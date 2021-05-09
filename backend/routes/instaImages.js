@@ -172,7 +172,7 @@ router.get("/", (req, res, next) => {
   throw new Error({
     error: "Error",
     instaFollowRedirect:
-      !instaUserLoginInfo.user_name || !instaUserLoginInfo.access_token
+    !instaUserLoginInfo.access_token || !instaUserLoginInfo.user_name
         ? "N/A"
         : instaUserLoginInfo.userName,
   });
