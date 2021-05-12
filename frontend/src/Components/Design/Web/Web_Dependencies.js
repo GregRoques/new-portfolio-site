@@ -21,14 +21,5 @@ export const portfolioSamples =[
         description: `Yes, I created this site. Full Stack GitHub repo below.`,
         demo_type: '',
         readMe: 'https://github.com/GregRoques/new-portfolio-site/blob/master/README.md'
-    },
-    {
-        name: `Wedding Album`,
-        image: '/images/portfolioImages/urlshredder1.png',
-        description: `MERN-stack Wedding Album site.`,
-        demo: `https://youtu.be/nng-GhXo3Ww`,
-        demo_type: 'Demo',
-        readMe: 'https://github.com/GregRoques/MERN-Wedding-Album'
-
     }
 ]

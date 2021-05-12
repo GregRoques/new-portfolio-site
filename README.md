@@ -34,7 +34,8 @@ const myContactInfo = {
   "access_token": "STRING",
   "token_type": "bearer",
   "expires_in_five_days": INTEGER (time in milliseconds),
-  "is_expired": INTEGER (time in milliseconds)
+  "is_expired": INTEGER (time in milliseconds),
+  "user_name": "STRING"
 }
 ```
 

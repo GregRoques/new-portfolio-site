@@ -54,10 +54,10 @@ export const articleList ={
         link: 'https://www.whereyat.com/unplugged-covid-19-and-facebook-pull-the-plug-on-the-local-electronic-music-scene'
     },
     10:{
-        title: 'Interview with Broken Social Scene',
+        title: 'Interview with Big Gigantic',
         category: 'Music',
-        image: 'images/design/articles/bss.jpg',
-        link: 'https://www.whereyat.com/calming-the-storm-broken-social-scenes-kevin'
+        image: 'images/design/articles/bg.jpg',
+        link: 'https://www.dropbox.com/s/6qsqdhuperbeprw/big%20gigantic.pdf?dl=0'
     },
 
 }
