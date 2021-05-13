@@ -14,7 +14,6 @@ class Testimonials extends Component{
         axios.post(`${grAPI}/linkedIn`, {
             type: this.props.testmonialIndex
         }).then(res=>{
-            console.log(res.data)
             const recommendations = res.data; 
                 this.setState({
                     testimonial: recommendations,

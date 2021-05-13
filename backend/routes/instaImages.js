@@ -108,7 +108,8 @@ const getInstaInfo = () => {
       clearReturnObject();
     })
     .catch((err) => {
-      const errorCode = err.response.data.error.code;
+      //console.log(err.response.status)
+      const errorCode = err.response.status;
       if (errorCode === 190) {
         stopInstaInterval();
       }
@@ -141,12 +142,12 @@ const isTimeUp = () => {
       );
     })
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
     });
 };
 
 const startIntervalAction = function () {
-  const { expires_in_five_days, is_expired } = instaUserLoginInfo;
+  const { expires_in_five_days, is_expired, access_token } = instaUserLoginInfo;
   const todaysDate = new Date().getTime(); //today's date in milliseconds
   if (!access_token || todaysDate > is_expired) {
     stopInstaInterval();
@@ -160,7 +161,10 @@ const startIntervalAction = function () {
 };
 
 const startInstaInterval = setInterval(() => {
-  startIntervalAction();
+  if(instaUserLoginInfo.access_token){
+    startIntervalAction();
+  }
+  
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
 startIntervalAction();
@@ -169,11 +173,13 @@ router.get("/", (req, res, next) => {
   if (returnObject) {
     return res.json(returnObject);
   }
-  throw new Error({
-    error: "Error",
-    instaFollowRedirect:
-    !instaUserLoginInfo.access_token || !instaUserLoginInfo.user_name
-        ? "N/A"
-        : instaUserLoginInfo.userName,
-  });
+  if (!instaUserLoginInfo.access_token || !instaUserLoginInfo.user_name){
+    throw Error
+  } else{
+    res.send(503, {
+      user_name: instaUserLoginInfo.user_name
+    });
+  }
 });
+
+module.exports = router;

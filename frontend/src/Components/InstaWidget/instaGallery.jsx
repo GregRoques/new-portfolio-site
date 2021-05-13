@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import cssInstagram from "./instaGallery.module.css";
-import { grAPI } from "../../../Dependencies/BackendAPI";
+import { grAPI } from "../../Dependencies/BackendAPI";
 
 class InstaGallery extends Component {
   state = {
@@ -33,9 +33,9 @@ class InstaGallery extends Component {
         });
       })
       .catch((err) => {
-        if(err.instaFollowRedirect !== "N/A"){
+        if(err.response.status === 503){
           this.setState({
-            errorRedirect: err.instaFollowRedirect,
+            errorRedirect: err.response.data.user_name,
             instaDisplay: "error"
           })
         }
