@@ -12,11 +12,6 @@ const videoLinks = [
         video:"videoseries?list=PLM2GdNHvfSCFxXlNNVB8nrR0ogbg59Pbd",
         description:"Videos I created or directed for the American Red Cross of Louisiana's various social media accounts."
     },
-    // {
-    //     title: "Where Y'at",
-    //     video:"videoseries?list=PLM2GdNHvfSCFdCZM_rVoFJvLuYEMb3vMz",
-    //     description:"Videos I created or directed for Where Y'at Magazine's YouTube channel."
-    // },
     {
         title: 'Short Film',
         video: "seAiVYhv3ls",
