@@ -15,8 +15,7 @@ export const mySkills = {
             'html5.png',
             'css3.png',
             'sass.png',
-            'javascript.png',
-            'angularjs.png'
+            'javascript.png'
         ]
     },
     backEnd: {  
@@ -26,6 +25,7 @@ export const mySkills = {
             'express.png',
             'react.png',
             'redux.png',
+            'angularjs.png',
             'nodejs.png',
             "graphql.png",
             'bootstrap.png'
