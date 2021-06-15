@@ -13,7 +13,7 @@ const Design = () =>{
                 Design
             </div>
             <div className={cssHome.designDescriptions}>
-            I have 8+ years layout and design experience, including more than 6 years serving as creative director for an award-winning monthly magazine with a 50k+ print distribution, in addition to 120k+ unique web visitors, per month. Recently, I have branched out into web development to expand my layout and design skills into the digital landscape. Example of both my print and web work can be found below.
+            I have 8+ years art direction, layout and design experience, including more than 6 years serving as creative director for an award-winning monthly magazine with a 50k+ print distribution, in addition to 120k+ unique web visitors, per month. Below are samples of both my print and web design work.
             </div>
             <hr style={{width: '80%', margin: '4rem 10%', color: 'black'}}/>
             <div id="print">

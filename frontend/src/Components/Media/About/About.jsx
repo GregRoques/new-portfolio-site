@@ -13,12 +13,9 @@ const About = () => {
             <div className='whoAmIPadding'>
                 <div className={cssAbout.aboutMeText}>
                     <div></div> 
-                    I am an Atlanta, GA based marketing and communications professional with more than 10 years media experience, 
-                    including more than 8 years as an <Link to='/design'>editor/art director</Link> for 
-                    both internal and external corporate and media publications. 
-                    I also bring an additional 2+ years serving as a disaster 
-                    communications manager, including preparing board members and senior leadership 
-                    for regional and national interviews and presentations.
+                    Marketing and Communications professional offering 10+ years experience in editorial and art direction, brand positioning, event planning, communications and media training, and social and web content creation and strategy. 
+                    <br/><br/>
+                    This includes 8+ years as an editor/<Link to='/photography'>art director</Link> of print and digital publications for both corporate and media enterprises. I also bring an additional 2+ years experience developing presentations for and training key stakeholders, state representatives and senior leadership to serve as brand and campaign ambassadors.
                     <br/><br/>
                     A New Orleans native, I am an avid long-distance runner and 
                     enjoy <Link to='/photography'>photography</Link>, music, and 

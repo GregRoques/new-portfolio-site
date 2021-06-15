@@ -7,34 +7,32 @@ export const mySkills = {
             'illustrator.png',
             'indesign.png',
             'photoshop.png',
+            'power_point.png'
         ]
     },
-    frontEnd: {  
-        name: "Scripting",
+    digitalMarketing: {  
+        name: "Marketing",
+        tech: [
+            'facebook_business.png',
+            'google_ad_sense.png',
+            'google_analytics.png'
+        ]
+    },
+    development: {  
+        name: "Web",
         tech: [
             'html5.png',
             'css3.png',
             'sass.png',
-            'javascript.png'
-        ]
-    },
-    backEnd: {  
-        name: "Full Stack",
-        tech: [
+            'bootstrap.png',
+            'javascript.png',
             'mysql.png',
+            "graphql.png",
             'express.png',
             'react.png',
             'redux.png',
             'angularjs.png',
             'nodejs.png',
-            "graphql.png",
-            'bootstrap.png'
-        ]
-    },
-    auxillary: {
-        name: "Auxillary",
-        tech: [
-            'google_analytics.png',
             'AWS_amazon_web_services.png',
             'postman.png'
         ]

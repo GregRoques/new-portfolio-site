@@ -6,7 +6,7 @@ import ImageLoader from '../../ImgLoader/imgLoader'
 const Tech = () =>{
     return(
     <div>
-        <div className={cssTech.techHeader}>Skills</div>
+        <div className={cssTech.techHeader}>Technologies</div>
         <div className={cssTech.techRows}>
             { Object.keys(mySkills).map((skills, i) => {
                 const { name , tech } = mySkills[skills]
