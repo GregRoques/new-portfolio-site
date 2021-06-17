@@ -31,7 +31,6 @@ export const mySkills = {
             'react.png',
             'redux.png',
             'nodejs.png',
-            'graphql.png',
             'AWS_amazon_web_services.png',
             'postman.png'
         ]

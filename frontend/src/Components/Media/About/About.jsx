@@ -15,7 +15,7 @@ const About = () => {
                     <div></div> 
                     Marketing and Communications professional offering 10+ years experience in editorial and art direction, brand positioning, event planning, communications and media training, and social and web content creation and strategy. 
                     <br/><br/>
-                    This includes 8+ years as an editor/<Link to='/photography'>art director</Link> of print and digital publications for both corporate and media enterprises. I also bring an additional 2+ years experience developing presentations for and training key stakeholders, state representatives and senior leadership to serve as brand and campaign ambassadors.
+                    This includes 8+ years as an editor/art director of <Link to='/design'>print and digital publications</Link> for both corporate and media enterprises. I also bring an additional 2+ years experience developing presentations for and training key stakeholders, state representatives and senior leadership to serve as brand and campaign ambassadors.
                     <br/><br/>
                     A New Orleans native, I am an avid long-distance runner and 
                     enjoy <Link to='/photography'>photography</Link>, music, and 
