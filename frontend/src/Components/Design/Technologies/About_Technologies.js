@@ -27,11 +27,9 @@ export const mySkills = {
             'bootstrap.png',
             'javascript.png',
             'mysql.png',
-            "graphql.png",
             'express.png',
             'react.png',
             'redux.png',
-            'angularjs.png',
             'nodejs.png',
             'AWS_amazon_web_services.png',
             'postman.png'
