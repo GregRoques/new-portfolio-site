@@ -11,26 +11,20 @@ export const mySkills = {
             'power_point.png'
         ]
     },
-    digitalMarketing: {  
-        name: "Marketing",
-        tech: [
-            'facebook_business.png',
-            'google_adsense.png',
-            'google_analytics.png'
-        ]
-    },
     development: {  
         name: "Web",
         tech: [
             'html5.png',
             'css3.png',
             'sass.png',
+            'bootstrap.png',
             'javascript.png',
             'mysql.png',
             'express.png',
             'react.png',
             'redux.png',
             'nodejs.png',
+            'google_analytics.png',
             'AWS_amazon_web_services.png',
             'postman.png'
         ]

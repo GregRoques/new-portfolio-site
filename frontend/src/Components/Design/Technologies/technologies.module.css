@@ -48,17 +48,13 @@
     position:relative;
     align-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }
-
-  .techContainers:nth-of-type(3){
-    width:100%;
   }
 
   .techStack{
@@ -169,10 +165,6 @@
   .portrait{
     width: 35vw;
     height: 35vw;
-  }
-
-  .techContainers{
-    width:100%
   }
 
   .skillIcon{
