@@ -15,7 +15,7 @@ const videoLinks = [
     {
         title: 'Short Film',
         video: "seAiVYhv3ls",
-        description: 'Below is my favorite of 48 Hour Film Fest efforts, a parody of the increasingly dark and mature nature of super hero films around that time.'
+        description: "Below is my favorite of my team's 48 Hour Film Fest efforts, a parody of the increasingly dark and mature nature of super hero films around that time."
     }
 ]
 
