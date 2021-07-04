@@ -138,7 +138,8 @@ const isTimeUp = () => {
       };
       fs.writeFileSync(
         "../util/instaToken.json",
-        JSON.stringify(instaUserLoginInfo)
+        JSON.stringify(instaUserLoginInfo),
+        {flag: "w"}
       );
     })
     .catch((err) => {
