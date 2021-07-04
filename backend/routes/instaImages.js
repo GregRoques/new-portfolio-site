@@ -173,13 +173,16 @@ router.get("/", (req, res, next) => {
   if (returnObject) {
     return res.json(returnObject);
   }
+  if(!returnObject && instaUserLoginInfo.user_name){
+    returnObject = {
+      image: "",
+      userName: instaUserLoginInfo.user_name
+    }
+    return res.json(returnObject);
+  }
   if (!instaUserLoginInfo.access_token || !instaUserLoginInfo.user_name){
     throw Error
-  } else{
-    res.send(503, {
-      user_name: instaUserLoginInfo.user_name
-    });
-  }
+  } 
 });
 
 module.exports = router;

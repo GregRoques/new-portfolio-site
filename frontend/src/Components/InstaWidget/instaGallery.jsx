@@ -12,7 +12,6 @@ class InstaGallery extends Component {
     selectedPic: 0,
     selectedPicIndex: 0,
     display: false,
-    errorRedirect: ""
   };
 
   componentDidMount = () => {
@@ -23,22 +22,14 @@ class InstaGallery extends Component {
     axios
       .get(`${grAPI}/instagramImages`)
       .then((res) => {
-        const { userName, image } = res.data; //profilePic
+        const { userName, image } = res.data; 
         this.setState({
           user: {
             userName: userName,
           },
           image: image,
-          instaDisplay: "widget",
+          instaDisplay: image ? "widget" : "hyperlink",
         });
-      })
-      .catch((err) => {
-        if(err.response.status === 503){
-          this.setState({
-            errorRedirect: err.response.data.user_name,
-            instaDisplay: "error"
-          })
-        }
       })
   };
 
@@ -294,17 +285,17 @@ class InstaGallery extends Component {
     );
   };
 
-  InstaBodyError = () => {
-    const { errorRedirect } = this.state;
+  InstaLink = () => {
+    const { user } = this.state;
     return (
       <div className={cssInstagram.instaNotVisibleCenter}>
         <a
-          href={`https://www.instagram.com/${errorRedirect}/`}
+          href={`https://www.instagram.com/${user.userName}/`}
           rel="noopener noreferrer nofollow"
           target="_blank"
         >
           <img
-            alt={`Instagram: @${errorRedirect}`}
+            alt={`Instagram: @${user.userName}`}
             src="/images/instagramNotVisible.jpg"
           />
         </a>
@@ -314,14 +305,14 @@ class InstaGallery extends Component {
 
   render() {
     const { instaDisplay } = this.state;
-    const { InstaBody, InstaBodyError, InstaPopUp } = this;
+    const { InstaBody, InstaLink, InstaPopUp } = this;
     return instaDisplay === "widget" ? (
       <div>
         <InstaPopUp />
         <InstaBody />
       </div>
-    ) : instaDisplay === "error" ? (
-      <InstaBodyError />
+    ) : instaDisplay === "hyperlink" ? (
+      <InstaLink />
     ) : (
       ""
     );
