@@ -165,7 +165,6 @@ const startInstaInterval = setInterval(() => {
   if(instaUserLoginInfo.access_token){
     startIntervalAction();
   }
-  
 }, 21600000); // refreshes every 6 hours, or 4 times each day
 
 startIntervalAction();
@@ -181,9 +180,7 @@ router.get("/", (req, res, next) => {
     }
     return res.json(returnObject);
   }
-  if (!instaUserLoginInfo.access_token || !instaUserLoginInfo.user_name){
-    throw Error
-  } 
+  throw Error
 });
 
 module.exports = router;
