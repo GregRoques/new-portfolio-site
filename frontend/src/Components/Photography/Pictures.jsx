@@ -5,7 +5,8 @@ import {grAPI} from '../../Dependencies/BackendAPI'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import cssPictures from './photography.module.css'
 import PicModal from './picturesModal';
-import ImageLoader from '../ImgLoader/imgLoader'
+import ImageLoader from '../ImgLoader/imgLoader';
+import Insta from '../InstaWidget/instaGallery';
 
 class Pictures extends Component{
 
@@ -121,7 +122,10 @@ class Pictures extends Component{
                         </div>
                     </InfiniteScroll>
                 </div>
-            </div>
+                {images.length === albumLength ?
+                    <Insta/> :
+                    ""}
+                </div>
         ) 
     }
 }
